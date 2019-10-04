@@ -1,0 +1,56 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models
+@model DreamweddsModel
+
+<!-- left column start -->
+<div class="col-md-9">
+    <div class="row">
+        <div class="col-md-12 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+            <div class="blog-item">
+                <div class="row">
+
+
+                    <div class="col-md-12">
+                        <img alt="@Model.blog.BlogName" class="img-responsive" src="@Model.blog.ImageUrl">
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row blog-meta">
+                            <div class="col-xs-4 text-left"><i class="fa fa-user fa-fw"></i> @Model.blog.CreatedDate.ToShortDateString()</div>
+                            <div class="col-xs-4 text-center"><i class="fa fa-user fa-fw"></i> @Model.blog.AuthorName</div>
+                            <div class="col-xs-4 text-right"><i class="fa fa-folder-open fa-fw"></i> @Model.blog.BlogSubject</div>
+                        </div>
+
+                        <div class="blog-item-inner">
+                            <h2>@Model.blog.Title</h2>
+                            @*<p class="lead">@Model.blog.Title</p>*@
+
+                           @Html.Raw(Model.blog.Content)
+
+                            @if (Model.blog.Quote != null)
+                            {
+                            <blockquote>
+                                <p>@Model.blog.Quote</p>
+                                <footer><cite title="Source Title">@Model.blog.AuthorName</cite></footer>
+                            </blockquote>
+                            }
+                        </div>
+
+                        <div class="comments">
+                            <form>
+                                <div class="row">                                 
+                                    <div id="comments">
+                                        <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-width="700" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                                        <div class=" fb-comments" data-href="@Request.Url.AbsoluteUri" data-order-by="reverse-time" data-width="840" data-colorscheme="light" data-numposts="5"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- left column end -->
+
+

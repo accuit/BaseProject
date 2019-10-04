@@ -1,0 +1,409 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models;
+@model DreamweddsModel
+@{
+    ViewBag.Title = "Wedding Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- HERO SLIDER -->
+<section class="cd-hero">
+    <ul class="list-unstyled cd-hero-slider autoplay">
+
+        <li class="selected" style="background-image: url('http://test.dreamwedds.com/Templates/Wedding/Love-Birds/images/banner.jpg');">
+            <div class="container">
+                <h1>Flaunt your wedding</h1>
+                <h2>Show how much you love her. Flaunt this impressive wedding theme!</h2>
+                <a href="~/Templates/Wedding/Love-Birds/index.html" target="_blank" class="btn btn-danger btn-lg text-uppercase"><i class="fa fa-camera fw"></i>Live Demo</a>
+            </div>
+        </li>
+
+        <li style="background-image: url('http://test.dreamwedds.com/Templates/Wedding/Bashori/images/banner.jpg');">
+            <div class="container">
+                <h1>Traditional Indian Wedding</h1>
+                <h2>Show your wedding traditions to the world.</h2>
+                <a href="~/Templates/Wedding/Bashori/index.html" target="_blank" class="btn btn-danger btn-lg text-uppercase"><i class="fa fa-camera fw"></i>Live Demo</a>
+            </div>
+        </li>
+
+        <li style="background-image: url('http://dreamwedds.com/Templates/Wedding/Love-We/img/slider/1.jpg'); ">
+            <div class="container">
+                <h1>Brilliant colors theme</h1>
+                <h2>This awsome theme will amaze you. Just imagine how your wedding pictures will look into it.</h2>
+                <a href="~/Templates/Wedding/Love-We/index.html" target="_blank" class="btn btn-danger btn-lg text-uppercase"><i class="fa fa-camera fw"></i>Live Demo</a>
+            </div>
+        </li>
+
+        <li style="background-image: url('http://test.dreamwedds.com/Templates/Wedding/Glenz/images/banner.jpg'); ">
+            <div class="container">
+                <h1>Musical Wedding Website</h1>
+                <h2>A musical wedding theme brings new charm in website that makes it alive.</h2>
+                <a href="~/Templates/Wedding/GlenZ/index.html" target="_blank" class="btn btn-danger btn-lg text-uppercase"><i class="fa fa-camera fw"></i>Live demo</a>
+            </div>
+        </li>
+
+        <li style="background-image: url('http://test.dreamwedds.com/Templates/Wedding/Sweet-Heart/images/banner.jpg'); ">
+            <div class="container">
+                <h1>Impress your relatives</h1>
+                <h2>This beautiful template is all you need to impress your guests and relatives!</h2>
+                <a href="~/Templates/Wedding/Sweet-Heart/index.html" target="_blank" class="btn btn-danger btn-lg text-uppercase"><i class="fa fa-camera fw"></i>Live Demo</a>
+            </div>
+        </li>
+
+    </ul>
+
+
+    <div class="arrow-nav">
+        <div class="prev"><a class="hero-prev" href="#"><i class="fa fa-angle-left"></i></a></div>
+        <div class="next"><a class="hero-next" href="#"><i class="fa fa-angle-right"></i></a></div>
+    </div>
+
+</section>
+
+
+
+<div id="intro" class="container-fluid bg-dark padding15">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 text-left">
+                <h2>OVER <b class="counter">100</b> couples have <b>Booked</b> their wedding website this year.</h2>
+            </div>
+
+            <div class="col-md-2 text-center">
+                <a href="@Url.Action("Contact", "Home")">
+                    <button type="button" class="btn btn-danger btn-lg"><i class="fa fa-tv fw" aria-hidden="true">&nbsp;</i> Contact Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- CONTENT START -->
+<section id="home-content">
+
+    @*<div id="home-intro" class="container padding35">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6 text-center wow bounceIn">
+                            <img alt="" class="img-responsive img-circle" src="http://demos.codeniner.com/edura/images/other/corporate.jpg">
+                        </div>
+
+                        <div class="col-md-6 wow fadeIn">
+                            <h4>WE ARE <b>EDURA</b></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. <b>Lorem ipsum dolor sit amet,</b> consectetur adipiscing elit. </p>
+                            <ul class="list-unstyled home-list">
+                                <li><i class="fa fa-check-circle fa-fw"></i> Responsive Design</li>
+                                <li><i class="fa fa-check-circle fa-fw"></i> Multiple Layouts</li>
+                                <li><i class="fa fa-check-circle fa-fw"></i> Mobile Ready</li>
+                                <li><i class="fa fa-check-circle fa-fw"></i> Bootstrap Powered</li>
+                                <li><i class="fa fa-check-circle fa-fw"></i> 4 Contact Us Templates</li>
+                                <li><i class="fa fa-check-circle fa-fw"></i> Portfolio</li>
+                                <li><i class="fa fa-check-circle fa-fw"></i> eCommerce Ready</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div id="services-4">
+                        <div class="row wow fadeIn">
+                            <div class="col-md-12">
+                                <h4 class="text-uppercase">Top <b>Features</b></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="feature wow fadeInUp">
+                                    <i class="fa fa-bar-chart"></i>
+                                    <h4 class="text-uppercase">Responsive Design</h4>
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et.</p>
+                                </div>
+                                <div class="feature wow fadeInUp">
+                                    <i class="fa fa-star"></i>
+                                    <h4 class="text-uppercase">Multiple Layouts</h4>
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et.</p>
+                                </div>
+                                <div class="feature wow fadeInUp">
+                                    <i class="fa fa-mobile"></i>
+                                    <h4 class="text-uppercase">Mobile Friendly</h4>
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et.</p>
+                                </div>
+                                <div class="feature wow fadeInUp">
+                                    <i class="fa fa-rocket"></i>
+                                    <h4 class="text-uppercase">Bootstrap Powered</h4>
+                                    <p>Pellentesque habitant morbi tristique senectus et netus et.</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>*@
+
+
+    <div id="projects" class="container-fluid bg-gray padding35">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h3>LATEST <b>THEMES</b></h3>
+                </div>
+
+
+                <div id="portfolio-carousel-home" class="owl-carousel">
+
+                    @foreach (var item in Model.templateMasters.Where(x => x.TemplateType == 2))
+                        {
+                    <div class="portfolio-item">
+                        <div class="portfolio-top">
+                            <img alt="@item.TemplateName" class="img-responsive-200" src="~/Templates/Wedding/@item.TemplateFolderPath/images/banner.jpg">
+                            <div class="mask"></div>
+                            <span class="portfolio-tag">
+                                <i class="fa fa-tag fa-fw"></i> <a href="#">@item.TemplateFeatureText.Trim(',')</a>
+                            </span>
+                            <ul class="list-unstyled list-inline">
+                                <li>
+                                    <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateFolderPath })">
+                                        Details
+                                    </a>
+                                </li>
+                                &nbsp; &nbsp;
+                                <li>
+                                    <a href="~/Templates/Wedding/@item.TemplateFolderPath" target="_blank">
+                                        Demo
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="portfolio-item-desc">
+                            <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateName })">@item.TemplateName @item.TemplateTypeText Theme</a>
+                        </span>
+                    </div>
+                        }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="testimonials" class="container padding35">
+        <div class="row wow fadeIn">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-uppercase text-bold text-center">Latest Blog Posts</h4>
+                        <div class="space20"></div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <!-- carousel start -->
+                        <div id="blog-carousel-home" class="owl-carousel">
+
+
+                            <div>
+                                <div class="blog-item">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <a href="@Url.Action("BlogDetail", "Blog", new { blogId = 1, blogName = "Why-Wedding-Website" })">
+                                                <img alt="" class="img-responsive" src="https://36hrw115apll2tgpf9vbfhw1-wpengine.netdna-ssl.com/wp-content/uploads/2016/03/Example-Squarespace-Wedding-Websites-13-780x656.jpg">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-7">
+                                            <div class="blog-item-inner">
+                                                <h4><a href="#">Why Wedding Website</a></h4>
+                                                <p>
+                                                    For all that we’ve talked about how to make your wedding website pretty
+                                                    ,the truth is, your wedding website is really about ...
+                                                </p>
+                                            </div>
+
+                                            <div class="row blog-meta">
+                                                <div class="col-xs-6"><i class="fa fa-calendar fa-fw"></i> August, 30th, 2017</div>
+                                                <div class="col-xs-6"><i class="fa fa-folder-open fa-fw"></i> Wedding</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="blog-item">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <a href="@Url.Action("BlogDetail", "Blog", new { blogId = 2, blogName = "Show-your-guests-a-real-Wedding" })">
+                                                <img alt="" class="img-responsive" src="https://36hrw115apll2tgpf9vbfhw1-wpengine.netdna-ssl.com/wp-content/uploads/2015/01/Example-Squarespace-Wedding-Websites-5-780x656.jpg">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-7">
+                                            <div class="blog-item-inner">
+                                                <h4><a href="#">Show your guests a real Wedding</a></h4>
+                                                <p>
+                                                    While you don’t need to tell people how to wedding, you do want to let
+                                                    your guests know if anything at your wedding is going to be ....
+                                                </p>
+                                            </div>
+
+                                            <div class="row blog-meta">
+                                                <div class="col-xs-6"><i class="fa fa-calendar fa-fw"></i> August, 30th, 2017</div>
+                                                <div class="col-xs-6"><i class="fa fa-folder-open fa-fw"></i> Wedding</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="blog-item">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <a href="@Url.Action("BlogDetail", "Blog", new { blogId = 3, blogName = "Why-need-Love-time-line"})">
+                                                <img alt="" class="img-responsive" src="https://36hrw115apll2tgpf9vbfhw1-wpengine.netdna-ssl.com/wp-content/uploads/2016/03/Example-Squarespace-Wedding-Websites-6-780x656.jpg">
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-7">
+                                            <div class="blog-item-inner">
+                                                <h4><a href="#">Why need Love time line in website</a></h4>
+                                                <p>
+                                                    So while it probably feels redundant to tell your guests about yourselves
+                                                    , even the people who know you personally ...
+                                                </p>
+                                            </div>
+
+                                            <div class="row blog-meta">
+                                                <div class="col-xs-6"><i class="fa fa-calendar fa-fw"></i> August, 30th, 2017</div>
+                                                <div class="col-xs-6"><i class="fa fa-folder-open fa-fw"></i> Wedding</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- carousel end -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-uppercase text-bold text-center">Testimonials</h4>
+                        <div class="space20"></div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <!-- carousel start -->
+                        <div id="testimonials-carousel-home" class="owl-carousel">
+
+                            <div class="testimonial">
+                                <blockquote>
+                                    <p>
+                                        Our sincere thanks for the service provided to us in the lead up to and on the day of our wedding. Your professionalism and keen eye for detail took much of the stress and work out of our day.
+                                        We would have no hesitation in recommending your facility as a perfect wedding/function website in the future.
+                                    </p>
+                                    <small>
+                                        Leanne and Shaun <span class="pull-right avatar-container">
+                                            <img alt="" class="img-circle avatar" src="http://demos.codeniner.com/edura/images/team/thumb1_40.jpg">
+                                        </span>
+                                    </small>
+                                </blockquote>
+                            </div>
+
+                            <div class="testimonial">
+                                <blockquote>
+                                    <p>
+                                        We just want to say a big thank you for the amazing job you did at our wedding website.
+                                        The Belle theme looked amazing, the gallary were excellent! Our day was perfect and all of our guests amazed to see it.
+                                        Thank you so much again for your great work, both Daniel and I couldn’t have wished for anywhere better.
+                                    </p>
+                                    <small>
+                                        Kelly and Daniel <span class="pull-right avatar-container">
+                                            <img alt="Kelly and Daniel" class="img-circle avatar" src="http://demos.codeniner.com/edura/images/team/thumb4_40.jpg">
+                                        </span>
+                                    </small>
+                                </blockquote>
+                            </div>
+
+                            <div class="testimonial">
+                                <blockquote>
+                                    <p>The comment in your wedding information package “we will make your day special” was certainly delivered..</p>
+                                    <small>
+                                        Kevin and Vivienneoe <span class="pull-right avatar-container">
+                                            <img alt="Kevin and Vivienneoe" class="img-circle avatar" src="http://demos.codeniner.com/edura/images/team/thumb8_40.jpg">
+                                        </span>
+                                    </small>
+                                </blockquote>
+                            </div>
+
+                        </div>
+                        <!-- carousel end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div id="partners" class="container-fluid bg-gray padding35">
+        <div class="container">
+            <div class="row wow fadeIn">
+                <div class="col-md-12 text-center">
+                    <h3 class="text-uppercase">Our <b>Partners</b></h3>
+                    <div class="space40"></div>
+                </div>
+
+                <div class="col-md-12 ">
+                    <!-- carousel start -->
+                    <div id="partners-gallery" class="owl-carousel">
+
+                        <div class="text-center">
+                            <img alt="" src="http://demos.codeniner.com/edura/images/partners/pinterest.png">
+                        </div>
+
+                        <div class="text-center">
+                            <img alt="wordpress" src="http://demos.codeniner.com/edura/images/partners/wordpress.png">
+                        </div>
+                        <div class="text-center">
+                            <img alt="facebook" src="~/Content/Images/facebook_gray_logo.png">
+                        </div>
+                        <div class="text-center">
+                            <img alt="" src="http://demos.codeniner.com/edura/images/partners/dribbble.png">
+                        </div>
+                        
+                    </div>
+                    <!-- carousel end -->
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+</section>
+<!-- CONTENT END -->
+<!-- CALL TO ACTION START -->
+@*<section id="call-to-action">
+    <div class="parallax parallax-container">
+        <div class="bg-mask-black"></div>
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>More than <b class="counter">150</b> happy customers! <small class="text-white">Are you interested?</small></h1>
+                </div>
+                <div class="col-md-2 text-center">
+                    <a href="@Url.Action("Contact", "Home")">
+                        <button type="submit" class="btn btn-primary btn-lg margin15 text-uppercase">Join Us Now</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<!-- CALL TO ACTION END -->

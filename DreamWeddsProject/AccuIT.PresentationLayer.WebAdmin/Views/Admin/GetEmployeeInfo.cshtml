@@ -1,0 +1,176 @@
+﻿@using AccuIT.BusinessLayer.Services.BO;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+
+@{
+    ViewBag.Title = "User Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <!-- Dashboard -->
+        <li>
+
+            <a href="@Url.Action("Index", "Admin")">
+                <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+            </a>
+
+        </li>
+        <!-- Roles Manager -->
+        <li class="treeview active menu-open">
+            <a href="#">
+                <i class="fa fa-users"></i><span>Manage Roles</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("RoleManager", "Admin")"><i class="fa fa-circle-o"></i>Roles</a></li>
+                <li class="active"><a href="@Url.Action("ManageRoleModules", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Manage Role Modules</a></li>
+                <li><a href="@Url.Action("ManageRolePermissions", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Role Permissions</a></li>
+            </ul>
+        </li>
+        <!-- Modules Manager -->
+        <li><a href="@Url.Action("ModulesManager", "Admin")"><i class="fa fa-briefcase"></i><span>Modules</span></a></li>
+
+    </ul>
+
+}
+
+
+@section breadcrumb{
+    <h1>
+        @ViewBag.Title
+        <small>User Profile Information</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+
+
+@if (HttpContext.Current.Session[PageConstants.SESSION_PROFILE_KEY] != null)
+{
+    var EmployeeInfo = (EmpProfileBO)Session[PageConstants.SESSION_PROFILE_KEY];
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <!-- /.box -->
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Basic Information</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <label>Employee Name</label>
+                                                @EmployeeInfo.EmpName
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+
+                                            <!-- Date dd/mm/yyyy -->
+                                            <div class="form-group">
+                                                <label>Joining Date</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text" name="txtjoindate" class="form-control" data-inputmask="'alias': 'dd-mm-yyyy'" data-mask />
+                                                </div><!-- /.input group -->
+                                            </div><!-- /.form group -->
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <label for="exampleInputEmail1">Salary </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">$</span>
+                                                @EmployeeInfo.Salary
+                                                <span class="input-group-addon">.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title"> Login Credentials</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <label for="exampleInputEmail1">Email Address</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                User Address Comes Here
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <h3 class="box-title">Employee Profile</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <div class="form-group">
+                                                <label for="file">Upload Image</label>
+                                                <input type="file" name="file">
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group">
+                                                <img src="@Url.Content(@EmployeeInfo.ImagePath)" class="img-thumbnail" height="100px" width="100px" alt="@Model.EmpName">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+else
+{
+
+User Not Logged In. Please login to see your profile info.
+}

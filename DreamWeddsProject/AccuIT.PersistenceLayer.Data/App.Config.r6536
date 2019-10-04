@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <connectionStrings><add name="SmartDostEntities" connectionString="metadata=res://*/EDMX.SmartDost.csdl|res://*/EDMX.SmartDost.ssdl|res://*/EDMX.SmartDost.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=192.168.13.196;initial catalog=SmartDostLatest_V3;user id=sa;password=Q3tech123;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" /></connectionStrings>
+</configuration>

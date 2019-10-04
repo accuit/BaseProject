@@ -1,0 +1,44 @@
+﻿@using AccuIT.BusinessLayer.Services.BO
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserLogin</title>
+</head>
+<body>
+    @using (Html.BeginForm("UserLogin", "Account", FormMethod.Post))
+    {
+        <div>
+            <p class="login-box-msg">Sign in to start your session</p>
+            <form action="../../index2.html" method="post">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" name="txtuserid" placeholder="Email" />
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    
+                    <input type="text" class="form-control" name="txtpass" value="@ViewBag.EmployeeName" placeholder="Password" />
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                &nbsp; &nbsp; &nbsp; &nbsp; <input type="checkbox"> Remember Me
+                            </label>
+                        </div>
+                    </div><!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" id="submit" value="Save" class="btn btn-primary">Sign In</button>
+                    </div><!-- /.col -->
+                </div>
+            </form>
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="stringResponse">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="{0}Response" Namespace="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FailedValidations" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Result" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="SingleResult" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="stringResponse" nillable="true" type="tns:stringResponse" />
+  <xs:complexType name="WeddingDTOResponse">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="{0}Response" Namespace="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="WeddingDTO" Namespace="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FailedValidations" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="tns:ArrayOfWeddingDTO" />
+      <xs:element minOccurs="0" name="SingleResult" nillable="true" type="tns:WeddingDTO" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WeddingDTOResponse" nillable="true" type="tns:WeddingDTOResponse" />
+  <xs:complexType name="ArrayOfWeddingDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WeddingDTO" nillable="true" type="tns:WeddingDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeddingDTO" nillable="true" type="tns:ArrayOfWeddingDTO" />
+  <xs:complexType name="WeddingDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BackgroundImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrideAndMaids" nillable="true" type="tns:ArrayOfBrideAndMaidDTO" />
+      <xs:element minOccurs="0" name="GroomAndMen" nillable="true" type="tns:ArrayOfGroomAndMenDTO" />
+      <xs:element minOccurs="0" name="IconUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLoveMarriage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Quote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RSVPDetails" nillable="true" type="tns:ArrayOfRSVPDetailDTO" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:int" />
+      <xs:element minOccurs="0" name="TemplateImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplatePreviewUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeLines" nillable="true" type="tns:ArrayOfTimeLineDTO" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Venues" nillable="true" type="tns:ArrayOfVenueDTO" />
+      <xs:element minOccurs="0" name="WeddingEvents" nillable="true" type="tns:ArrayOfWeddingEventDTO" />
+      <xs:element minOccurs="0" name="WeddingID" type="xs:int" />
+      <xs:element minOccurs="0" name="fbPageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strWeddingDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strWeddingStyle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="videoUrl" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WeddingDTO" nillable="true" type="tns:WeddingDTO" />
+  <xs:complexType name="ArrayOfBrideAndMaidDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BrideAndMaidDTO" nillable="true" type="tns:BrideAndMaidDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBrideAndMaidDTO" nillable="true" type="tns:ArrayOfBrideAndMaidDTO" />
+  <xs:complexType name="BrideAndMaidDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AboutBrideMaid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrideAndMaidID" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Imageurl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBride" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeddingID" type="xs:int" />
+      <xs:element minOccurs="0" name="fbUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="googleUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="instagramUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lnkedinUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDateofBirth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strRelationWithBride" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BrideAndMaidDTO" nillable="true" type="tns:BrideAndMaidDTO" />
+  <xs:complexType name="ArrayOfGroomAndMenDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GroomAndMenDTO" nillable="true" type="tns:GroomAndMenDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGroomAndMenDTO" nillable="true" type="tns:ArrayOfGroomAndMenDTO" />
+  <xs:complexType name="GroomAndMenDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AboutMen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GroomAndMenID" type="xs:int" />
+      <xs:element minOccurs="0" name="Imageurl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsGroom" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeddingID" type="xs:int" />
+      <xs:element minOccurs="0" name="fbUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="googleUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="instagramUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lnkedinUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strDateofBirth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strRelationWithGroom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GroomAndMenDTO" nillable="true" type="tns:GroomAndMenDTO" />
+  <xs:complexType name="ArrayOfRSVPDetailDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSVPDetailDTO" nillable="true" type="tns:RSVPDetailDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRSVPDetailDTO" nillable="true" type="tns:ArrayOfRSVPDetailDTO" />
+  <xs:complexType name="RSVPDetailDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ComingFromCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GuestCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsComing" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifiedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ParticipatingInEvents" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreferredFood" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="PreferredStayIn" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RSVPID" type="xs:int" />
+      <xs:element minOccurs="0" name="SpecialNote" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WeddingID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSVPDetailDTO" nillable="true" type="tns:RSVPDetailDTO" />
+  <xs:complexType name="ArrayOfTimeLineDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeLineDTO" nillable="true" type="tns:TimeLineDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimeLineDTO" nillable="true" type="tns:ArrayOfTimeLineDTO" />
+  <xs:complexType name="TimeLineDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Story" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeLineID" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeddingID" type="xs:int" />
+      <xs:element minOccurs="0" name="strStoryDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeLineDTO" nillable="true" type="tns:TimeLineDTO" />
+  <xs:complexType name="ArrayOfVenueDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VenueDTO" nillable="true" type="tns:VenueDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVenueDTO" nillable="true" type="tns:ArrayOfVenueDTO" />
+  <xs:complexType name="VenueDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressID" type="xs:int" />
+      <xs:element minOccurs="0" name="AddressMasters" nillable="true" type="tns:ArrayOfAddressMasterDTO" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VenueBannerImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VenueID" type="xs:int" />
+      <xs:element minOccurs="0" name="VenueImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VenueMobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VenuePhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VenueWebsite" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeddingEventID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VenueDTO" nillable="true" type="tns:VenueDTO" />
+  <xs:complexType name="ArrayOfAddressMasterDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddressMasterDTO" nillable="true" type="tns:AddressMasterDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddressMasterDTO" nillable="true" type="tns:ArrayOfAddressMasterDTO" />
+  <xs:complexType name="AddressMasterDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressID" type="xs:int" />
+      <xs:element minOccurs="0" name="AddressOwnerType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AddressOwnerTypePKID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AddressStatus" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AddressType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" type="xs:int" />
+      <xs:element minOccurs="0" name="Created_By" type="xs:int" />
+      <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Is_Deleted" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Modified_By" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PinCode" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressMasterDTO" nillable="true" type="tns:AddressMasterDTO" />
+  <xs:complexType name="ArrayOfWeddingEventDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WeddingEventDTO" nillable="true" type="tns:WeddingEventDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWeddingEventDTO" nillable="true" type="tns:ArrayOfWeddingEventDTO" />
+  <xs:complexType name="WeddingEventDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Venues" nillable="true" type="tns:ArrayOfVenueDTO" />
+      <xs:element minOccurs="0" name="WeddingEventID" type="xs:int" />
+      <xs:element minOccurs="0" name="WeddingID" type="xs:int" />
+      <xs:element minOccurs="0" name="strEndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strEventDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="strStartTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WeddingEventDTO" nillable="true" type="tns:WeddingEventDTO" />
+  <xs:complexType name="EmailServiceDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachmentFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BccEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CcEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmailServiceID" type="xs:long" />
+      <xs:element minOccurs="0" name="FromEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAttachment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCustomerCopy" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsHtml" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifiedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:int" />
+      <xs:element minOccurs="0" name="ToEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmailServiceDTO" nillable="true" type="tns:EmailServiceDTO" />
+</xs:schema>

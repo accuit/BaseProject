@@ -1,0 +1,1646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B48120D0-35D4-4651-B96A-6F36EFDE2997}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PresentationLayer.DreamWedds.Web</RootNamespace>
+    <AssemblyName>PresentationLayer.DreamWedds.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Office Projects\EShot\Hays.GlobalEShot.Web\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Facebook, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Facebook.1.1.0\lib\net45\Microsoft.AspNet.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data.SqlCe, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Data.SqlCe.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.PolicyInjection, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security">
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AccuIT.PresentationLayer.WebAdmin\bin\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="Controllers\WeddingController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DreamWeddsData.cs" />
+    <Compile Include="Models\EmailNotificationService.cs" />
+    <Compile Include="Models\DreamweddsModel.cs" />
+    <Compile Include="Models\FormattedDbEntityValidationException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WeddingWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AngularApp\App.js" />
+    <Content Include="AngularApp\Controller.js" />
+    <Content Include="AngularApp\Service.js" />
+    <Content Include="Config\DictionaryEncryption.xml" />
+    <Content Include="Config\Quartz_Job_Scheduling.xml" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\demo.css" />
+    <Content Include="Content\css\font-awesome\font-awesome.css" />
+    <Content Include="Content\css\font-awesome\font-awesome.min.css" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\css\hero-slider\style.css" />
+    <Content Include="Content\css\owl-carousel\owl.carousel.css" />
+    <Content Include="Content\css\owl-carousel\owl.theme.css" />
+    <Content Include="Content\css\owl-carousel\owl.transitions.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\styles\lunar.css" />
+    <Content Include="Content\Images\DWLogo Text.png" />
+    <Content Include="Content\Images\facebook_gray_logo.png" />
+    <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\Icon.png" />
+    <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\Images\logos\BlackName.png" />
+    <Content Include="Content\Images\logos\DWlogo.png" />
+    <Content Include="Content\Images\logos\Indian_wedd_logo.png" />
+    <Content Include="Content\Images\logos\OrangeName.png" />
+    <Content Include="Content\Images\logos\PinkName.png" />
+    <Content Include="Content\Images\logos\RedBlack.png" />
+    <Content Include="Content\Images\logos\RedDW.png" />
+    <Content Include="Content\Images\logos\RedWhite.png" />
+    <Content Include="Content\Images\logos\script_logo.png" />
+    <Content Include="Content\Images\logos\TriColor.png" />
+    <Content Include="Content\Images\logos\white.png" />
+    <Content Include="Content\Images\logos\WhiteName.png" />
+    <Content Include="Content\Images\logos\WhiteOrange.png" />
+    <Content Include="Content\Images\logos\WhitePink.png" />
+    <Content Include="Content\Images\logos\WhiteRed.png" />
+    <Content Include="Content\Images\Logo_Name.png" />
+    <Content Include="Content\js\bootstrap\bootstrap-hover-dropdown.js" />
+    <Content Include="Content\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\js\ContactUs.js" />
+    <Content Include="Content\js\edura.js" />
+    <Content Include="Content\js\hero-slider\main.js" />
+    <Content Include="Content\js\hero-slider\modernizr.js" />
+    <Content Include="Content\js\imagesloaded\imagesloaded.pkgd.min.js" />
+    <Content Include="Content\js\jquery.counterup.min.js" />
+    <Content Include="Content\js\jquery\jquery.filterizr.js" />
+    <Content Include="Content\js\jquery\jquery.min.js" />
+    <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Content\js\SmoothScroll\SmoothScroll.min.js" />
+    <Content Include="Content\js\waypoints.min.js" />
+    <Content Include="Content\js\wow\wow.min.js" />
+    <Content Include="EmailTemplates\IE\Consultant_Notification_Email.htm" />
+    <Content Include="EmailTemplates\IE\EshotEmailConf.xml" />
+    <Content Include="EmailTemplates\IE\EshotEmailExclusionList.xml" />
+    <Content Include="EmailTemplates\IE\IEEmailTemplates.xml" />
+    <Content Include="EmailTemplates\thank-you-hd-pics.jpg" />
+    <Content Include="EmailTemplates\ThankyouEmail.html" />
+    <Content Include="EmailTemplates\WelcomeEmail.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\font-awesome\font-awesome.min.css_old" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\css\fonts\FontAwesome.otf" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Logs\EShot.log" />
+    <Content Include="Content\Images\logos\Thumbs.db" />
+    <Content Include="Config\App.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Connection.config" />
+    <Content Include="Config\ExceptionPolicies.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Logging.config" />
+    <None Include="Properties\PublishProfiles\Test.DreamWedds.pubxml" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <None Include="Service References\WeddingWebService\DreamWedds.disco" />
+    <None Include="Service References\WeddingWebService\configuration91.svcinfo" />
+    <None Include="Service References\WeddingWebService\configuration.svcinfo" />
+    <None Include="Service References\WeddingWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Templates\Wedding\Aerial\css\animate.css" />
+    <Content Include="Templates\Wedding\Aerial\css\animated-headlines.css" />
+    <Content Include="Templates\Wedding\Aerial\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Aerial\css\et-fonts.css" />
+    <Content Include="Templates\Wedding\Aerial\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Aerial\css\hamburgers.min.css" />
+    <Content Include="Templates\Wedding\Aerial\css\jquery.mb.YTPlayer.css" />
+    <Content Include="Templates\Wedding\Aerial\css\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Aerial\css\material-design-iconic-font.css" />
+    <Content Include="Templates\Wedding\Aerial\css\material-design-iconic-font.min.css" />
+    <Content Include="Templates\Wedding\Aerial\css\meanmenu.css" />
+    <Content Include="Templates\Wedding\Aerial\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Aerial\css\responsive.css" />
+    <Content Include="Templates\Wedding\Aerial\css\shortcode\default.css" />
+    <Content Include="Templates\Wedding\Aerial\css\shortcode\footer.css" />
+    <Content Include="Templates\Wedding\Aerial\css\shortcode\header.css" />
+    <Content Include="Templates\Wedding\Aerial\css\shortcode\shortcodes.css" />
+    <Content Include="Templates\Wedding\Aerial\css\shortcode\slider.css" />
+    <Content Include="Templates\Wedding\Aerial\css\style.css" />
+    <Content Include="Templates\Wedding\Aerial\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Aerial\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Aerial\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Aerial\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Aerial\fonts\fontawesome-webfont.svg" />
+    <Content Include="Templates\Wedding\Aerial\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Aerial\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Aerial\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Aerial\fonts\FontAwesome.otf" />
+    <Content Include="Templates\Wedding\Aerial\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Aerial\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Aerial\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Aerial\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Aerial\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Templates\Wedding\Aerial\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Templates\Wedding\Aerial\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Templates\Wedding\Aerial\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Aerial\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Aerial\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Aerial\img\intro-heart.png" />
+    <Content Include="Templates\Wedding\Aerial\index.html" />
+    <Content Include="Templates\Wedding\Aerial\js\aaa\main.js" />
+    <Content Include="Templates\Wedding\Aerial\js\ajax-mail.js" />
+    <Content Include="Templates\Wedding\Aerial\js\animated-headlines.js" />
+    <Content Include="Templates\Wedding\Aerial\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\contact_me.js" />
+    <Content Include="Templates\Wedding\Aerial\js\gmap.js" />
+    <Content Include="Templates\Wedding\Aerial\js\hamburgers.min.css" />
+    <Content Include="Templates\Wedding\Aerial\js\imagesloaded.pkgd.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\isotope.pkgd.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jqBootstrapValidation.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery-1.12.4.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.counterup.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.magnific-popup.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.mb.YTPlayer.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.meanmenu.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.mixitup.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Aerial\js\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Aerial\js\main.js" />
+    <Content Include="Templates\Wedding\Aerial\js\meanmenu.css" />
+    <Content Include="Templates\Wedding\Aerial\js\modernizr-2.8.3.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\plugins.js" />
+    <Content Include="Templates\Wedding\Aerial\js\script.js" />
+    <Content Include="Templates\Wedding\Aerial\js\style.css" />
+    <Content Include="Templates\Wedding\Aerial\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Templates\Wedding\Aerial\js\waypoints.min.js" />
+    <Content Include="Templates\Wedding\Aerial\style.css" />
+    <Content Include="Templates\Wedding\Bashori\css\animate.css" />
+    <Content Include="Templates\Wedding\Bashori\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Bashori\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Bashori\css\images\ci-left-bottom.png" />
+    <Content Include="Templates\Wedding\Bashori\css\images\ci-left-top.png" />
+    <Content Include="Templates\Wedding\Bashori\css\images\ci-right-bottom.png" />
+    <Content Include="Templates\Wedding\Bashori\css\images\ci-right-top.png" />
+    <Content Include="Templates\Wedding\Bashori\css\images\counter-up-bg.jpg" />
+    <Content Include="Templates\Wedding\Bashori\css\images\couple-intro-bg.jpg" />
+    <Content Include="Templates\Wedding\Bashori\css\images\gmaplogo.png" />
+    <Content Include="Templates\Wedding\Bashori\css\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Bashori\css\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Bashori\css\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Bashori\css\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Bashori\css\responsive.css" />
+    <Content Include="Templates\Wedding\Bashori\css\style.css" />
+    <Content Include="Templates\Wedding\Bashori\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Bashori\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Bashori\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Bashori\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Bashori\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Bashori\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Bashori\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Bashori\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Bashori\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Bashori\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Bashori\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Bashori\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Bashori\images\ci-left-bottom.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ci-left-top.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ci-right-bottom.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ci-right-top.png" />
+    <Content Include="Templates\Wedding\Bashori\images\counter-up-bg.jpg" />
+    <Content Include="Templates\Wedding\Bashori\images\couple-intro-bg.jpg" />
+    <Content Include="Templates\Wedding\Bashori\images\gmaplogo.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Bashori\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Bashori\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Bashori\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Bashori\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Bashori\img\intro-heart.png" />
+    <Content Include="Templates\Wedding\Bashori\index.html" />
+    <Content Include="Templates\Wedding\Bashori\js\aaa\main.js" />
+    <Content Include="Templates\Wedding\Bashori\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\contact_me.js" />
+    <Content Include="Templates\Wedding\Bashori\js\gmap.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jqBootstrapValidation.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.counterup.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.magnific-popup.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.mixitup.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.plugin.js" />
+    <Content Include="Templates\Wedding\Bashori\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Bashori\js\main.js" />
+    <Content Include="Templates\Wedding\Bashori\js\script.js" />
+    <Content Include="Templates\Wedding\Bashori\js\waypoints.min - Copy.js" />
+    <Content Include="Templates\Wedding\Bashori\js\waypoints.min.js" />
+    <Content Include="Templates\Wedding\Belle\css\animate.css" />
+    <Content Include="Templates\Wedding\Belle\css\animated-headlines.css" />
+    <Content Include="Templates\Wedding\Belle\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\et-fonts.css" />
+    <Content Include="Templates\Wedding\Belle\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\hamburgers.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\images\close.png" />
+    <Content Include="Templates\Wedding\Belle\css\images\loading.gif" />
+    <Content Include="Templates\Wedding\Belle\css\images\next.png" />
+    <Content Include="Templates\Wedding\Belle\css\images\prev.png" />
+    <Content Include="Templates\Wedding\Belle\css\jquery.mb.YTPlayer.css" />
+    <Content Include="Templates\Wedding\Belle\css\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Belle\css\main.css" />
+    <Content Include="Templates\Wedding\Belle\css\material-design-iconic-font.css" />
+    <Content Include="Templates\Wedding\Belle\css\material-design-iconic-font.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\meanmenu.css" />
+    <Content Include="Templates\Wedding\Belle\css\owl.carousel.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\responsive.css" />
+    <Content Include="Templates\Wedding\Belle\css\shortcode\default.css" />
+    <Content Include="Templates\Wedding\Belle\css\shortcode\footer.css" />
+    <Content Include="Templates\Wedding\Belle\css\shortcode\header.css" />
+    <Content Include="Templates\Wedding\Belle\css\shortcode\shortcodes.css" />
+    <Content Include="Templates\Wedding\Belle\css\shortcode\slider.css" />
+    <Content Include="Templates\Wedding\Belle\css\style.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\animate.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\icomoon.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\lightbox.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\owl.carousel.min.css" />
+    <Content Include="Templates\Wedding\Belle\css\vendor\owl.theme.default.min.css" />
+    <Content Include="Templates\Wedding\Belle\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Belle\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Belle\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Belle\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Belle\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Belle\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Belle\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Belle\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Belle\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Belle\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Belle\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Belle\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Belle\fonts\icomoon.ttf" />
+    <Content Include="Templates\Wedding\Belle\fonts\icomoon.woff" />
+    <Content Include="Templates\Wedding\Belle\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Templates\Wedding\Belle\fonts\icomoon\icomoon.woff" />
+    <Content Include="Templates\Wedding\Belle\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Templates\Wedding\Belle\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Templates\Wedding\Belle\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\Engagment\1.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\Engagment\2.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\Engagment\3.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\Engagment\4.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\PreWedding\1.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\Wedding\img-5.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\Albums\Wedding\img-8.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Belle\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Belle\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Belle\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Belle\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Belle\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Belle\img\banner-bottom.jpg" />
+    <Content Include="Templates\Wedding\Belle\img\countdown-bg.jpg" />
+    <Content Include="Templates\Wedding\Belle\img\counter-bg.jpg" />
+    <Content Include="Templates\Wedding\Belle\img\video-bg.jpg" />
+    <Content Include="Templates\Wedding\Belle\index.html" />
+    <Content Include="Templates\Wedding\Belle\js\aaa\main.js" />
+    <Content Include="Templates\Wedding\Belle\js\ajax-mail.js" />
+    <Content Include="Templates\Wedding\Belle\js\animated-headlines.js" />
+    <Content Include="Templates\Wedding\Belle\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\contact_me.js" />
+    <Content Include="Templates\Wedding\Belle\js\imagesloaded.pkgd.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\isotope.pkgd.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\jqBootstrapValidation.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.counterup.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.magnific-popup.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.mb.YTPlayer.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.meanmenu.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.mixitup.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Belle\js\lightbox.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\main.js" />
+    <Content Include="Templates\Wedding\Belle\js\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\plugins.js" />
+    <Content Include="Templates\Wedding\Belle\js\script.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\jquery.countTo.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\jquery.easing.1.3.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\jquery.magnific-popup.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\jquery.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\jquery.waypoints.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\lightbox.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\magnific-popup-options.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\modernizr-2.6.2.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\vendor\parallax.min.js" />
+    <Content Include="Templates\Wedding\Belle\js\waypoints.min.js" />
+    <Content Include="Templates\Wedding\Belle\single-album.html" />
+    <Content Include="Templates\Wedding\Best-Day\css\bootstrap-theme.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\bootstrap.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\brown.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\colorbox.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\flaticon\flaticon.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\flaticon\flaticon.eot" />
+    <Content Include="Templates\Wedding\Best-Day\css\flaticon\flaticon.ttf" />
+    <Content Include="Templates\Wedding\Best-Day\css\flaticon\flaticon.woff" />
+    <Content Include="Templates\Wedding\Best-Day\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\fonts.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\Best-Day\css\style.css" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontello.eot" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontello.ttf" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\fontello.woff2" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\Lato-Medium.eot" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\Lato-Medium.ttf" />
+    <Content Include="Templates\Wedding\Best-Day\fonts\Lato-Medium.woff" />
+    <Content Include="Templates\Wedding\Best-Day\images\back.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\bullet.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\bullet_active.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\double_arrow.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\envelope_front.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\env_back.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\env_top.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\env_top_top.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\im_arrow_end.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\im_arrow_start.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\main_back.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\brown\paper.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\close.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\im1.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\loading.gif" />
+    <Content Include="Templates\Wedding\Best-Day\images\next.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\prev.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Best-Day\images\venz1.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\venz4.png" />
+    <Content Include="Templates\Wedding\Best-Day\images\venz5.png" />
+    <Content Include="Templates\Wedding\Best-Day\index.html" />
+    <Content Include="Templates\Wedding\Best-Day\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\jquery-1.11.0.min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\jquery.colorbox-min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\jquery.firefly-0.3-min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\jquery.plugin.min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\prefixfree.min.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\script.js" />
+    <Content Include="Templates\Wedding\Best-Day\js\skrollr.min.js" />
+    <Content Include="Templates\Wedding\Brown\css\bootstrap-theme.css" />
+    <Content Include="Templates\Wedding\Brown\css\bootstrap.css" />
+    <Content Include="Templates\Wedding\Brown\css\brown.css" />
+    <Content Include="Templates\Wedding\Brown\css\colorbox.css" />
+    <Content Include="Templates\Wedding\Brown\css\flaticon\flaticon.css" />
+    <Content Include="Templates\Wedding\Brown\css\flaticon\flaticon.eot" />
+    <Content Include="Templates\Wedding\Brown\css\flaticon\flaticon.ttf" />
+    <Content Include="Templates\Wedding\Brown\css\flaticon\flaticon.woff" />
+    <Content Include="Templates\Wedding\Brown\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Brown\css\fonts.css" />
+    <Content Include="Templates\Wedding\Brown\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Brown\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\Brown\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\Brown\css\style.css" />
+    <Content Include="Templates\Wedding\Brown\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Brown\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Brown\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontello.eot" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontello.ttf" />
+    <Content Include="Templates\Wedding\Brown\fonts\fontello.woff2" />
+    <Content Include="Templates\Wedding\Brown\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Brown\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Brown\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Brown\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Brown\fonts\Lato-Medium.eot" />
+    <Content Include="Templates\Wedding\Brown\fonts\Lato-Medium.ttf" />
+    <Content Include="Templates\Wedding\Brown\fonts\Lato-Medium.woff" />
+    <Content Include="Templates\Wedding\Brown\images\back.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\brown\bullet.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\bullet_active.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\double_arrow.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\envelope_front.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\env_back.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\brown\env_top.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\env_top_top.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\im_arrow_end.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\im_arrow_start.png" />
+    <Content Include="Templates\Wedding\Brown\images\brown\main_back.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\brown\paper.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\close.png" />
+    <Content Include="Templates\Wedding\Brown\images\im1.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\loading.gif" />
+    <Content Include="Templates\Wedding\Brown\images\next.png" />
+    <Content Include="Templates\Wedding\Brown\images\prev.png" />
+    <Content Include="Templates\Wedding\Brown\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Brown\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Brown\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Brown\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Brown\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Brown\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\Brown\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Brown\images\venz1.png" />
+    <Content Include="Templates\Wedding\Brown\images\venz4.png" />
+    <Content Include="Templates\Wedding\Brown\images\venz5.png" />
+    <Content Include="Templates\Wedding\Brown\index - slider.html" />
+    <Content Include="Templates\Wedding\Brown\index.html" />
+    <Content Include="Templates\Wedding\Brown\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Brown\js\jquery-1.11.0.min.js" />
+    <Content Include="Templates\Wedding\Brown\js\jquery.colorbox-min.js" />
+    <Content Include="Templates\Wedding\Brown\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Brown\js\jquery.firefly-0.3-min.js" />
+    <Content Include="Templates\Wedding\Brown\js\jquery.plugin.min.js" />
+    <Content Include="Templates\Wedding\Brown\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Brown\js\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Brown\js\prefixfree.min.js" />
+    <Content Include="Templates\Wedding\Brown\js\script.js" />
+    <Content Include="Templates\Wedding\Brown\js\skrollr.min.js" />
+    <Content Include="Templates\Wedding\Destiny\css\base.css" />
+    <Content Include="Templates\Wedding\Destiny\css\bootstrap.css" />
+    <Content Include="Templates\Wedding\Destiny\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Destiny\css\fonts.css" />
+    <Content Include="Templates\Wedding\Destiny\css\main.css" />
+    <Content Include="Templates\Wedding\Destiny\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Destiny\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\Destiny\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\Destiny\css\venobox.css" />
+    <Content Include="Templates\Wedding\Destiny\font\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Destiny\font\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Destiny\font\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Destiny\font\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Destiny\font\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Destiny\font\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Destiny\font\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Destiny\font\fontello.eot" />
+    <Content Include="Templates\Wedding\Destiny\font\fontello.ttf" />
+    <Content Include="Templates\Wedding\Destiny\font\fontello.woff2" />
+    <Content Include="Templates\Wedding\Destiny\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Destiny\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Destiny\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Destiny\font\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Destiny\font\Lato-Medium.eot" />
+    <Content Include="Templates\Wedding\Destiny\font\Lato-Medium.ttf" />
+    <Content Include="Templates\Wedding\Destiny\font\Lato-Medium.woff" />
+    <Content Include="Templates\Wedding\Destiny\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Destiny\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Destiny\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Destiny\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Destiny\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Destiny\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Destiny\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\Destiny\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Destiny\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Destiny\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Destiny\img\intro-heart.png" />
+    <Content Include="Templates\Wedding\Destiny\index.html" />
+    <Content Include="Templates\Wedding\Destiny\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Destiny\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Destiny\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Destiny\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\Destiny\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Destiny\js\main.js" />
+    <Content Include="Templates\Wedding\Destiny\js\script.js" />
+    <Content Include="Templates\Wedding\eWedding\css\animate.css" />
+    <Content Include="Templates\Wedding\eWedding\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\eWedding\css\flexslider.css" />
+    <Content Include="Templates\Wedding\eWedding\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\eWedding\css\ie10.css" />
+    <Content Include="Templates\Wedding\eWedding\css\magnific-popup.css" />
+    <Content Include="Templates\Wedding\eWedding\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\eWedding\css\preloader.css" />
+    <Content Include="Templates\Wedding\eWedding\css\style.css" />
+    <Content Include="Templates\Wedding\eWedding\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\eWedding\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\eWedding\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\eWedding\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\eWedding\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\eWedding\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\eWedding\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\eWedding\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\eWedding\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\eWedding\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\eWedding\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\eWedding\images\24.jpg" />
+    <Content Include="Templates\Wedding\eWedding\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\eWedding\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\eWedding\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\eWedding\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\eWedding\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\eWedding\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\eWedding\index.html" />
+    <Content Include="Templates\Wedding\eWedding\index_old.html" />
+    <Content Include="Templates\Wedding\eWedding\js\animated-headlines.js" />
+    <Content Include="Templates\Wedding\eWedding\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\bootstrap.offcanvas.js" />
+    <Content Include="Templates\Wedding\eWedding\js\device.js" />
+    <Content Include="Templates\Wedding\eWedding\js\ie10.js" />
+    <Content Include="Templates\Wedding\eWedding\js\isotope.pkgd.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jqBootstrapValidation.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery-3.1.1.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.countdown.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.flexslider.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.magnific-popup.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.meanmenu.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.mixitup.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.smooth-scroll.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.validate.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.vide.js" />
+    <Content Include="Templates\Wedding\eWedding\js\jquery.waypoints.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\lightbox.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\main.js" />
+    <Content Include="Templates\Wedding\eWedding\js\modernizr.js" />
+    <Content Include="Templates\Wedding\eWedding\js\owl.carousel.js" />
+    <Content Include="Templates\Wedding\eWedding\js\pace.min.js" />
+    <Content Include="Templates\Wedding\eWedding\js\plugins.js" />
+    <Content Include="Templates\Wedding\eWedding\js\script.js" />
+    <Content Include="Templates\Wedding\eWedding\js\sticky.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\css\animate.css" />
+    <Content Include="Templates\Wedding\Flat-Love\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Flat-Love\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Flat-Love\css\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Flat-Love\css\responsive.css" />
+    <Content Include="Templates\Wedding\Flat-Love\css\style.css" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\fontawesome\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Flat-Love\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Flat-Love\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Flat-Love\images\marker.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\ScreenShots\7.png" />
+    <Content Include="Templates\Wedding\Flat-Love\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Flat-Love\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Flat-Love\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Flat-Love\img\intro-heart.png" />
+    <Content Include="Templates\Wedding\Flat-Love\index.html" />
+    <Content Include="Templates\Wedding\Flat-Love\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\core\bootstrap.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\core\jquery.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\main.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\countdown.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\counterup.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\gmap.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\owlcarousel.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\parallax.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\retina.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\scripts.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\validator.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\waypoints.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\plugins\wow.min.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\script.js" />
+    <Content Include="Templates\Wedding\Flat-Love\js\scripts.js" />
+    <Content Include="Templates\Wedding\GlenZ\css\bootstrap-theme.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\bootstrap.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\glanz_library.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\glanz_style.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\GlenZ\css\style.css" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\fontello.eot" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\fonts\themify.woff" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\marsha\marsha_belle_demo_version-webfont.eot" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\marsha\marsha_belle_demo_version-webfont.ttf" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\marsha\marsha_belle_demo_version-webfont.woff" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\marsha\marsha_belle_demo_version-webfont.woff2" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\marsha\stylesheet.css" />
+    <Content Include="Templates\Wedding\GlenZ\fonts\themify-icons.css" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\flowers.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\flowers2.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\flowers3.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\just_wh.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\rsvp.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\savethedate_wh.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\animations\thnyou_wh.gif" />
+    <Content Include="Templates\Wedding\GlenZ\images\banner.jpg" />
+    <Content Include="Templates\Wedding\GlenZ\images\banner1.jpg" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\1.png" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\2.png" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\3.png" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\4.png" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\5.png" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\6.png" />
+    <Content Include="Templates\Wedding\GlenZ\images\Screenshots\7.png" />
+    <Content Include="Templates\Wedding\GlenZ\index.html" />
+    <Content Include="Templates\Wedding\GlenZ\js\glanz_library.js" />
+    <Content Include="Templates\Wedding\GlenZ\js\glanz_script.js" />
+    <Content Include="Templates\Wedding\GlenZ\js\jquery-1.12.4.min.js" />
+    <Content Include="Templates\Wedding\GlenZ\js\visual-single-sound-b6707b1-c6af1d2b.js" />
+    <Content Include="Templates\Wedding\L-Oliver\css\animate.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\flaticon.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\jquery.fancybox.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\L-Oliver\css\style.css" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\L-Oliver\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\L-Oliver\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\L-Oliver\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\L-Oliver\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\L-Oliver\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\L-Oliver\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\L-Oliver\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\L-Oliver\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\L-Oliver\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\L-Oliver\img\intro-heart.png" />
+    <Content Include="Templates\Wedding\L-Oliver\index.html" />
+    <Content Include="Templates\Wedding\L-Oliver\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\L-Oliver\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\L-Oliver\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\L-Oliver\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\L-Oliver\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\L-Oliver\js\main.js" />
+    <Content Include="Templates\Wedding\L-Oliver\js\script.js" />
+    <Content Include="Templates\Wedding\L-Oliver\our-story.html" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\css\style.css" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\1466014460_menu-alt.png" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\ajax-loader.gif" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\bridal.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\bride.JPG" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\bride1.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\bride2.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\couple-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\engaged.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\favicon.ico" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\firstdate.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\1.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\10.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\11.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\12.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\2.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\3.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\4.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\44.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\5.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\6.JPG" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\66.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\7.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\77.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\8.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\9.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\DSC_6239.JPG" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\family.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\RFamily.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gallery\WeddingCard Page1.jpeg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\getting Married.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\gift-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\groom.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\home-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\home-back1.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\howwemet.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\logo.png" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\loveline-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\loveline-vector.png" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\main-image.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\people-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\pin.png" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\rsvp-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\shutterstock_3673046961.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\timeline-slider\1.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\timeline-slider\2.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\timeline-slider\3.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\timeline-slider\4.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\images\wedding-back.jpg" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\index.html" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\js\countdown.js" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\js\function.js" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\js\jquery.countdown.js" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\js\jquery.final-countdown.js" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\js\scripts.js" />
+    <Content Include="Templates\Wedding\Live Wedding Templates\Love-Birds\js\timer.js" />
+    <Content Include="Templates\Wedding\Love-Birds\css\animate.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\animations.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\bootstrap.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\component.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\font-awesome.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\gridlayout.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\hover.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\jquery.countdown.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\jquery.fancybox.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\materialadmin.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\slick-theme.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\slick.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\style.css" />
+    <Content Include="Templates\Wedding\Love-Birds\css\timer.css" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Love-Birds\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Love-Birds\images\1466014460_menu-alt.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ajax-loader.gif" />
+    <Content Include="Templates\Wedding\Love-Birds\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\Banner\banner1.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\bridal.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\bride.JPG" />
+    <Content Include="Templates\Wedding\Love-Birds\images\bride1.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\bride2.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\couple-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\engaged.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\favicon.ico" />
+    <Content Include="Templates\Wedding\Love-Birds\images\firstdate.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\1.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\10.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\11.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\12.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\2.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\3.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\4.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\44.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\5.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\6.JPG" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\66.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\7.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\77.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\8.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\9.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\DSC_6239.JPG" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\family.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\RFamily.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gallery\WeddingCard Page1.jpeg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\getting Married.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\gift-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\groom.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\home-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\home-back1.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\home-back_old.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\howwemet.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\logo.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\loveline-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\loveline-vector.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\main-image.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\people-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\pin.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\rsvp-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\Love-Birds\images\shutterstock_3673046961.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\timeline-slider\1.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\timeline-slider\2.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\timeline-slider\3.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\timeline-slider\4.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\images\wedding-back.jpg" />
+    <Content Include="Templates\Wedding\Love-Birds\index.html" />
+    <Content Include="Templates\Wedding\Love-Birds\index_my.html" />
+    <Content Include="Templates\Wedding\Love-Birds\js\bootstrap.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\countdown.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\countdown_my.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\easyResponsiveTabs.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\formvalidation.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\function.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery-2.1.4.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery.countdown.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery.dlmenu.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery.fancybox.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery.final-countdown.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery.masonarygrid.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\jquery.validate.min.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\menu.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\modernizr.custom.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\pagetransitions.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\scripts.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\slick.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\timer.js" />
+    <Content Include="Templates\Wedding\Love-Birds\js\wow.js" />
+    <Content Include="Templates\Wedding\Love-We\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Love-We\css\core.css" />
+    <Content Include="Templates\Wedding\Love-We\css\default.css" />
+    <Content Include="Templates\Wedding\Love-We\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Love-We\css\material-design-iconic-font.css" />
+    <Content Include="Templates\Wedding\Love-We\css\material-design-iconic-font.min.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\animate.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\animated-headlines.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\hover.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\jquery-ui.min.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\jquery.mb.YTPlayer.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\magnific-popup.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\meanmenu.min.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\reset.css" />
+    <Content Include="Templates\Wedding\Love-We\css\plugins\slick.css" />
+    <Content Include="Templates\Wedding\Love-We\css\responsive.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\about.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\comming.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\couple.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\default.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\events.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\footer.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\gallery.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\header.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\shortcode.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\slider.css" />
+    <Content Include="Templates\Wedding\Love-We\css\shortcodes\story.css" />
+    <Content Include="Templates\Wedding\Love-We\css\style-customizer.css" />
+    <Content Include="Templates\Wedding\Love-We\css\style.css" />
+    <Content Include="Templates\Wedding\Love-We\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Love-We\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Love-We\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Love-We\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Love-We\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Love-We\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Love-We\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Love-We\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Love-We\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Love-We\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Love-We\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Love-We\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Templates\Wedding\Love-We\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Templates\Wedding\Love-We\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Love-We\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Love-We\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Love-We\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Love-We\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Love-We\img\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\about\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\about\2.png" />
+    <Content Include="Templates\Wedding\Love-We\img\attending\1.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\banner\1.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\bg.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\comming\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\couple\bg.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\couple\hover.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\01.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\02.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\03.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\04.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\05.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\06.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\07.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\bodybg\08.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\2.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\3.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\4.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\5.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\6.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\7.png" />
+    <Content Include="Templates\Wedding\Love-We\img\customizer\pattern\8.png" />
+    <Content Include="Templates\Wedding\Love-We\img\events\1.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\events\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\events\2.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\events\hover.png" />
+    <Content Include="Templates\Wedding\Love-We\img\footer\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\footer\bg-two.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\footer\bg.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\gallery\1.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\gallery\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\gallery\2.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\gallery\3.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\gallery\4.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\gift\1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\gift\h1.png" />
+    <Content Include="Templates\Wedding\Love-We\img\gift\h3.png" />
+    <Content Include="Templates\Wedding\Love-We\img\gift\h4.png" />
+    <Content Include="Templates\Wedding\Love-We\img\logo-two.png" />
+    <Content Include="Templates\Wedding\Love-We\img\logo\footer-logo.png" />
+    <Content Include="Templates\Wedding\Love-We\img\logo\logo-three.png" />
+    <Content Include="Templates\Wedding\Love-We\img\logo\logo-two.png" />
+    <Content Include="Templates\Wedding\Love-We\img\logo\logo.png" />
+    <Content Include="Templates\Wedding\Love-We\img\map-marker.png" />
+    <Content Include="Templates\Wedding\Love-We\img\slider\1.jpg" />
+    <Content Include="Templates\Wedding\Love-We\img\testimonial\bg.jpg" />
+    <Content Include="Templates\Wedding\Love-We\index-old.htm" />
+    <Content Include="Templates\Wedding\Love-We\index.html" />
+    <Content Include="Templates\Wedding\Love-We\js\ajax-mail.js" />
+    <Content Include="Templates\Wedding\Love-We\js\animate-heading.js" />
+    <Content Include="Templates\Wedding\Love-We\js\app.js" />
+    <Content Include="Templates\Wedding\Love-We\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\imagesloaded.pkgd.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\isotope.pkgd.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Love-We\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\jquery.mb.YTPlayer.js" />
+    <Content Include="Templates\Wedding\Love-We\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Love-We\js\main.js" />
+    <Content Include="Templates\Wedding\Love-We\js\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\particles.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\plugins.js" />
+    <Content Include="Templates\Wedding\Love-We\js\style-customizer.js" />
+    <Content Include="Templates\Wedding\Love-We\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Templates\Wedding\Love-We\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Templates\Wedding\Parallax\css\bootstrap-theme.css" />
+    <Content Include="Templates\Wedding\Parallax\css\bootstrap.css" />
+    <Content Include="Templates\Wedding\Parallax\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Parallax\css\glanz_library.css" />
+    <Content Include="Templates\Wedding\Parallax\css\glanz_style.css" />
+    <Content Include="Templates\Wedding\Parallax\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Parallax\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\Parallax\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\Parallax\css\style.css" />
+    <Content Include="Templates\Wedding\Parallax\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Parallax\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Parallax\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Parallax\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Parallax\fonts\fontello.eot" />
+    <Content Include="Templates\Wedding\Parallax\fonts\fonts\themify.woff" />
+    <Content Include="Templates\Wedding\Parallax\fonts\marsha\marsha_belle_demo_version-webfont.eot" />
+    <Content Include="Templates\Wedding\Parallax\fonts\marsha\marsha_belle_demo_version-webfont.ttf" />
+    <Content Include="Templates\Wedding\Parallax\fonts\marsha\marsha_belle_demo_version-webfont.woff" />
+    <Content Include="Templates\Wedding\Parallax\fonts\marsha\marsha_belle_demo_version-webfont.woff2" />
+    <Content Include="Templates\Wedding\Parallax\fonts\marsha\stylesheet.css" />
+    <Content Include="Templates\Wedding\Parallax\fonts\themify-icons.css" />
+    <Content Include="Templates\Wedding\Parallax\index.html" />
+    <Content Include="Templates\Wedding\Parallax\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\glanz_library.js" />
+    <Content Include="Templates\Wedding\Parallax\js\glanz_script.js" />
+    <Content Include="Templates\Wedding\Parallax\js\jquery-1.12.4.min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\jquery.colorbox-min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\jquery.countdown.min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\jquery.firefly-0.3-min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\jquery.plugin.min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Parallax\js\owl.carousel.min.js" />
+    <Content Include="Templates\Wedding\Parallax\js\skrollr.min.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\animate.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\flaticon.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\jquery.fancybox.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\owl.theme.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\owl.transitions.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\css\style.css" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\Flaticon.ttf" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\Flaticon.woff" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\Sweet-Heart\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\announcement-bg.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\banner.jpg" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\event-box-bg.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\map-marker.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\rsvp-pattern.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\7.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\ScreenShots\8.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\section-bg.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\select-icon.png" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\Sweet-Heart\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\Sweet-Heart\index.html" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\script.js" />
+    <Content Include="Templates\Wedding\Sweet-Heart\js\spin.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\about-he.html" />
+    <Content Include="Templates\Wedding\The-Fox\about-she.html" />
+    <Content Include="Templates\Wedding\The-Fox\accommodation.html" />
+    <Content Include="Templates\Wedding\The-Fox\css\animate.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\animated-headlines.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\bootstrap.min.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\et-fonts.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\font-awesome.min.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\hamburgers.min.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\hover-min.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\jquery.classycountdown.min.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\jquery.mb.YTPlayer.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\magnific-popup.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\material-design-iconic-font.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\material-design-iconic-font.min.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\meanmenu.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\owl.carousel.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\responsive.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\shortcode\default.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\shortcode\footer.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\shortcode\header.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\shortcode\shortcodes.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\shortcode\slider.css" />
+    <Content Include="Templates\Wedding\The-Fox\css\style.css" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\flexslider-icon.eot" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\flexslider-icon.ttf" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\flexslider-icon.woff" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\fontawesome-webfont.eot" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\fontawesome-webfont.woff" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Templates\Wedding\The-Fox\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Templates\Wedding\The-Fox\gallery-4.html" />
+    <Content Include="Templates\Wedding\The-Fox\gift.html" />
+    <Content Include="Templates\Wedding\The-Fox\images\banner.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\1.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\2.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\3.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\4.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\5.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\6.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\ScreenShots\7.png" />
+    <Content Include="Templates\Wedding\The-Fox\images\slider\slide-1.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\images\slider\slide-2.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\images\slider\slide-3.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\img\bg\footer.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\img\bg\gallery.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\img\bg\header.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\decoration-1.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\decoration-2.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\heart-separator.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\pattern.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\title-separator-white.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\title-separator.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\tree.png" />
+    <Content Include="Templates\Wedding\The-Fox\img\gallery-page\gallery-page-15.jpg" />
+    <Content Include="Templates\Wedding\The-Fox\img\intro-heart.png" />
+    <Content Include="Templates\Wedding\The-Fox\index.html" />
+    <Content Include="Templates\Wedding\The-Fox\js\bootstrap.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\idangerous.swiper.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\isotope.pkgd.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery-2.2.3.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery-plugin-collection.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.classycountdown.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.dlmenu.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.knob.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.magnific-popup.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.matchHeight-min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.mousewheel.min.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.spritely.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\jquery.throttle.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\main.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\modernizr.custom.js" />
+    <Content Include="Templates\Wedding\The-Fox\js\script.js" />
+    <Content Include="Templates\Wedding\The-Fox\location.html" />
+    <Content Include="Templates\Wedding\The-Fox\our-blog.html" />
+    <Content Include="Templates\Wedding\The-Fox\our-gallery.html" />
+    <Content Include="Templates\Wedding\The-Fox\rsvp.html" />
+    <Content Include="Templates\Wedding\The-Fox\the-story.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Template\Index.cshtml" />
+    <Content Include="Views\Template\Details.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\BlogDetail.cshtml" />
+    <Content Include="Views\Blog\_BlogDetail.cshtml" />
+    <Content Include="Views\Blog\_BlogsList.cshtml" />
+    <Content Include="Templates\Wedding\The-Fox\img\decorations\Thumbs.db" />
+    <Content Include="Templates\Wedding\The-Fox\img\Thumbs.db" />
+    <Content Include="Views\Template\_Details.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
+    <None Include="Service References\WeddingWebService\DreamWedds.wsdl" />
+    <None Include="Service References\WeddingWebService\DreamWedds.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WeddingWebService\DreamWedds1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WeddingWebService\DreamWedds2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WeddingWebService\DreamWedds3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="wedding.html" />
+    <Content Include="wedding.json" />
+    <Content Include="Views\Template\Purchase.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Templates\Wedding\Aerial\images\ScreenShots\" />
+    <Folder Include="Templates\Wedding\Belle\images\Albums\Baraat\" />
+    <Folder Include="Templates\Wedding\Belle\images\Albums\Mehandi\" />
+    <Folder Include="Templates\Wedding\eWedding\font-awesome\css\" />
+    <Folder Include="Templates\Wedding\eWedding\img\" />
+    <Folder Include="Templates\Wedding\GlenZ\css\fonts\" />
+    <Folder Include="Templates\Wedding\Love-We\font-awesome\css\" />
+    <Folder Include="Templates\Wedding\Parallax\css\fonts\" />
+    <Folder Include="Templates\Wedding\Sweet-Heart\images\bridesmaids\" />
+    <Folder Include="Templates\Wedding\Sweet-Heart\images\gallery\" />
+    <Folder Include="Templates\Wedding\Sweet-Heart\images\groomsmen\" />
+    <Folder Include="Templates\Wedding\Sweet-Heart\images\journal\" />
+    <Folder Include="Templates\Wedding\Sweet-Heart\images\story\" />
+    <Folder Include="Templates\Wedding\The-Fox\picture_library\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\WeddingWeb\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AccuIT.BusinessLayer.ServiceImpl\AccuIT.BusinessLayer.ServiceImpl.csproj">
+      <Project>{1e19237f-b4b4-4320-864d-bc0568c1eda6}</Project>
+      <Name>AccuIT.BusinessLayer.ServiceImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AccuIT.BusinessLayer.Services\AccuIT.BusinessLayer.Services.csproj">
+      <Project>{1f2d0a83-d105-4790-b5e8-90fc5a648102}</Project>
+      <Name>AccuIT.BusinessLayer.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AccuIT.CommonLayer.AopContainer\AccuIT.CommonLayer.AopContainer.csproj">
+      <Project>{99f5f4cf-72a6-48c0-8071-63088e82b8ed}</Project>
+      <Name>AccuIT.CommonLayer.AopContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AccuIT.CommonLayer.AopRegistrations\AccuIT.CommonLayer.AopRegistrations.csproj">
+      <Project>{ee3288ad-6b40-4ad3-8e2e-22959c9f9a14}</Project>
+      <Name>AccuIT.CommonLayer.AopRegistrations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AccuIT.CommonLayer.Aspects\AccuIT.CommonLayer.Aspects.csproj">
+      <Project>{68be71aa-a80e-4516-9547-f811ab594b71}</Project>
+      <Name>AccuIT.CommonLayer.Aspects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AccuIT.CommonLayer.AuditLog\AccuIT.CommonLayer.AuditLog.csproj">
+      <Project>{518fd54b-a499-4650-b0d0-332f26652a78}</Project>
+      <Name>AccuIT.CommonLayer.AuditLog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WeddingWebService\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58213</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/DreamWedds.Web</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,28 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin;
+
+@model IEnumerable<CategoryMaster>
+
+@{
+    ViewBag.Title = "Main Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<ul>
+
+    <li>
+        @Html.ActionLink("Solar", "Index", "Category", new { catgtype = "Solar" }, null)
+    </li>
+    <li>
+        @Html.ActionLink("RF Products", "Index", "Category", new { catgtype = "RF" }, null)
+    </li>
+    <li>
+        @Html.ActionLink("LED", "Index", "Category", new { catgtype = "LED" }, null)
+    </li>
+    <li>
+        @Html.ActionLink("Microwave", "Index", "Category", new { catgtype = "Microwave" }, null)
+    </li>
+
+
+</ul>

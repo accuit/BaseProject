@@ -1,0 +1,251 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@model RolePermissionsViewModel
+@{
+    ViewBag.Title = "Role Module Permissions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <!-- Dashboard Manager -->
+        <li class="treeview">
+
+            <a href="@Url.Action("Index", "Admin")">
+                <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+            </a>
+
+        </li>
+        <!-- Roles Manager -->
+        <li class="active">
+            <a href="#">
+                <i class="fa fa-users"></i><span>Manage Roles</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("RoleManager", "Admin")"><i class="fa fa-circle-o"></i>View Create Role</a></li>
+                <li><a href="@Url.Action("ManageRoleModules", "Admin")"><i class="fa fa-circle-o"></i>Role Modules</a></li>
+                <li><a href="@Url.Action("ManageRolePermissions", "Admin")"><i class="fa fa-circle-o"></i>Role Module Permissions</a></li>
+        
+            </ul>
+        </li>
+        <!-- Modules Manager -->
+        <li class="treeview">
+
+            <a href="@Url.Action("ManageModules", "Admin")">
+                <i class="fa fa-briefcase"></i><span>Dashboard</span> <small class="label pull-right bg-green">Modules</small>
+            </a>
+
+        </li>
+        <li><a href="~/Content/documentation/index.html"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i><span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i><span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i><span>Information</span></a></li>
+    </ul>
+
+}
+
+
+@section breadcrumb{
+    <h1>
+        @ViewBag.Title
+        <small>Manage Permissions for Roles and Modules</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")"><i class="fa fa-dashboard"></i>Admin</a></li>
+        <li><a href="@Url.Action("RoleManager","Admin")"><i class="fa fa-users"></i>Roles Manager</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+
+
+<input id="ddlSelectedRoleID" name="ddlSelectedRoleID" type="hidden" value="@ViewBag.ddlSelectedRoleID" />
+<input id="ShowPopup" name="ShowPopup" type="hidden" value="@ViewBag.ShowPopup" />
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Manager Role Modules</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box-body">
+                        <div class="form-horizontal">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Role</label>
+                            <div class="col-sm-6">                           
+                                @Html.DropDownListFor(m => m.selectedRoleID, Model.ListRoles, new { @class = "form-control", @id = "ddlRole" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box-header with-border">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div id="partialPlaceHolder">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-briefcase"></i>
+
+                                        <h3 class="box-title">Available Modules</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table id="example1" class="table table-bordered table-striped" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                                <tr>
+                                                    <th> Module  </th>
+                                                    <th><input type="checkbox" id="chkAllView" value=" " onclick="ToggleCheckBoxes(this.checked, 'chkViewClass')" />View</th>
+                                                    <th><input type="checkbox" id="chkAllCreate" value=" " onclick="ToggleCheckBoxes(this.checked, 'chkViewClass')" />Create</th>
+                                                    <th><input type="checkbox" id="chkAllUpdate" value=" " onclick="ToggleCheckBoxes(this.checked, 'chkViewClass')" />Update </th>
+                                                    <th><input type="checkbox" id="chkAllDelete" value=" " onclick="ToggleCheckBoxes(this.checked, 'chkViewClass')" />Delete </th>
+                                                    <th><input type="checkbox" id="chkAllUpload" value=" " onclick="ToggleCheckBoxes(this.checked, 'chkViewClass')" />Upload CSV</th>
+                                                    <th><input type="checkbox" id="chkAllEmail" value=" " onclick="ToggleCheckBoxes(this.checked, 'chkViewClass')" />Send Email</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                                @foreach (var item in Model.ListModules)
+                                                {
+                                                    <tr>
+                                                        <td width="250px">
+
+                                                           @Html.Display(item.Text)
+                                                            @Html.CheckBoxFor(x => x.isCheckedModules, new { @class = "iCheck-helper" })
+                                                           
+                                                        </td>
+                                                        <td>
+                                                            @Html.CheckBoxFor(x => x.checkedPermissions, new { @class = "iCheck-helper"})
+                                                        </td>
+
+                                                        <td >
+                                                            @Html.CheckBoxFor(x => x.checkedPermissions, new { @class = "iCheck-helper" })
+                                                        </td>
+
+                                                        <td>
+                                                            @Html.CheckBoxFor(x => x.checkedPermissions, new { @class = "iCheck-helper"})
+                                                        </td>
+
+                                                        <td>
+                                                            @Html.CheckBoxFor(x => x.checkedPermissions, new { @class = "iCheck-helper"})
+                                                        </td>
+                                                        <td>
+                                                            @Html.CheckBoxFor(x => x.checkedPermissions, new { @class = "iCheck-helper" })
+                                                        </td>
+
+                                                        <td>
+                                                            @Html.CheckBoxFor(x => x.checkedPermissions, new { @class = "iCheck-helper", @id = "chkAllView", value = " ", onclick = "ToggleCheckBoxes(this.checked, 'chkViewClass')" })
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Module</th>
+                                                    <th>View</th>
+                                                    <th>Create</th>
+                                                    <th>Update </th>
+                                                    <th>Delete </th>
+                                                    <th>Upload CSV</th>
+                                                    <th>Emails</th>
+                                      
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- ./col -->
+                 
+                    </div>
+                    <div class="box-footer" style="padding-left: 35%">
+                        <button type="submit" id="btn_submit" class="btn btn-success">Save &nbsp;</button> &nbsp; &nbsp;
+                        <button type="submit" id="btnReset" class="btn btn-danger">Reset</button>
+                    </div>
+                    <!-- ./col -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="../Content/js/ExcelUpload.js"></script>
+<script type="text/javascript">
+    function ToggleCheckBoxes(checkState, selector) {
+        var selectorString = "." + selector + " input:checkbox";
+        $(selectorString).prop("checked", checkState);
+    }
+    $(document).ready(function () {
+        ResertUpperCheckBoxes();
+        $("input:checkbox").click(function () {
+            $('.btnReset').attr('class', 'blue_btn');
+        });
+    });
+    function ResertUpperCheckBoxes() {
+        ResetUpperCheckbox('chkAllView', 'chkViewClass');
+        ResetUpperCheckbox('chkAllCreate', 'chkWriteClass');
+        ResetUpperCheckbox('chkAllUpdate', 'chkDeleteClass');
+        ResetUpperCheckbox('chkAllDelete', 'chkExportClass');
+        ResetUpperCheckbox('chAllUpload', 'chkDownloadClass');
+        ResetUpperCheckbox('chkAllEmail', 'chkEmailClass');
+    }
+    function ResetUpperCheckbox(parentID, childClass) {
+        if (IsAllCheckboxSelected(childClass)) {
+            $('#' + parentID).attr('checked', true);
+        }
+        else {
+            $('#' + parentID).attr('checked', false);
+        }
+    }
+    function IsAllCheckboxSelected(selector) {
+        var selectorString = "." + selector + " input:checkbox";
+        var allChecked = true;
+        $(selectorString).each(function () {
+            if ($(this).attr('checked') != 'checked') {
+                allChecked = false;
+                return allChecked;
+            }
+        });
+        return allChecked;
+    }
+</script>
+
+}

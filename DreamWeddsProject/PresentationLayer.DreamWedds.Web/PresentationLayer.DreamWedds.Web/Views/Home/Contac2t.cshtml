@@ -1,0 +1,127 @@
+﻿@model PresentationLayer.DreamWedds.Web.Models.EmailService
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- PAGE TITLE START -->
+@section PageTitle{
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>/</li>
+                        <li>@ViewBag.Title</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- PAGE TITLE END -->
+<!-- CONTENT START -->
+<section id="content">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="padding25">
+                    <h4>SEND A <b>MESSAGE</b></h4>
+                </div>
+                @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess)
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <strong>Your message </strong> has been sent successfully. Thank you for writing us.
+                    </div>
+                }
+                else if (ViewBag.IsFail != null && ViewBag.IsFail)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <strong>Error sending email!</strong>  Please try again or write us at : info@dreamwedds.com.
+                    </div>                       
+
+                }
+                <form>
+                   
+
+                    @using (Html.BeginForm())
+                    {
+                        
+                        @Html.ValidationSummary(true)
+
+
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                @Html.TextBoxFor(x => x.FromName, new { @class = "form-control input-lg", @placeholder = "Your Name*", required = true })
+                            </div>
+                            <div class="form-group col-md-8">
+                                @Html.TextBoxFor(x => x.FromEmail, new { @class = "form-control input-lg", @placeholder = "Email*", required = true, type = "email" })
+                            </div>
+                            <div class="form-group col-xs-12">
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control input-lg", @placeholder = "Subject*", required = true })
+                            </div>
+                            <div class="form-group col-xs-4">
+                                @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control input-lg", @placeholder = "Mobile" })
+                            </div>
+                            <div class="form-group col-xs-4">
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control input-lg", @placeholder = "Phone" })
+                            </div>
+                            <div class="form-group col-xs-4">
+                                @Html.TextBoxFor(x => x.Location, new { @class = "form-control input-lg", @placeholder = "City", required = true })
+                            </div>
+                            <div class="form-group col-xs-12">
+                                @Html.TextAreaFor(x => x.MEssage, new { @class = "form-control input-lg", @placeholder = "Your Message on 500 charachters*", required = true, rows = "11" })
+                            </div>
+                            <div class="form-group col-xs-12 text-left">
+                                <input type="submit" value="Send Message" class="btn btn-primary btn-lg" />
+                                <button type="submit" value="Submit" class="btn btn-primary btn-lg"><i class="fa fa-send fa-fw"></i> SEND EMAIL</button>
+                            </div>
+                        </div>
+
+                    }
+                </form>
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="padding25">
+                    <h4>HELLO <b>WORLD</b></h4>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit 
+                congue iaculis vitae at risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+
+                <div class="padding15">
+                    <h4>OUR <b>OFFICE</b></h4>
+                </div>
+                <p><i class="fa fa-map-marker fa-fw"></i> 379 5th Ave, New York, 10001, USA</p>
+                <p><i class="fa fa-phone fa-fw"></i> +(91 120) 345 6879</p>
+                <p><i class="fa fa-phone fa-fw"></i> +(112) 345 6879</p>
+                <p><i class="fa fa-envelope fa-fw"></i> hello@example.com</p>
+
+                <div class="padding15">
+                    <h4>BUSINESS <b>HOURS</b></h4>
+                </div>
+                <p><i class="fa fa-clock-o fa-fw"></i> Monday - Friday: 9am to 6pm</p>
+                <p><i class="fa fa-clock-o fa-fw"></i> Saturday: 9am to 2pm</p>
+                <p><i class="fa fa-times fa-fw"></i> Sunday: Closed</p>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- CONTENT END -->

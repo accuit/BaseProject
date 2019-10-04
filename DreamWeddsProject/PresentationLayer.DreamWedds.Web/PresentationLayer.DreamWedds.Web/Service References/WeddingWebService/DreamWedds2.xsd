@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" />
+  <xs:element name="JustSimpleTest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="number" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JustSimpleTestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" minOccurs="0" name="JustSimpleTestResult" nillable="true" type="q1:stringResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWeddingDetailByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="weddingID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWeddingDetailByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" minOccurs="0" name="GetWeddingDetailByIDResult" nillable="true" type="q2:WeddingDTOResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendWelcomeEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" minOccurs="0" name="model" nillable="true" type="q3:EmailServiceDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendWelcomeEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AccuIT.CommonLayer.Aspects.DTO" minOccurs="0" name="SendWelcomeEmailResult" nillable="true" type="q4:stringResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

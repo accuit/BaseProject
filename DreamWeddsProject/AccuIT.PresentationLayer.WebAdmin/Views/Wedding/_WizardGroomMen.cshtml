@@ -1,0 +1,153 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model  WeddingViewModel
+
+@Html.HiddenFor(m => m.WeddingBO.WeddingID)
+@Html.HiddenFor(m => m.GroomAndMenBO.WeddingID)
+@Html.HiddenFor(m => m.WeddingBO.TemplateName)
+@Html.HiddenFor(m => m.WeddingBO.TemplateImageUrl)
+@Html.HiddenFor(m => m.WeddingBO.TemplatePreviewUrl)
+
+<div class="row">
+    @*<h4 class="info-text"> Let's start with the basic information (with validation)</h4>*@
+    <div class="col-sm-4 col-sm-offset-1">
+        <div class="picture-container">
+            <div class="picture" style=" border-radius: 5%; width: 70%;">
+                <img src="@Model.GroomAndMenBO.Imageurl" class="picture-src" id="wizardPicturePreview" height="100%" title="">
+                <input type="file" id="wizard-picture" aria-invalid="false" class="valid">
+            </div>
+            <h6>Choose Bride/Maid Picture</h6>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">face</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label"> First Name <small>(required)</small></label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.FirstName, new { @class = "form-control valid", @required = true })
+                <span class="material-input"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">face</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label">Last Name <small>(required)</small></label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.LastName, new { @class = "form-control valid", @required = true })
+                <span class="material-input"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">event</i>
+            </span>
+
+            <div class="form-group label-floating">
+                <label class="control-label">Date of Birth (dd/mm/yyyy)</label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.strDateofBirth, new { id = "datepickerbr2modal", @class = "form-control  valid", @required = true })
+
+                <span class="material-input"></span>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">record_voice_over</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label">Relation with Bride</label>
+                <div class="select-type">
+                    @Html.DropDownListFor(model => model.GroomAndMenBO.RelationWithGroom, ViewBag.RelationsList as IEnumerable<SelectListItem>, new { @class = "form-control", @id = "ddlModalBrideRelation" })
+                    <span class="material-input"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">grade</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label">Facebook Link <small></small></label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.fbUrl, new { @class = "form-control" })
+                <span class="material-input"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-5 col-sm-offset-1">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">public</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label">Facebook Event Url <small></small></label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.instagramUrl, new { @class = "form-control" })
+                <span class="material-input"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1" style="margin-left:0">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">local_see</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label">YouTube Video Url  <small></small></label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.googleUrl, new { @class = "form-control" })
+                <span class="material-input"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="material-icons">grade</i>
+            </span>
+            <div class="form-group label-floating">
+                <label class="control-label">About  <small></small></label>
+                @Html.TextBoxFor(model => model.GroomAndMenBO.AboutMen, new { @class = "form-control" })
+                <span class="material-input"></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@if (ViewBag.GroomMenForm != null && ViewBag.GroomMenForm == true)
+{
+    <div class="wizard-footer">
+        <div class="pull-right">
+            <input type="submit" class="btn btn-next btn-fill btn-success btn-wd" name="next" value="Next" style="">
+            <input type="button" class="btn btn-finish btn-fill btn-success btn-wd" name="finish" value="Finish" style="display: none;">
+        </div>
+
+        <div class="pull-left">
+            <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Previous">
+        </div>
+        <div class="clearfix"></div>
+    </div>
+}
+
+
+

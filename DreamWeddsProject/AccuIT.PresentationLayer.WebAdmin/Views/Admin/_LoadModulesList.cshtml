@@ -1,0 +1,51 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model ModulesViewModel
+
+<div class="col-md-5">
+    <div class="form-group">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-briefcase"></i>
+
+                <h3 class="box-title">Available Modules</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                @Html.ListBoxFor(x => x.ListModuleMaster, Model.ListModuleMaster, new { @class = "form-control", @id = "list1", @style = "min-height:150px" })
+            </div>
+
+            <!-- /.box-body -->
+        </div>
+    </div>
+
+    <!-- /.box -->
+</div>
+<!-- ./col -->
+<div class="col-md-2" style=" padding-left: 5%;">
+    <br />
+    <div class="btn-group" style=" margin-top: 6%; padding-left: 5%;">
+        <button type="button" id="btnAddAll" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></button><br /><br />
+        <button type="button" id="btnAdd" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button><br /><br /><br />
+
+        <button type="button" id="btnRemove" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button><br /><br />
+        <button type="button" id="btnRemoveAll" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button><br /><br />
+
+    </div>
+</div>
+<!-- ./col -->
+<div class="col-md-5">
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <i class="fa fa-briefcase"></i>
+
+            <h3 class="box-title">Selected Modules</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            @Html.ListBoxFor(x => x.selectedItems,Model.selectedModules, new { @class = "form-control", @id = "list2", @style = "min-height:150px" })
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>

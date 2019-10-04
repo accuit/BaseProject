@@ -1,0 +1,260 @@
+﻿@model ImportToXLS.Models.CategoryMaster
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Create New Customer
+        <small>Update customer detail</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("Index", "Customer")">Customers</a></li>
+        <li class="active">Modify Customer</li>
+    </ol>
+</section>
+
+@{
+    var message = TempData["AlertMessage"] ?? string.Empty;
+}
+<script type="text/javascript">
+    $(function () {
+        $.validator.unobtrusive.parse($('form'));
+    });
+</script>
+
+<script type="text/javascript">
+    var message = '@message';
+    if (message)
+        alert(message);
+</script>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            @Html.ValidationSummary(true, "", new { @class = "form-group has-error" })
+                            <!-- Basic Company Details -->
+                            <div class="col-md-12">
+                                <!-- /.box -->
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Basic Details</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+
+                                            <div class="col-xs-8">
+                                                <label for="exampleInputEmail1">Company Name</label>
+                                                <div class="form-group">
+                                                    @* @Html.DropDownList("CustID", ViewBag.UnqCustId as SelectList, "Select Customer", new { @class = "form-control" })*@
+                                                    @Html.TextBoxFor(model => model.Company, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Company)
+                                                </div>
+
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <div class="form-group">
+                                                    <label>Contact Person</label>
+                                                    @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.ContactPerson)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address Details -->
+                            <div class="col-md-12">
+                                <!-- /.box -->
+                                <div class="box box-danger">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Address Details</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <label for="exampleInputEmail1">Address</label>
+                                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label for="exampleInputEmail1">Street / Paid</label>
+                                                @Html.TextBoxFor(model => model.Street, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">City</label>
+                                                @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label for="exampleInputEmail1">State</label>
+                                                @Html.TextBoxFor(model => model.State, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">Country</label>
+                                                @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">Zip</label>
+                                                @Html.TextBoxFor(model => model.Zip, new { @class = "form-control" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+
+
+                            <!-- Communication Details -->
+                            <div class="col-md-6">
+                                <!-- /.box -->
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Phone Details</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+
+                                            <div class="col-xs-8">
+
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    @*<input type="text" class="form-control" name="txtphone" data-inputmask='"mask": "(999) 999-9999"' data-mask />*@
+                                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = @Html.DisplayNameFor(Model => Model.Phone) })
+                                                    @Html.ValidationMessageFor(model => model.Phone)
+                                                </div>
+
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", placeholder = @Html.DisplayNameFor(Model => Model.Mobile) })
+                                                    @Html.ValidationMessageFor(model => model.Mobile)
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- /.box -->
+                                <div class="box box-success">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Email Details</h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email Address" })
+                                                    @Html.ValidationMessageFor(model => model.Email)
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                    @Html.TextBoxFor(model => model.AltEmail, new { @class = "form-control", placeholder = "Alternate Email" })
+                                                    @Html.ValidationMessageFor(model => model.AltEmail)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="exampleInputEmail1"> </label><br />
+                                <button type="submit" id="submit" value="Save" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Page script -->
+@section Scripts{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval", "~/bundles/scripts")
+    <script type="text/javascript">
+        $(function () {
+            //Datemask dd/mm/yyyy
+            $("#datemask").inputmask("dd/mm/yyyy", { "placeholder": "dd/mm/yyyy" });
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", { "placeholder": "mm/dd/yyyy" });
+            //Money Euro
+            $("[data-mask]").inputmask();
+
+            //Date range picker
+            $('#reservation').daterangepicker();
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' });
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                    {
+                        ranges: {
+                            'Today': [moment(), moment()],
+                            'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+                            'Last 7 Days': [moment().subtract('days', 6), moment()],
+                            'Last 30 Days': [moment().subtract('days', 29), moment()],
+                            'This Month': [moment().startOf('month'), moment().endOf('month')],
+                            'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+                        },
+                        startDate: moment().subtract('days', 29),
+                        endDate: moment()
+                    },
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
+            );
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass: 'iradio_minimal-blue'
+            });
+            //Red color scheme for iCheck
+            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+                checkboxClass: 'icheckbox_minimal-red',
+                radioClass: 'iradio_minimal-red'
+            });
+            //Flat red color scheme for iCheck
+            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            });
+
+            //Colorpicker
+            $(".my-colorpicker1").colorpicker();
+            //color picker with addon
+            $(".my-colorpicker2").colorpicker();
+
+            //Timepicker
+            $(".timepicker").timepicker({
+                showInputs: false
+            });
+        });
+    </script>
+}

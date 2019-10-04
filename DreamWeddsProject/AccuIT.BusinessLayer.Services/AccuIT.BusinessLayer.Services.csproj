@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1F2D0A83-D105-4790-B5E8-90FC5A648102}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AccuIT.BusinessLayer.Services</RootNamespace>
+    <AssemblyName>AccuIT.BusinessLayer.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BO\ActivityModuleBO.cs" />
+    <Compile Include="BO\ActivityReportBO.cs" />
+    <Compile Include="BO\AddressMasterBO.cs" />
+    <Compile Include="BO\AnswerAttributeBO.cs" />
+    <Compile Include="BO\AnswerListBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO\APKMaintainanceBO.cs" />
+    <Compile Include="BO\ApprovalPathTypeBO.cs" />
+    <Compile Include="BO\ApproverPathMasterBO.cs" />
+    <Compile Include="BO\AttendanceExportBO.cs" />
+    <Compile Include="BO\AttendenceReportBO.cs" />
+    <Compile Include="BO\CategoryMasterBO.cs" />
+    <Compile Include="BO\CheckUserAuthenticationBO.cs" />
+    <Compile Include="BO\DailyEnquiryBO.cs" />
+    <Compile Include="BO\ChannelTypeDisplayBO.cs" />
+    <Compile Include="BO\ChannelTypeTeamMappingBO.cs" />
+    <Compile Include="BO\CollectionExportBO.cs" />
+    <Compile Include="BO\CollectionReportBO.cs" />
+    <Compile Include="BO\CommonSetupBO.cs" />
+    <Compile Include="BO\CompetitionBookedExcelBO.cs" />
+    <Compile Include="BO\CompetitionBookedReportBO.cs" />
+    <Compile Include="BO\CompetitorListBO.cs" />
+    <Compile Include="BO\AnnouncementBO.cs" />
+    <Compile Include="BO\EmailServiceBO.cs" />
+    <Compile Include="BO\OrderMasterBO.cs" />
+    <Compile Include="BO\UserProfileBO.cs" />
+    <Compile Include="BO\QuotationViewDataBO.cs" />
+    <Compile Include="BO\CompetitorProductGroupMappingBO.cs" />
+    <Compile Include="BO\DailyLoginHistoryBO.cs" />
+    <Compile Include="BO\DealerCreationBO.cs" />
+    <Compile Include="BO\DemoMasterUploadBO.cs" />
+    <Compile Include="BO\DisplayCounterShareResponseBO.cs" />
+    <Compile Include="BO\DownloadDataMasterBO.cs" />
+    <Compile Include="BO\DownloadMasterAuthorizationBO.cs" />
+    <Compile Include="BO\DrpGeoDefinitionBO.cs" />
+    <Compile Include="BO\EMSBillDetailBO.cs" />
+    <Compile Include="BO\EMSBillDocumentDetailBO.cs" />
+    <Compile Include="BO\EMSExpenseDetailBO.cs" />
+    <Compile Include="BO\ExpenseTypeMasterBO.cs" />
+    <Compile Include="BO\FeedbackCategoryMasterBO.cs" />
+    <Compile Include="BO\FeedbackTypeMasterBO.cs" />
+    <Compile Include="BO\GCMResponse.cs" />
+    <Compile Include="BO\GeoDefinitionBO.cs" />
+    <Compile Include="BO\GeoMasterBO.cs" />
+    <Compile Include="BO\GetExpenseApprovalPathBO.cs" />
+    <Compile Include="BO\GetVOCReportBO.cs" />
+    <Compile Include="BO\GetVOCTotalCountBO.cs" />
+    <Compile Include="BO\KASModuleAuthorizationBO.cs" />
+    <Compile Include="BO\DailyEnquiryProdBO.cs" />
+    <Compile Include="BO\LMSLeaveTypeConfigurationBO.cs" />
+    <Compile Include="BO\ParkingMasterUploadBO.cs" />
+    <Compile Include="BO\MOMAttendeeBO.cs" />
+    <Compile Include="BO\MOMMasterBO.cs" />
+    <Compile Include="BO\NewVOCUserResponseBO.cs" />
+    <Compile Include="BO\NotificationServiceBO.cs" />
+    <Compile Include="BO\OTPBO.cs" />
+    <Compile Include="BO\ProductGroupCategoryBO.cs" />
+    <Compile Include="BO\ProductMasterBO.cs" />
+    <Compile Include="BO\ProductsBO.cs" />
+    <Compile Include="BO\RaceAuditBO.cs" />
+    <Compile Include="BO\RaceModelWiseBO.cs" />
+    <Compile Include="BO\RaceProductGroupBO.cs" />
+    <Compile Include="BO\RaceReportModelWiseBO.cs" />
+    <Compile Include="BO\SDSchemeBO.cs" />
+    <Compile Include="BO\SOSFMasterBO.cs" />
+    <Compile Include="BO\spGetRoleMasterBO.cs" />
+    <Compile Include="BO\spGetUserByTeamRoleBO.cs" />
+    <Compile Include="BO\TemplateMasterBO.cs" />
+    <Compile Include="BO\UserLeavePlanBO.cs" />
+    <Compile Include="BO\MyDashboardRecordBO.cs" />
+    <Compile Include="BO\OutletChartStructureBO.cs" />
+    <Compile Include="BO\TeamMasterBO.cs" />
+    <Compile Include="BO\GeoTagExcelBO.cs" />
+    <Compile Include="BO\OrderBookedExportBO.cs" />
+    <Compile Include="BO\OrderBookedReportBO.cs" />
+    <Compile Include="BO\TargetACHReportBO.cs" />
+    <Compile Include="BO\UserLoginDetailsBO.cs" />
+    <Compile Include="BO\UserStoreMappingBO.cs" />
+    <Compile Include="BO\UserStoresBO.cs" />
+    <Compile Include="BO\HygieneReportDataBO.cs" />
+    <Compile Include="BO\ModuleMasterBO.cs" />
+    <Compile Include="BO\ReportChartBO.cs" />
+    <Compile Include="BO\ProductGroupBO.cs" />
+    <Compile Include="BO\RoleModuleQuestionBO.cs" />
+    <Compile Include="BO\TotalCoverageExportBO.cs" />
+    <Compile Include="BO\UserDeviceBO.cs" />
+    <Compile Include="BO\UserRoleBO.cs" />
+    <Compile Include="BO\DesignationBO.cs" />
+    <Compile Include="BO\DishCompReportBO.cs" />
+    <Compile Include="BO\ProductTypesBO.cs" />
+    <Compile Include="BO\ReportBarChartBO.cs" />
+    <Compile Include="BO\ReportPieChartBO.cs" />
+    <Compile Include="BO\QuestionTypeBO.cs" />
+    <Compile Include="BO\SchemesBO.cs" />
+    <Compile Include="BO\SecurityAspectBO.cs" />
+    <Compile Include="BO\TotalCoverageReportBO.cs" />
+    <Compile Include="BO\UserBeatBO.cs" />
+    <Compile Include="BO\UserRoleModulePermissionBO.cs" />
+    <Compile Include="BO\PermissionBO.cs" />
+    <Compile Include="BO\RoleMasterBO.cs" />
+    <Compile Include="BO\ModulesBO.cs" />
+    <Compile Include="BO\QuestionListBO.cs" />
+    <Compile Include="BO\DealerListBO.cs" />
+    <Compile Include="BO\ForgetPasswordBO.cs" />
+    <Compile Include="BO\PartnerDetailsBO.cs" />
+    <Compile Include="BO\ServiceResponseBO.cs" />
+    <Compile Include="BO\SystemSettingBO.cs" />
+    <Compile Include="BO\UserAttendanceBO.cs" />
+    <Compile Include="BO\UserBO.cs" />
+    <Compile Include="BO\UserStoresTodayBeatBO.cs" />
+    <Compile Include="BO\UserWeddingSubscriptionBO.cs" />
+    <Compile Include="BO\VisitorExportBO.cs" />
+    <Compile Include="BO\VisitorReportBO.cs" />
+    <Compile Include="BO\VOCOpenEndedReportBO.cs" />
+    <Compile Include="BO\VOCReportNewBO.cs" />
+    <Compile Include="BO\WeddingBO.cs" />
+    <Compile Include="Contracts\IEmailService.cs" />
+    <Compile Include="Contracts\ISecurityService.cs" />
+    <Compile Include="Contracts\ISystemService.cs" />
+    <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Contracts\IWeddingService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccuIT.CommonLayer.Aspects\AccuIT.CommonLayer.Aspects.csproj">
+      <Project>{68be71aa-a80e-4516-9547-f811ab594b71}</Project>
+      <Name>AccuIT.CommonLayer.Aspects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

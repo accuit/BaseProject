@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "About Us";
+    //Layout = "~/View/Shared/_Layout.cshtml";
+}
+
+<!-- PAGE TITLE START -->
+@section PageTitle{
+<section id="title" class="container-fluid wow fadeInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div class="col-xs-6 text-right breadcrumbs">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li>/</li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+}
+<!-- PAGE TITLE END -->
+<!-- CONTENT START -->
+<section id="page-content">
+
+    <div id="about-us" class="container padding35">
+        <div class="row">
+            <div class="col-md-6 text-center wow bounceIn">
+                <img alt="" class="img-circle" src="http://demos.codeniner.com/edura/images/other/corporate.jpg">
+            </div>
+
+            <div class="col-md-6 wow fadeInRight">
+                <h2>ABOUT <b>DREAMWEDDS</b></h2>
+                <p class="lead">DreamWedds is all what you need to flaunt your wedding.</p>
+                <div class="space20"></div>
+                <h4 class="text-uppercase text-bold">Why Us?</h4>
+                <p>Our development team has experts with intelligent innovative ideas that bring beautiful wedding templates. Each of our templates are created to impress audience. All templates are designed to cover all the events, ceremonies, guestlists, love timeline, gallery, etc.</p>
+                <div class="space20"></div>
+                <h4 class="text-uppercase text-bold">What We Do?</h4>
+                <p>
+                    DreamWedds are committed to <b> improvise our services at every point</b>. We care about our customers and respect there feedback. Our customer's feedback is always our priority because that helps us to improve our services.
+                    <b>We are the team who respects all religion's culture and tradition.</b> While developing any wedding website our first priority is always to take care of there weding traditions.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    @*<div id="the-team" class="container-fluid bg-gray text-center padding35">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 top">
+                        <h2 class="text-uppercase">Meet The <b>Team</b></h2>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 wow bounceIn">
+                        <div class="team-item">
+                            <div class="team-top">
+                                <img src="http://demos.codeniner.com/edura/images/team/thumb6.jpg" alt="" class="img-circle">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-facebook fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-envelope fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <h4>John Smith</h4>
+                            <small>Chief Executive Officer</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 wow bounceIn">
+                        <div class="team-item">
+                            <div class="team-top">
+                                <img src="http://demos.codeniner.com/edura/images/team/thumb7.jpg" alt="" class="img-circle">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-facebook fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-envelope fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <h4>Ryan Doe</h4>
+                            <small>PHP Programmer</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 wow bounceIn">
+                        <div class="team-item">
+                            <div class="team-top">
+                                <img src="http://demos.codeniner.com/edura/images/team/thumb8.jpg" alt="" class="img-circle">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-facebook fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-envelope fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <h4>Harry Gold</h4>
+                            <small>Webdesigner</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 wow bounceIn">
+                        <div class="team-item">
+                            <div class="team-top">
+                                <img src="http://demos.codeniner.com/edura/images/team/thumb1.jpg" alt="" class="img-circle">
+                                <div class="mask"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><a href="#"><i class="fa fa-facebook fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin fw"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-envelope fw"></i></a></li>
+                                </ul>
+                            </div>
+                            <h4>Jane Smith</h4>
+                            <small>Sales</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="testimonials" class="container padding35">
+            <div class="row wow fadeIn">
+                <div class="col-md-12 text-center">
+                    <h3 class="text-uppercase text-bold">Testimonials</h3>
+                    <div class="space40"></div>
+                </div>
+
+                <div class="col-md-12 ">
+                    <!-- carousel start -->
+                    <div id="testimonials-carousel" class="owl-carousel">
+
+                        <div class="testimonial">
+                            <blockquote>
+                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                <small>Jabe Doe <span class="pull-right avatar-container"><img alt="" class="img-circle avatar" src="http://demos.codeniner.com/edura/images/team/thumb1_40.jpg"></span></small>
+                            </blockquote>
+                        </div>
+
+                        <div class="testimonial">
+                            <blockquote>
+                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                <small>Sarah Smith <span class="pull-right avatar-container"><img alt="" class="img-circle avatar" src="http://demos.codeniner.com/edura/images/team/thumb4_40.jpg"></span></small>
+                            </blockquote>
+                        </div>
+
+                        <div class="testimonial">
+                            <blockquote>
+                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                <small>John Doe <span class="pull-right avatar-container"><img alt="" class="img-circle avatar" src="http://demos.codeniner.com/edura/images/team/thumb8_40.jpg"></span></small>
+                            </blockquote>
+                        </div>
+
+                    </div>
+                    <!-- carousel end -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="partners" class="container-fluid bg-gray padding35">
+            <div class="container">
+                <div class="row wow fadeIn">
+                    <div class="col-md-12 text-center">
+                        <h3 class="text-uppercase">Our <b>Partners</b></h3>
+                        <div class="space40"></div>
+                    </div>
+
+                    <div class="col-md-12 ">
+                        <!-- carousel start -->
+                        <div id="partners-gallery" class="owl-carousel">
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/pinterest.png">
+                            </div>
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/wordpress.png">
+                            </div>
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/pinterest.png">
+                            </div>
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/dribbble.png">
+                            </div>
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/pinterest.png">
+                            </div>
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/wordpress.png">
+                            </div>
+
+                            <div class="text-center">
+                                <img alt="" src="http://demos.codeniner.com/edura/images/partners/pinterest.png">
+                            </div>
+
+                        </div>
+                        <!-- carousel end -->
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+</section>
+<!-- CONTENT END -->

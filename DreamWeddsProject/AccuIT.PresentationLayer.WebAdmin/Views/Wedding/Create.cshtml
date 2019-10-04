@@ -1,0 +1,920 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.BusinessLayer.Services.BO;
+@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model WeddingViewModel
+
+
+@{
+    ViewBag.Title = "Your Wedding Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    @if (HttpContext.Current.Session[PageConstants.SESSION_PROFILE_KEY] != null)
+    {
+        var weddingInfo = (UserWeddingTemplateSubscriptionsBO)Session[PageConstants.SESSION_WEDDING_PROFILE];
+        var UserInfo = (UserProfileBO)Session[PageConstants.SESSION_PROFILE_KEY];
+        if (UserInfo.IsEmployee == false)
+        {
+            <ul class="sidebar-menu ">
+                <li class="header">MAIN NAVIGATION</li>
+                <!-- Dashboard -->
+                <li class="">
+
+                    <a href="@Url.Action("index", "Home" )">
+                        <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+                    </a>
+
+                </li>
+                <!-- Wedding Manager -->
+
+                <li class="treeview menu-open">
+
+                    <a href="#">
+                        <i class="fa fa-share"></i> <span>Templates</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+
+                    </a>
+
+                    <ul class="treeview-menu" style="display: block;">
+
+                        <li class="treeview menu-open">
+                            @foreach (var item in weddingInfo.userTemplates)
+                            {
+                                <a href="#">
+                                    <i class="fa fa-files-o"></i><span>@item.TemplateName</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu" style="display: block;">
+
+                                    @if (item.templateWeddings.Count > 0)
+                                    {
+                                        foreach (var wedd in item.templateWeddings)
+                                        {
+                                            <li class="active">
+                                                <a href="@Url.Action("create", "Wedding", new { tID = item.TemplateID, weddingID = wedd.WeddingID })">
+                                                    <i class="fa fa-circle-o"></i>@wedd.Title
+                                                </a>
+                                            </li>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <li class="active">
+                                            <a href="@Url.Action("create", "Wedding", new { tID = item.TemplateID, weddingID = 0 })">
+                                                <i class="fa fa-circle-o"></i>Wedding
+                                                <span class="pull-right-container">
+                                                    <small class="label pull-right bg-red">Create </small>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    }
+
+
+                                </ul>
+                            }
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <!-- Modules Manager -->
+                <li><a href="@Url.Action(" gallery", "Wedding" )"><i class="fa fa-briefcase"></i><span>Gallery</span></a></li>
+
+            </ul>
+        }
+    }
+}
+
+@section breadcrumb{
+    <h1>
+        Home
+        <small>@ViewBag.Title</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">@ViewBag.Title </li>
+    </ol>
+}
+
+<div class="box box-default color-palette-box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-tag"></i> Your Wedding Template - @Model.userTemplate.TemplateName</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="@Model.userTemplate.TemplatePreviewUrl" target="_blank">
+                    @*<img width="100%" class="img-responsive" src="@Model.userTemplate.TemplateScreenshotUrl" alt="@Model.userTemplate.TemplateName - Your Wedding Theme (Error loading image!)">*@
+                </a>
+            </div>
+            <!-- /.col -->
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.row -->
+    </div>
+    <!-- /.box-body -->
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            @using (Html.BeginForm("Create", "Wedding", FormMethod.Post, new { id = "formWedding" }))
+            {
+
+                @Html.HiddenFor(m => m.WeddingBO.WeddingID)
+                @Html.HiddenFor(m => m.WeddingBO.TemplateID)
+                @Html.HiddenFor(m => m.WeddingBO.WeddingDate)
+
+
+                <div class="box-header">
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="row">
+                        <!-- full column -->
+                        <div class="col-md-12">
+                            <!-- /.box -->
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title">Wedding Details</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+
+                                        <div class="col-md-2">
+                                            <label for="exampleInputEmail1">Wedding Date</label>
+                                            <div class="input-group date">
+                                                <div class="form-group">
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        @*<input class="form-control pull-right" data-val="true" data-val-required="Please Enter Wedding Date" id="datepickerweddingdate" rel="date" type="text" value="@Model.WeddingBO.WeddingDate.ToString("dd-MM-yyyy")" />*@
+                                                        @Html.TextBoxFor(model => model.WeddingBO.WeddingDate, new { id = "datepickerweddingdate", @class = "form-control pull-right" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="exampleInputEmail1">Wedding Title</label>
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(model => model.WeddingBO.Title, new { @class = "form-control", @required = true, @placeholder = "Enter Wedding Title" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <label for="exampleInputEmail1">Love Marriage? </label>
+                                            <div class="form-group">
+                                                @Html.EditorFor(model => model.WeddingBO.IsLoveMarriage, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="exampleInputEmail1">Weddding Logo </label>
+                                            <div class="form-group">
+                                                <input type="file" id="fileupload" name="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                @Html.HiddenFor(model => model.WeddingBO.BackgroundImage, new { id = "hdWeddBackGImageUrl" })
+                                                <img id="imgWeddBackGPreview" src="@Model.WeddingBO.BackgroundImage" alt="Appzia" class="media-object" style="height: 130px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                                <br /> <p for="exampleInputEmail1" id="lblWeddBackGimage">Upload Bride Image </p>
+                                                <div class="form-group">
+                                                    <input type="file" id="uploadWeddBackGImage" data-id="@Model.WeddingBO.WeddingID" data-imageof="Wedding" data-imgtype="Background" data-sequence="1" />
+                                                </div>
+                                                <div class="progress progress-sm active" id="progressWeddBackGimg" style="display:none">
+                                                    <div class=" progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style=" width:0%">
+                                                        <span class="sr-only">20% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="col-md-4">
+                                                    <label for="exampleInputEmail1">Wedding Video Url</label>
+                                                    <div class="form-group">
+                                                        @Html.TextBoxFor(model => model.WeddingBO.VideoUrl, new { @class = "form-control", @placeholder = "Wedding Video Url" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label for="exampleInputEmail1">Wedding Quote</label>
+                                                    <div class="form-group">
+
+                                                        @Html.TextAreaFor(model => model.WeddingBO.Quote, new { @class = "form-control", @placeholder = "Your Wedding Quote" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+                        <!--/.col (left) -->
+
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <div class="box-footer" style="text-align: center;">
+                    <button type="button" id="btnWeddCancel" class="btn btn-danger pull-left">Cancel</button>
+                    <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@if (Model.WeddingBO.WeddingID > 0)
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Wedding Events</h3>
+                    <p class="pull-right">
+
+                        <a href="@Url.Action("SubmitEvent", new { weddingid=Model.WeddingBO.WeddingID })" class="btn btn-success btn-sm">
+                            CREATE EVENT
+                        </a>
+
+
+                    </p>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    @if (Model.WeddingBO.WeddingID > 0)
+                    {
+                        <table id="example1" class="table table-bordered table-striped" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>Event ID </th>
+                                    <th>Event Name</th>
+                                    <th>Event Date </th>
+                                    <th>Image </th>
+                                    <th>Title  </th>
+                                    <th>Controls</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.WeddingBO.WeddingEvents.ToList())
+                                {
+                                    <tr>
+                                        <td width="100px">
+
+                                            @Html.ActionLink(item.WeddingEventID.ToString(), "events", new { eventID = item.WeddingEventID })
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+
+                                        <td>
+
+                                            @Html.DisplayFor(modelItem => item.EventDate)
+                                        </td>
+
+                                        <td>
+                                            <img src="@item.ImageUrl" alt="Appzia" class="media-object" style="height: 60px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                            @Html.HiddenFor(modelItem => item.ImageUrl)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+
+
+                                        <td>
+                                            @Html.ActionLink("Update", "SubmitEvent", new { Id = item.WeddingEventID }, new { @class = "btn btn-default btn-sm" })
+                                            @*<a href="myModal" id="btnEdit" class="btn btn-default btn-sm" onclick='EditWeddingEventBy(@item.WeddingEventID)' data-backdrop="static" data-keyboard="false">Update</a>*@
+                                            @*<a onclick="function(){EditWeddingEvent(@item.WeddingEventID);}" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"
+                                                data-id="@item.WeddingEventID" data-backdrop="static" data-keyboard="false">Update</a>*@
+
+                                        </td>
+                                        @*<input type="submit" class="submit" value="SignUp" onclick="function(){packageSelect(@ViewBag.PackageId);}">*@
+                                        @* id="btnEdit" data-toggle="modal" data-target="#myModal" data-id="@item.WeddingEventID"  onclick='EditWeddingEventBy(@item.WeddingEventID)'*@
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Event ID </th>
+                                    <th>Event Name</th>
+                                    <th>Event Date </th>
+                                    <th>Image </th>
+                                    <th>Title  </th>
+                                    <th>Controls</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    }
+                    else if (Model.WeddingBO.WeddingEvents == null && Model.WeddingBO.WeddingID > 0)
+                    {
+                        <p>
+                            No any event created for your wedding. &nbsp; <a href="@Url.Action(" events", new { weddingid=Model.WeddingBO.WeddingID })" class="btn btn-default btn-sm">   Create Now</a>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>Complete Basic Wedding Details and Submit first.</p>
+                    }
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active" style="width: 49.5%; background-color: #f7f7f7;font-size: 18px;text-align: center;padding: 7px 10px;margin-top: 0;">
+                        <a href="#tab_1" data-toggle="tab" aria-expanded="true">Bride and Bride's Maids</a>
+                    </li>
+                    <li class="" style="width: 49.5%; background-color: #f7f7f7;font-size: 18px;text-align: center;padding: 7px 10px;margin-top: 0;"><a href="#tab_2" data-toggle="tab" aria-expanded="false">Groom and Groom's Men</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        @using (Html.BeginForm("SubmitBrideMaids", "Wedding", FormMethod.Post))
+                        {
+                        @Html.HiddenFor(model => model.BrideAndMaidsBO.WeddingID)
+                        @Html.HiddenFor(x => x.BrideAndMaidsBO.IsBride)
+                        @Html.HiddenFor(x => x.BrideAndMaidsBO.BrideAndMaidID)
+                        <div class="media">
+                            <div class="media-left">
+                                @Html.HiddenFor(model => model.BrideAndMaidsBO.Imageurl, new { id = "BrideimageUrl" })
+                                <img id="imgBridePreview" src="@Model.BrideAndMaidsBO.Imageurl" alt="Appzia" class="media-object" style="width: 150px;height: 130px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                <br /> <p for="exampleInputEmail1" id="lblBrideimage">Upload Bride Image </p>
+                                <div class="form-group">
+                                    <input type="file" id="uploadBrideImage" data-id="@Model.BrideAndMaidsBO.BrideAndMaidID" data-imageof="Bride" data-imgtype="Bride" data-sequence="1" />
+                                </div>
+                                <div class="progress progress-sm active" id="progressBrideimg" style="display:none">
+                                    <div class=" progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style=" width:0%">
+                                        <span class="sr-only">20% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        @Html.TextBoxFor(model => model.BrideAndMaidsBO.FirstName, new { @id = "bfirstname", @class = "form-control", @required = true, @placeholder = "Bride First Name" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        @Html.TextBoxFor(model => model.BrideAndMaidsBO.LastName, new { @class = "form-control", @required = true, @placeholder = "Bride Last Name" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1">Date of Birth</label>
+                                    <div class="input-group date">
+                                        <div class="form-group">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @*<input class="form-control pull-right" data-val="true" data-val-required="Please Enter date of Birth" id="datepickerbride" rel="date" name="BrideAndMaidsBO_strDateofBirth" type="text" value="@Model.BrideAndMaidsBO.strDateofBirth" />*@
+                                                @Html.TextBoxFor(model => model.BrideAndMaidsBO.strDateofBirth, new { id = "datepickerbride", @class = "form-control pull-right" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label>About Bride</label>
+                                        @Html.TextAreaFor(model => model.BrideAndMaidsBO.AboutBrideMaid, new { @class = "form-control", @placeholder = "About Bride" })
+                                        <!-- /.input group -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Facebook Profile Link</label>
+                                        @Html.TextBoxFor(model => model.BrideAndMaidsBO.fbUrl, new { @class = "form-control", @placeholder = "Facebook Profile" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Google Plus Link</label>
+                                        @Html.TextBoxFor(model => model.BrideAndMaidsBO.googleUrl, new { @class = "form-control", @placeholder = "Google Plus Link" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Instagram Link</label>
+                                        @Html.TextBoxFor(model => model.BrideAndMaidsBO.instagramUrl, new { @class = "form-control", @placeholder = "Instagram Profile" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer" style="text-align: center; border-bottom:1px solid #f4f4f4;">
+                                @if (Model.WeddingBO.WeddingID > 0)
+                                    {
+                                    <button type="submit" id="submit" value="Save" class="btn btn-primary">Save Bride</button>
+                                    }
+                                    else
+                                    {
+                                    <button type="submit" id="submit" value="Save" class="btn btn-primary disabled">Save Bride</button>
+                                    }
+                            </div>
+                        </div>
+                        }
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title" style="text-align: center; width: 100%;">
+                                            List of Bride Maids
+                                        </h3>
+                                        @if (Model.WeddingBO.WeddingID > 0)
+                                        {
+                                    <p class="pull-right">
+                                        <a href="#" class="btn btn-success btn-sm" id="btnAddBrideMaid">Add Bride's Maid</a>
+                                    </p>
+                                        }
+                                    </div><!-- /.box-header -->
+                                    <div class="box-body table-responsive no-padding">
+
+                                        <table id="example" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Event ID </th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name </th>
+                                                    <th>Date of Birth </th>
+                                                    <th>Relation </th>
+                                                    <th>Image</th>
+                                                    <th>Control</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (Model.WeddingBO.BrideAndMaids != null)//|| Model.WeddingBO.BrideAndMaids.Where(x => x.IsBride == false).Count() > 0)
+                                                {
+                                                    foreach (var item in Model.WeddingBO.BrideAndMaids.Where(x => x.IsBride == false).ToList())
+                                                    {
+                                                <tr>
+                                                    <td width="100px">
+
+                                                        @Html.ActionLink(item.BrideAndMaidID.ToString(), "SubmitBrideMaids", new { eventID = item.BrideAndMaidID })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.LastName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DateofBirth)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.strRelationWithBride)
+                                                    </td>
+                                                    <td>
+                                                        @*@Html.DisplayFor(modelItem => item.Imageurl)*@
+                                                        <img src="@item.Imageurl" alt="Appzia" class="media-object" style="height: 60px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                                    </td>
+                                                    <td>
+
+                                                        <a href="#" data-id="@item.BrideAndMaidID" class="btn btn-default btn-sm updateBrideModal">Update</a>
+                                                    </td>
+
+                                                </tr>
+
+                                                    }
+                                                }
+                                                else
+                                                {
+
+                                                <tr>
+                                                    <td colspan="7" style="text-align:center">
+                                                        No any bride's maid added. &nbsp;
+                                                        @if (Model.WeddingBO.WeddingID > 0)
+                                                            {
+                                                            <a href="#" class="btn btn-success btn-sm" id="btnUpdateBride">Add Bride's Maid</a>
+                                                            }
+                                                    </td>
+                                                </tr>
+                                                }
+
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2">
+                        @using (Html.BeginForm("SubmitGroomsMen", "Wedding", FormMethod.Post))
+                        {
+                        @Html.HiddenFor(model => model.GroomAndMenBO.WeddingID)
+                        @Html.HiddenFor(x => x.GroomAndMenBO.IsGroom, new { @value = true })
+                        @Html.HiddenFor(x => x.GroomAndMenBO.GroomAndMenID)
+                        <div class="media">
+                            <div class="media-left">
+                                @Html.HiddenFor(model => model.GroomAndMenBO.Imageurl, new { id = "GroomimageUrl" })
+                                <img id="imgGroomPreview" src="@Model.GroomAndMenBO.Imageurl" alt="Appzia" class="media-object" style="height: 130px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                <br /> <p for="exampleInputEmail1" id="lblGroomimage">Upload Groom Image </p>
+                                <div class="form-group">
+                                    <input type="file" id="uploadGroomImage" data-id="@Model.GroomAndMenBO.GroomAndMenID" data-imageof="Groom" data-imgtype="Groom" data-sequence="1" />
+                                </div>
+                                <div class="progress progress-sm active" id="progressGroomimg" style="display:none">
+                                    <div class=" progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style=" width:0%">
+                                        <span class="sr-only">20% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        @Html.TextBoxFor(model => model.GroomAndMenBO.FirstName, new { @class = "form-control", @required = true, @placeholder = "Groom First Name" })
+                                        <!-- /.input group -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        @Html.TextBoxFor(model => model.GroomAndMenBO.LastName, new { @class = "form-control", @required = true, @placeholder = "Groom Last Name" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1">Date of Birth</label>
+                                    <div class="input-group date">
+                                        <div class="form-group">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.GroomAndMenBO.strDateofBirth, new { @class = "form-control pull-right", id = "datepickergroom" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <label>About Bride</label>
+                                        @Html.TextAreaFor(model => model.GroomAndMenBO.AboutMen, new { @class = "form-control", @required = true, @placeholder = "About Groom" })
+                                        <!-- /.input group -->
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Facebook Profile Link</label>
+                                        @Html.TextBoxFor(model => model.GroomAndMenBO.fbUrl, new { @class = "form-control", @placeholder = "Facebook Profile" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Google Plus Link</label>
+                                        @Html.TextBoxFor(model => model.GroomAndMenBO.googleUrl, new { @class = "form-control", @placeholder = "Google Plus Link" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Instagram Link</label>
+                                        @Html.TextBoxFor(model => model.GroomAndMenBO.instagramUrl, new { @class = "form-control", @placeholder = "Instagram Profile" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="box-footer" style="text-align: center; border-bottom:1px solid #f4f4f4;">
+                                @if (Model.WeddingBO.WeddingID > 0)
+                                    {
+                                    <button type="submit" id="submit" value="Save" class="btn btn-primary">Save Groom</button>
+                                    }
+                                    else
+                                    {
+                                    <button type="submit" id="submit" value="Save" class="btn btn-primary disabled">Save Groom</button>
+                                    }
+                            </div>
+                        </div>
+                        }
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title" style="text-align: center; width: 100%;">
+                                            List of Groom's Man
+                                        </h3>
+                                        <p class="pull-right">
+
+                                            @if (Model.WeddingBO.WeddingID > 0)
+                                            {
+                                            <a href="#" class="btn btn-success btn-sm" id="btnAddGroomMan">Add Groom's Man</a>
+                                            }
+                                        </p>
+                                    </div><!-- /.box-header -->
+                                    <div class="box-body table-responsive no-padding">
+
+                                        <table id="example" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Groom ID </th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name </th>
+                                                    <th>Date of Birth </th>
+                                                    <th>Relation </th>
+                                                    <th>Image</th>
+                                                    <th>Control</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (Model.WeddingBO.GroomAndMen != null)
+                                                {
+                                                    // Model.WeddingBO.GroomAndMen.Where(x => x.IsGroom == false).Count() > 0
+                                                    foreach (var item in Model.WeddingBO.GroomAndMen.Where(x => x.IsGroom == false).ToList())
+                                                    {
+                                                <tr>
+                                                    <td width="100px">
+
+                                                        @Html.ActionLink(item.GroomAndMenID.ToString(), "SubmitBrideMaids", new { eventID = item.GroomAndMenID })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.LastName)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DateofBirth)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.strRelationWithGroom)
+                                                    </td>
+                                                    <td>
+                                                        @Html.HiddenFor(modelItem => item.Imageurl)
+                                                        <img src="@item.Imageurl" alt="Appzia" class="media-object" style="height: 60px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                                    </td>
+                                                    <td>
+                                                        @*@Html.ActionLink("Update", "CreateEvent", new { weddingId = item.WeddingID, Id = item.WeddingEventID }, new { @class = "btn btn-default btn-sm", @id = "btnEvent" })*@
+                                                        <a href="#" data-id="@item.GroomAndMenID" class="btn btn-default btn-sm updateGroomModal">Update</a>
+                                                    </td>
+
+                                                </tr>
+
+                                                    }
+                                                }
+                                                else
+                                                {
+
+                                                <tr>
+                                                    <td colspan="7" style="text-align:center">
+                                                        No details found for Groom Men. &nbsp;
+
+                                                        @if (Model.WeddingBO.WeddingID > 0)
+                                                            {
+                                                            <a href="#" class="btn btn-success btn-sm" id="btnUpdateGroom">Add Groom's Man</a>
+                                                            }
+                                                    </td>
+                                                </tr>
+                                                }
+
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+        <!-- /.col -->
+    </div>
+
+    <h2 class="page-header"> Story Time Line</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">TimeLine</h3>
+                    <p class="pull-right">
+                        <a href="#" id="btnAddTimeLine" class="btn btn-success btn-sm">
+                            Add New Story
+                        </a>
+                    </p>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="text-align: center; width: 100%;">
+                                        Wedding Story TimeLines
+                                    </h3>
+
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+
+                                    <table id="example" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Story ID </th>
+                                                <th>Title</th>
+                                                <th>Date </th>
+                                                <th>Location </th>
+                                                <th>Story </th>
+                                                <th>Image</th>
+                                                <th>Control</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.WeddingBO.TimeLines != null)
+                                            {
+                                                // Model.WeddingBO.GroomAndMen.Where(x => x.IsGroom == false).Count() > 0
+                                                foreach (var item in Model.WeddingBO.TimeLines)
+                                                {
+                                            <tr>
+                                                <td width="100px">
+
+                                                    @Html.ActionLink(item.TimeLineID.ToString(), "SubmitBrideMaids", new { timelineID = item.TimeLineID })
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Title)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.strStoryDate)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Location)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Story)
+                                                </td>
+                                                <td>
+                                                    @Html.HiddenFor(modelItem => item.ImageUrl)
+                                                    <img src="@item.ImageUrl" alt="Appzia" class="media-object" style="height: 60px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                                                </td>
+                                                <td>
+                                                    <a href="#" data-id="@item.TimeLineID" class="btn btn-default btn-sm updateTimeLineModal">Update</a>
+                                                </td>
+
+                                            </tr>
+
+                                                }
+                                            }
+                                            else
+                                            {
+
+                                            <tr>
+                                                <td colspan="7" style="text-align:center">
+                                                    No details found. &nbsp;
+
+                                                    @if (Model.WeddingBO.WeddingID > 0)
+                                                        {
+                                                        <a href="#" class="btn btn-success btn-sm" id="btnUpdateGroom">Add Story</a>
+                                                        }
+                                                </td>
+                                            </tr>
+                                            }
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <!-- /.col -->
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <i class="fa fa-warning"></i>
+
+                    <h3 class="box-title">Alerts</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-info"></i> Alert!</h4>
+                        Complete above wedding details first to explore more details.
+                    </div>
+
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+    </div>
+}
+
+<div id="modalWrapper">
+    @Html.Partial("_SubmitEvent")
+    @*@{Html.RenderPartial("_SubmitEvent");}*@
+</div>
+
+@*<a href="#" class="btn btn-default btn-sm" id="btnEvent">Update</a>*@
+
+@using (Html.BeginForm("SubmitBrideMaids", "Wedding", new { HttpMethod = "POST", id = "frmBrideModal" }))
+{
+    <button type="button" id="btnBrideModal" style="display:none;" class="btn btn-default" data-toggle="modal" data-target="#submitBrideMaidsModal" data-backdrop="static" data-keyboard="false">
+        Launch Modal
+    </button>
+    <div class="modal fade" id="submitBrideMaidsModal">
+        <div class="modal-dialog" style="width: 60%;">
+            <div class="modal-content">
+                @Html.Partial("_SubmitBrideMaids")
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("SubmitGroomsMen", "Wedding", new { HttpMethod = "POST" }))
+{
+    <button type="button" id="btnGroomModal" style="display:none;" class="btn btn-default" data-toggle="modal" data-target="#submitGroomMenModal" data-backdrop="static" data-keyboard="false"></button>
+    <div class="modal fade" id="submitGroomMenModal">
+        <div class="modal-dialog" style="width: 60%;">
+            <div class="modal-content">
+                @Html.Partial("_SubmitGroomsMen")
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("SubmitTimeLine", "Wedding", FormMethod.Post, new { id = "frmTimeLineModal" }))
+{
+    <button type="button" id="btnTimeLineModal" style="display:none;" class="btn btn-default" data-toggle="modal" data-target="#submitTimeLineModal" data-backdrop="static" data-keyboard="false"></button>
+    <div class="modal fade" id="submitTimeLineModal">
+        <div class="modal-dialog" style="width: 60%;">
+            <div class="modal-content">
+                @Html.Partial("_SubmitTimeLine")
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/Content/js/Wedding.js"></script>
+
+
+}

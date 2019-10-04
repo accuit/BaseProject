@@ -1,0 +1,298 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@model AccuIT.PresentationLayer.WebAdmin.Models.AdminModels
+@{
+    ViewBag.Title = "Admin Dashboard | AccuIT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<input id="DuplicateFound" name="DuplicateFound" type="hidden" value="@ViewBag.DuplicateFound" />
+<input id="ShowPopup" name="ShowPopup" type="hidden" value="@ViewBag.ShowPopup" />
+<input id="DuplicateFound" name="DuplicateFound" type="hidden" value="@ViewBag.DuplicateFound" />
+<input id="ddlSelectedMasterText" name="ddlSelectedMasterText" type="hidden" value="@ViewBag.ddlSelectedMasterText" />
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <!-- Dashboard -->
+        <li class="active">
+
+            <a href="@Url.Action("Index", "Admin")">
+                <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+            </a>
+
+        </li>
+        <!-- Roles Manager -->
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i><span>Manage Roles</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("RoleManager", "Admin")"><i class="fa fa-circle-o"></i>Roles</a></li>
+                <li><a href="@Url.Action("ManageRoleModules", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Manage Role Modules</a></li>
+                <li><a href="@Url.Action("ManageRolePermissions", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Role Permissions</a></li>
+            </ul>
+        </li>
+        <!-- Modules Manager -->
+        <li><a href="@Url.Action("ModulesManager", "Admin")"><i class="fa fa-briefcase"></i><span>Modules</span></a></li>
+
+    </ul>
+
+}
+
+@section breadcrumb{
+    <h1>
+        Admin
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+        <li class="active">Admin Panel</li>
+    </ol>
+}
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <a href="@Url.Action("DownloadSampleXls", new { myid = 2})">
+                <span class="info-box-icon bg-blue"><i class="fa fa-download"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Download</span>
+                    <span class="info-box-number">Product Master</span>
+                </div>
+            </a>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <a href="@Url.Action("DownloadSampleXls", new { myid = 4})">
+                <span class="info-box-icon bg-green"><i class="fa fa-download"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Download</span>
+                    <span class="info-box-number">Product Images</span>
+                </div>
+            </a>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <a href="@Url.Action("DownloadSampleXls", new { myid = 5})">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-download"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Download</span>
+                    <span class="info-box-number">Product Specs</span>
+                </div>
+            </a>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <a href="@Url.Action("DownloadSampleXls", new { myid = 3})">
+                <span class="info-box-icon bg-red"><i class="fa fa-download"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Download</span>
+                    <span class="info-box-number">Categories</span>
+                </div>
+            </a>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Upload Daily Enquiry</h3>
+            </div>
+            @using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="box-body">
+                    <div class="form-group">
+
+
+                        <div class="col-md-6">
+                            <br />
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <div class="upload-file-top">
+                                        <div class="form-group">
+                                            <label>Select</label>
+                                            <div class="select-type">
+                                                <table>
+                                                    <tr>
+                                                        <td width="50%">@Html.DropDownListFor( model=> model.ddlselectedvalue , ViewBag.MasterDataList as IEnumerable<SelectListItem>, "--Select--", new { @class = "form-control", @id="ddlmaster", @onchange = "OnSelectedIndexChange_ddlMasterDataType()" })</td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <br />
+                            <div class="box box-success">
+                                <div class="box-body">
+                                    <div class="browse-file">
+                                        <div class="form-group">
+                                            <label>Choose  XlS or CSV file </label>
+                                            <br /><input type="file" name="uploadcsv" id="uploadcsv" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                    <br /><br /><br /><br /><br />
+                    <p id="lblcsvfilename" style="display:none" class="help-block">&nbsp; &nbsp; &nbsp;  File name Comes Here</p>
+                    <br />
+                    <div class="box-footer">
+                        <input type="submit" class="btn btn-primary" id="btnuploadcsv" value="Upload" /> &nbsp; &nbsp;
+                        <input type="button" value="Cancel" id="btnCancel" onclick="return ClearControls()" class="btn btn-danger" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Modal Examples</h3>
+                </div>
+                <div class="box-body">
+                    <button type="button" class="btn btn-default" style="visibility:hidden" id="btnpopup" data-toggle="modal" data-target="#modal-default">
+                        Launch Default Modal
+                    </button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                        Launch Default Modal
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Default Modal</h4>
+            </div>
+            <div class="modal-body">
+                <p id="AlertMsg"> @ViewBag.Messasge</p>
+                <p>@ViewBag.ErrMessage</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!-- /.modal -->
+@section Scripts {
+<script src="../Content/js/ExcelUpload.js"></script>
+    <script type="text/javascript">
+
+        function OnSelectedIndexChange_ddlMasterDataType() {
+            //$('#ddlMasterDataType').removeClass('has-error');
+            $('#lblcsvfilename').css('display', 'none');
+            var ddlmaster = document.getElementById('ddlMasterDataType');
+            if (ddlmaster != "") {
+                $('.upload-file-btn').removeClass('disabled');
+                $('#uploadcsv')[0].disabled = false;
+                // ddlSelectedMaster = document.getElementById('ddlMasterDataType option:selected').index();
+                //var index = ddlmaster.options[ddlmaster.selectedIndex];
+                ddlSelectedMaster = $('#ddlmaster option:selected').val();
+                document.getElementById("ddlSelectedMasterText").valueOf(ddlSelectedMaster);
+
+            }
+            else {
+                $('.upload-file-btn').addClass('disabled');
+                $('#uploadcsv')[0].disabled = true;
+            }
+        }
+
+        function ClearControls() {
+            //Reference the FileUpload and get its Id and Name.
+            var fileUpload = document.getElementById("uploadcsv");
+            var id = fileUpload.id;
+            var name = fileUpload.name;
+
+            //Create a new FileUpload element.
+            var newFileUpload = document.createElement("INPUT");
+            newFileUpload.type = "FILE";
+
+            fileUpload.value = "";
+            $("#lblcsvfilename").html(" ");
+            $("#errormsg").hide();
+            $('#lblcsvfilename').css('display', 'none');
+            $('.upload-file-top').removeClass('has-error');
+            $("#ddlMasterDataType").val("Select Master Data from Dropdown list");
+            $('.upload-file-btn').addClass('upload-file-btn disabled');
+            $('#uploadcsv')[0].disabled = false;
+            return false;
+        };
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+

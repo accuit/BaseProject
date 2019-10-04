@@ -1,0 +1,190 @@
+﻿@using ImportToXLS.Models;
+@model IEnumerable<EmployeeMaster>
+@{
+    ViewBag.Title = "List of Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Products List
+        <small><a href="@Url.Action("Create","Employee")" class="btn btn-primary btn-block margin-bottom">Create New</a></small>
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("Index","Employee")">Employees List</a></li>
+        <li class="active">Employees</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example1" class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Employee ID
+                                        </th>
+                                        <th>
+                                            Employee Name
+                                        </th>
+                                        <th>
+                                            Date Of Joining
+                                        </th>
+
+                                        <th>
+                                            Salary
+                                        </th>
+
+                                        <th>
+                                            Login ID
+                                        </th>
+
+                                        <th>
+                                            Image
+                                        </th>
+
+                                        <th>
+                                            Controls
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr role="row" class="odd">
+                                            <td width="150px">
+
+                                                @Html.ActionLink(item.EmpID.ToString(), "EmpDetails", new { empid = item.EmpID })
+                                            </td>
+                                            <td width="150px">
+                                               @Html.DisplayFor(modelItem => item.EmpName == null ? "Not Avaiable" : item.EmpName)
+
+                                            </td>
+
+                                            <td width="100px">
+                                                @Html.DisplayFor(modelItem => item.JoiningDate == null ? DateTime.Now.Date : item.JoiningDate)
+                                            </td>
+
+                                            <td width="100px">
+                                                @Html.DisplayFor(modelItem => item.Salary == null ? 0 : item.Salary)
+                                            </td>
+
+                                            <td width="220px">
+                                                @Html.DisplayFor(modelItem => item.UserID == null ? "1" : item.UserID)
+                                            </td>
+
+
+                                            <td width="100px">
+                                                
+                                                <img src="@Url.Content(@item.ImagePath)" class="img-thumbnail" alt="@item.EmpName" />
+
+                                            </td>
+
+
+                                            <td>
+                                                @Html.ActionLink("Update", "Edit", new { empid = item.EmpID }) <br />
+                                                @*@Html.ActionLink("Update Items", "itemDetailsEdit", new { enquiryid = item.CaseID })*@
+                                                @*@Html.ActionLink("Details", "Details", new { enquiryid = item.DailyEnquiries.caseid })*@
+                                            </td>
+
+                                        </tr>
+
+
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                    <tr>
+                                        <th>
+                                            Case
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Company Name
+                                        </th>
+
+                                        <th>
+                                            Email Address
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                        <th>
+                                            Controls
+                                        </th>
+                                    </tr>
+
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var size = $("#main #gridT > thead > tr >th").size(); // get total column
+            $("#main #gridT > thead > tr >th").last().remove(); // remove last column
+            $("#main #gridT > thead > tr").prepend("<th></th>"); // add one column at first for collapsible column
+            $("#main #gridT > tbody > tr").each(function (i, el) {
+                $(this).prepend(
+                        $("<td></td>")
+                        .addClass("expand")
+                        .addClass("hoverEff")
+                        .attr('title', "click for show/hide")
+                    );
+
+                //Now get sub table from last column and add this to the next new added row
+                var table = $("table", this).parent().html();
+                //add new row with this subtable
+                $(this).after("<tr><td></td><td style='padding:5px; margin:0px;' colspan='" + (size - 1) + "'>" + table + "</td></tr>");
+                $("table", this).parent().remove();
+                // ADD CLICK EVENT FOR MAKE COLLAPSIBLE
+                $(".hoverEff", this).live("click", function () {
+                    $(this).parent().closest("tr").next().slideToggle(100);
+                    $(this).toggleClass("expand collapse");
+                });
+            });
+
+            //by default make all subgrid in collapse mode
+            $("#main #gridT > tbody > tr td.expand").each(function (i, el) {
+                $(this).toggleClass("expand collapse");
+                $(this).parent().closest("tr").next().slideToggle(100);
+            });
+
+        });
+    </script>
+
+    <!-- page script -->
+    <script type="text/javascript">
+        $(function () {
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        });
+    </script>
+}

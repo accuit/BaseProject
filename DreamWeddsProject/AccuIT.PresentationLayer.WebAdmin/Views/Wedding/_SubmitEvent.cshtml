@@ -1,0 +1,115 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model WeddingViewModel
+<link href="~/Content/Classic/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<link href="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("SubmitEvent", "Wedding", new { HttpMethod = "POST" }))
+{
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Update Wedding Event</h4>
+                </div>
+
+                <div class="modal-body">
+                    @Html.HiddenFor(m => m.WeddingEventsBO.WeddingID)
+
+                    <div class="box-header">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <div class="box-body">
+
+                            <div class="row">
+                                @Html.HiddenFor(model => model.WeddingEventsBO.WeddingID)
+                                @Html.HiddenFor(model => model.WeddingEventsBO.WeddingEventID)
+                                <div class="col-xs-4">
+                                    <label for="exampleInputEmail1">Event Date</label>
+                                    <div class="input-group date">
+                                        <div class="form-group">
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                @Html.TextBoxFor(model => model.WeddingEventsBO.EventDate, new { id = "eventDate", @class = "form-control pull-right", @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-8">
+                                    <label for="exampleInputEmail1">Event Name</label>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.WeddingEventsBO.Name, new { id = "eventName", @class = "form-control", @required = true, @placeholder = "Enter Event Name" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-xs-4">
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label>Start Time</label>
+                                            <div class="input-group">
+                                                @*<input type="text" class="form-control timepicker">*@
+                                                @Html.TextBoxFor(model => model.WeddingEventsBO.strStartTime, new { id = "eventStartTime", @class = "form-control timepicker", @required = true })
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label>End Time</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(model => model.WeddingEventsBO.strEndTime, new { id = "eventEndTime", @class = "form-control timepicker", @required = true })
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <label for="exampleInputEmail1">Event Title</label>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.WeddingEventsBO.Title, new { id = "eventTitle", @class = "form-control", @required = true, @placeholder = "Enter your Event Heading" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label for="exampleInputEmail1">Upload Event Image  </label>
+                                    <div class="form-group">
+                                        <input type="file" id="file" name="file">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <!-- /.box -->
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+                    <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

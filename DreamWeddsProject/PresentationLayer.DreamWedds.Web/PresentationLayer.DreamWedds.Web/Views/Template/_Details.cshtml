@@ -1,0 +1,76 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models;
+@model DreamweddsModel
+
+<div class="row">
+    <div class="col-md-8">
+        
+        <div id="portfolio-gallery" class="owl-carousel">
+            @foreach (var image in @Model.templateMaster.templateImages)
+            {
+                <div>
+                    <a href="~/Templates/Wedding/@Model.templateMaster.TemplateFolderPath/index.html" target="_blank">
+                        <img alt="@image.ImageName" class="img-responsive" src="@image.ImageUrl">
+                    </a>
+                </div>
+
+            }
+        </div>
+
+        <div class="comments">
+            <form>
+
+                <div class="row">
+                    <div id="comments">
+                        <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-width="700" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                        <div class=" fb-comments" data-href="@Request.Url.AbsoluteUri" data-order-by="reverse-time" data-width="700" data-colorscheme="light" data-numposts="5"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="padding15">
+            <h4>@Model.templateMaster.TemplateName @Model.templateMaster.TemplateTypeText Template </h4>
+            <p class="product-price" style="font-size: x-large;font-weight: 600;">INR. @Model.templateMaster.COST</p>
+        </div>
+
+        <div class="padding15">
+            <h4>ABOUT <b>TEMPLATE</b></h4>
+        </div>
+        <p>@Model.templateMaster.AboutTemplate</p>
+
+        <div class="padding15">
+            <h4>DESIGN <b>DATA</b></h4>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 text-left">
+                <p><b>DATE</b></p>
+                <p><i class="fa fa-calendar fa-fw"></i> @Model.templateMaster.Created_Date</p>
+            </div>
+
+            <div class="col-xs-6 text-right">
+                <a href="@Url.Action("Purchase", new { templateid = Model.templateMaster.TemplateID, version = 1 })"  class="btn btn-danger btn-sm">
+                    <i class="fa fa-camera fw"></i> Buy Trial
+                </a>
+            </div>
+        </div>
+
+        <div class="space20"></div>
+
+        <p><b>Features</b></p>
+        <ul class="list-inline">
+            @foreach (var feature in @Model.templateMaster.TemplateFeatureText.Split(','))
+            {
+                <li><i class="fa fa-check-circle fa-fw"></i> @feature</li>
+            }
+        </ul>
+
+      
+</div>
+
+</div>
+

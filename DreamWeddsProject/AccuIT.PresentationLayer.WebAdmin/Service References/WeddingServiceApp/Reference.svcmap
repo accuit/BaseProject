@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="94de6b6d-1c20-45c2-911c-4a2da65bfbe6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DreamWedds.xsd" MetadataType="Schema" ID="de2ec32f-e6cf-43ad-86ee-47a1c8492384" SourceId="1" SourceUrl="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?xsd=xsd2" />
+    <MetadataFile FileName="DreamWedds1.xsd" MetadataType="Schema" ID="6ce28484-fd1b-44c5-9c6d-a850c528e7d9" SourceId="1" SourceUrl="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?xsd=xsd1" />
+    <MetadataFile FileName="DreamWedds2.xsd" MetadataType="Schema" ID="8945da4c-2fde-4682-b8fe-54949c4d7e07" SourceId="1" SourceUrl="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?xsd=xsd0" />
+    <MetadataFile FileName="DreamWedds.disco" MetadataType="Disco" ID="368dd6cf-a752-4d72-a30d-a5a51864f8e8" SourceId="1" SourceUrl="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?disco" />
+    <MetadataFile FileName="DreamWedds3.xsd" MetadataType="Schema" ID="492d2659-7a91-406f-bc4f-0718e86c0751" SourceId="1" SourceUrl="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?xsd=xsd3" />
+    <MetadataFile FileName="DreamWedds.wsdl" MetadataType="Wsdl" ID="3d0dfa59-ec1c-48e5-a4a9-f122bf289b2e" SourceId="1" SourceUrl="http://localhost/AccuIT.PresentationLayer.ServiceApp/DreamWedds.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

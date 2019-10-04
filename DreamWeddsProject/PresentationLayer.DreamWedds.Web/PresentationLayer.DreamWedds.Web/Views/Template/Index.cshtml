@@ -1,0 +1,93 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models;
+@model DreamweddsModel
+@{
+    ViewBag.Title = "All Wedding Templates";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- PAGE TITLE START -->
+@section PageTitle{
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>/</li>
+                        <li>@ViewBag.Title</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- PAGE TITLE END -->
+<!-- CONTENT START -->
+<section id="content">
+
+    <div id="portfolio-grid" class="container">
+
+        <div class="row">
+            <div class="col-xs-9">
+                <ul class="list-inline portfolio-controls">
+                    <li class="active" data-filter="all">All Features</li>
+                    <li data-filter="1">CountDown</li>
+                    <li data-filter="2">Couples</li>
+                    <li data-filter="3">TimeLine</li>
+                    <li data-filter="4">Events</li>
+                    <li data-filter="5">Friends</li>
+                    <li data-filter="6">Gallery</li>
+                    <li data-filter="7">Musical</li>
+                    <li data-filter="8">Map</li>
+                </ul>
+            </div>
+
+            <div class="col-xs-3">
+
+                <input type="text" class="form-control filtr-search" name="filtr-search" placeholder="Search..." data-search>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="portfolio-container">               
+
+                    @foreach (var item in Model.templateMasters)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-6 portfolio-item filtr-item" data-category="@item.Features.Trim(',')" data-sort="@item.TemplateTypeText Theme">
+                            <div class="portfolio-top">
+                                <img alt="@item.TemplateName" class="img-responsive-300" src="~/Templates/Wedding/@item.TemplateFolderPath/images/banner.jpg">
+                                <div class="mask"></div>
+
+                                <span class="portfolio-tag">
+                                    <i class="fa fa-tag fa-fw"></i>
+                                    <a href="#">@item.TemplateFeatureText.Trim(',')</a>
+                                </span>
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateFolderPath })">
+                                            Details
+                                        </a>
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li>
+                                        <a href="~/Templates/Wedding/@item.TemplateUrl" target="_blank">
+                                            Preview
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="portfolio-item-desc">
+                                <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateFolderPath })">@item.TemplateName @item.TemplateTypeText Theme</a>
+                            </span>
+                        </div>
+                    }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTENT END -->

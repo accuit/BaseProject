@@ -1,0 +1,243 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@model RoleModulesViewModel
+@{
+    ViewBag.Title = "Manage Role Modules";
+}
+
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+   <ul class="sidebar-menu">
+    <li class="header">MAIN NAVIGATION</li>
+    <!-- Dashboard -->
+    <li>
+
+        <a href="@Url.Action("Index", "Admin")">
+            <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+        </a>
+
+    </li>
+    <!-- Roles Manager -->
+    <li class="treeview active menu-open">
+        <a href="#">
+            <i class="fa fa-users"></i><span>Manage Roles</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("RoleManager", "Admin")"><i class="fa fa-circle-o"></i>Roles</a></li>
+            <li class="active"><a href="@Url.Action("ManageRoleModules", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Manage Role Modules</a></li>
+            <li><a href="@Url.Action("ManageRolePermissions", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Role Permissions</a></li>
+        </ul>
+    </li>
+    <!-- Modules Manager -->
+    <li><a href="@Url.Action("ModulesManager", "Admin")"><i class="fa fa-briefcase"></i><span>Modules</span></a></li>
+
+</ul>
+
+}
+
+
+@section breadcrumb{
+    <h1>
+        @ViewBag.Title
+        <small>Manager User Roles and Access</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Admin</a></li>
+        <li><a href="@Url.Action("RoleManager","Admin")"><i class="fa fa-users"></i>Roles Manager</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+}
+
+@using (Html.BeginForm("ManageRoleModules", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input id="ddlSelectedRoleID" name="ddlSelectedRoleID" type="hidden" value="@ViewBag.ddlSelectedRoleID" />
+    <input id="ShowPopup" name="ShowPopup" type="hidden" value="@ViewBag.ShowPopup" />
+    <div class="row">
+        <!-- left column -->
+        <div class="col-xs-12">
+            <!-- general form elements -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Manager Role Modules</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-body">
+                            <div class="form-horizontal">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Role</label>
+                                <div class="col-sm-6">
+                                    
+                                    @Html.DropDownListFor(m => m.RoleID, Model.ListRoles, new { @class = "form-control", @id = "ddlRole" })
+                                    @*@Html.DropDownListFor(x => x.dr, ViewBag.AllRoles as IEnumerable<SelectListItem>, new { @id = "ddlRole" })*@
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box-header with-border">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div id="partialPlaceHolder">
+
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <div class="box box-solid">
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-briefcase"></i>
+
+                                            <h3 class="box-title">Available Modules</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            @Html.ListBoxFor(x => x.selectedUnassignedModules, Model.ListUnAssignedModules, new { @id = "UnAssignedModules", @class = "form-control", @style = "min-height:150px" });
+
+                                        </div>
+
+                                        <!-- /.box-body -->
+                                    </div>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-md-2" style=" padding-left: 5%;">
+                                <br />
+                                <div class="btn-group" style=" margin-top: 6%; padding-left: 5%;">
+                                    <button type="button" id="btnAddAll" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></button><br /><br />
+                                    <button type="button" id="btnAdd" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button><br /><br /><br />
+
+                                    <button type="button" id="btnRemove" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button><br /><br />
+                                    <button type="button" id="btnRemoveAll" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></button><br /><br />
+
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-md-5">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-briefcase"></i>
+
+                                        <h3 class="box-title">Assigned Modules</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        @Html.ListBoxFor(x => x.selectedAssignedModules, Model.ListAssignedModules, new { @id = "AssignedModules", @class = "form-control", @style = "min-height:150px" })
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div>
+                        <div class="box-footer" style="padding-left: 35%">
+                            <button type="submit" id="btn_submit" class="btn btn-success">Save &nbsp;</button> &nbsp; &nbsp;
+                            <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section Scripts{
+<script src="../Content/js/ExcelUpload.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+                $('#btnAdd').click(
+                    function (e) {
+                        $('#UnAssignedModules > option:selected').appendTo('#AssignedModules');
+                        e.preventDefault();
+                    });
+
+                $('#btnAddAll').click(
+                function (e) {
+                    $('#UnAssignedModules > option').appendTo('#AssignedModules');
+                    e.preventDefault();
+                });
+
+                $('#btnRemove').click(
+                function (e) {
+                    $('#AssignedModules > option:selected').appendTo('#UnAssignedModules');
+                    e.preventDefault();
+                });
+
+                $('#btnRemoveAll').click(
+                function (e) {
+                    $('#AssignedModules > option').appendTo('#UnAssignedModules');
+                    e.preventDefault();
+                });
+
+            });
+
+        $("#ddlRole").on("change", function () {
+            //var url = '@Url.Action("ModulesList", "Admin")' + "?uid=" + $(this).val();
+            loadModulesList();
+        })
+
+        function loadModulesList() {
+            //debugger;
+            var roleID = $("#ddlRole").val();
+
+            if (roleID != "") {
+                $('#AssignedModules').empty();
+                $('#UnAssignedModules').empty();
+                $.getJSON("../Home/GetAssignedModules", { roleID: roleID },
+                       function (data) {
+                           $.each(data, function (key, val) {
+                               // alert(data);
+                               $('#AssignedModules').append('<option value=' + val.Value + '>' + val.Text + '</option>');
+                           })
+
+                       });
+                $.getJSON("../Home/GetUnAssignedModules", { roleID: roleID },
+                       function (data) {
+                           $.each(data, function (key, val) {
+                               $('#UnAssignedModules').append('<option value=' + val.Value + '>' + val.Text + '</option>');
+                           })
+
+                       });
+            }
+        }
+
+        //$("#btn_submit").click(function () {
+        //    $('#AssignedModules option').each(function () {
+        //        $(this).attr('selected', true);
+        //    });         
+        //});
+
+        $('#btn_submit').click(function () {
+            $('#AssignedModules option').prop('selected', true);
+            $('#UnAssignedModules option').prop('selected', true);
+        });
+    </script>
+}
+
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fcb16473ff544c59332e829b271ddcb" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="AccuITAdminModel.BrideAndMaid" Width="1.5" PointX="7.5" PointY="2.125" />
+        <EntityTypeShape EntityType="AccuITAdminModel.CommonSetup" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.CompanyMaster" Width="1.5" PointX="0.75" PointY="19.5" />
+        <EntityTypeShape EntityType="AccuITAdminModel.DailyLoginHistory" Width="1.5" PointX="5.25" PointY="20.125" />
+        <EntityTypeShape EntityType="AccuITAdminModel.DreamWeddsBlog" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.ECampaign" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.EmailService" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.ErrorLog" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.FAQ" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.GroomAndMan" Width="1.5" PointX="7.5" PointY="33.875" />
+        <EntityTypeShape EntityType="AccuITAdminModel.LoginAttemptHistory" Width="1.5" PointX="5.25" PointY="36.25" />
+        <EntityTypeShape EntityType="AccuITAdminModel.ModuleMaster" Width="1.5" PointX="6" PointY="46.25" />
+        <EntityTypeShape EntityType="AccuITAdminModel.OrderDetail" Width="1.5" PointX="10.5" PointY="15.125" />
+        <EntityTypeShape EntityType="AccuITAdminModel.OrderMaster" Width="1.5" PointX="5.25" PointY="14.125" />
+        <EntityTypeShape EntityType="AccuITAdminModel.OTPMaster" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.Permission" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.RoleMaster" Width="1.5" PointX="6" PointY="40.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.RoleModule" Width="1.5" PointX="8.25" PointY="40.875" />
+        <EntityTypeShape EntityType="AccuITAdminModel.RSVPDetail" Width="1.5" PointX="7.5" PointY="55.5" />
+        <EntityTypeShape EntityType="AccuITAdminModel.SubscriptionMaster" Width="1.5" PointX="8.25" PointY="25.375" />
+        <EntityTypeShape EntityType="AccuITAdminModel.SystemSetting" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="AccuITAdminModel.TemplateImage" Width="1.5" PointX="10.5" PointY="19.125" />
+        <EntityTypeShape EntityType="AccuITAdminModel.TemplateMaster" Width="1.5" PointX="8.25" PointY="7.625" />
+        <EntityTypeShape EntityType="AccuITAdminModel.TemplateMergeField" Width="1.5" PointX="10.5" PointY="8.875" />
+        <EntityTypeShape EntityType="AccuITAdminModel.TemplatePage" Width="1.5" PointX="10.5" PointY="4.5" />
+        <EntityTypeShape EntityType="AccuITAdminModel.TimeLine" Width="1.5" PointX="7.5" PointY="29.5" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserDevice" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserMaster" Width="1.5" PointX="3" PointY="19.375" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserRoleModulePermission" Width="1.5" PointX="10.5" PointY="41" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserRole" Width="1.5" PointX="8.25" PointY="21" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserServiceAccess" Width="1.5" PointX="5.25" PointY="32.5" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserSystemSetting" Width="1.5" PointX="5.25" PointY="28.625" />
+        <EntityTypeShape EntityType="AccuITAdminModel.UserWeddingSubscription" Width="1.5" PointX="7.5" PointY="14.625" />
+        <EntityTypeShape EntityType="AccuITAdminModel.WeddingEvent" Width="1.5" PointX="7.5" PointY="61.875" />
+        <EntityTypeShape EntityType="AccuITAdminModel.Wedding" Width="1.5" PointX="5.25" PointY="2.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.vwGetUserRoleModule" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.vwGetUserWeddingTemplate" Width="1.5" PointX="14.75" PointY="11.75" />
+        <AssociationConnector Association="AccuITAdminModel.FK__BrideAndM__Weddi__619B8048" />
+        <AssociationConnector Association="AccuITAdminModel.FK_SystemSettings_CompanyMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserMaster_CompanyMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_DailyLoginHistory_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK__GroomAndM__Weddi__6383C8BA" />
+        <AssociationConnector Association="AccuITAdminModel.FK_LoginAttemptHistory_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_RoleModules_ModuleMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_OrderDetail_OrderMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_OrderDetail_SubscriptionMast" />
+        <AssociationConnector Association="AccuITAdminModel.FK_OrderDetail_TemplateMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK__UserWeddi__Invoi__05D8E0BE" />
+        <AssociationConnector Association="AccuITAdminModel.FK_OrderMaster_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_RoleModules_RoleMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserRoles_RoleMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserRoleModulePermissions_RoleModules" />
+        <AssociationConnector Association="AccuITAdminModel.FK_RSVPDetails_Weddings" />
+        <AssociationConnector Association="AccuITAdminModel.FK__UserWeddi__Subsc__208CD6FA" />
+        <AssociationConnector Association="AccuITAdminModel.FK__TemplateI__Templ__6A30C649" />
+        <AssociationConnector Association="AccuITAdminModel.FK__TemplateM__Templ__6B24EA82" />
+        <AssociationConnector Association="AccuITAdminModel.FK__TemplateP__Templ__6C190EBB" />
+        <AssociationConnector Association="AccuITAdminModel.FK__UserWeddi__Templ__74AE54BC" />
+        <AssociationConnector Association="AccuITAdminModel.FK__TimeLine__Weddin__6D0D32F4" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserDevices_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserRoles_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserServiceAccess_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK_UserSystemSettings_UserMaster" />
+        <AssociationConnector Association="AccuITAdminModel.FK__UserWeddi__Weddi__75A278F5" />
+        <AssociationConnector Association="AccuITAdminModel.FK__WeddingEv__Weddi__778AC167" />
+        <EntityTypeShape EntityType="AccuITAdminModel.AddressMaster" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AccuITAdminModel.Venue" Width="1.5" PointX="9.75" PointY="61.875" />
+        <AssociationConnector Association="AccuITAdminModel.FK_Venue_WeddingEvents" />
+        <EntityTypeShape EntityType="AccuITAdminModel.WeddingGallery" Width="1.5" PointX="7.5" PointY="67.125" />
+        <AssociationConnector Association="AccuITAdminModel.FK__WeddingGa__Weddi__787EE5A0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

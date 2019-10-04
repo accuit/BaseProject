@@ -1,0 +1,262 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.BusinessLayer.Services.BO;
+@model WeddingEventBO
+
+<link href="~/Content/Classic/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<link href="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Wedding Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    @if (HttpContext.Current.Session[PageConstants.SESSION_PROFILE_KEY] != null)
+    {
+        var weddingInfo = (UserWeddingTemplateSubscriptionsBO)Session[PageConstants.SESSION_WEDDING_PROFILE];
+        var UserInfo = (UserProfileBO)Session[PageConstants.SESSION_PROFILE_KEY];
+        if (UserInfo.IsEmployee == false)
+        {
+            <ul class="sidebar-menu">
+                <li class="header">MAIN NAVIGATION</li>
+                <!-- Dashboard -->
+                <li>
+
+                    <a href="@Url.Action(" index", "Home" )">
+                        <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+                    </a>
+
+                </li>
+                <!-- Wedding Manager -->
+                <li class="treeview active menu-open">
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Wedding</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="@Url.Action(" index", "Wedding" )"><i class="fa fa-circle-o"></i>Wedding Details</a></li>
+                        <li><a href="@Url.Action(" events", "Wedding" )"><i class="fa fa-circle-o"></i>Events</a></li>
+                        <li><a href="@Url.Action(" couples", "Wedding" )"><i class="fa fa-circle-o"></i>Couples</a></li>
+                    </ul>
+                </li>
+                <!-- Modules Manager -->
+                <li><a href="@Url.Action(" gallery", "Wedding" )"><i class="fa fa-briefcase"></i><span>Gallery</span></a></li>
+
+            </ul>
+        }
+    }
+}
+
+@section breadcrumb{
+    <h1>
+        Home
+        <small>@ViewBag.Title</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">@ViewBag.Title </li>
+    </ol>
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(m => m.WeddingID)
+
+                <div class="box-header">
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="row">
+                        <!-- full column -->
+                        <div class="col-md-12">
+                            <!-- /.box -->
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title">Wedding Event Details</h3>
+                                </div>
+                                <div class="box-body">
+
+                                    <div class="row">
+
+                                        <div class="col-xs-2">
+                                            <label for="exampleInputEmail1">Event Date</label>
+                                            <div class="input-group date">
+                                                <div class="form-group">
+                                                    <div class="input-group date">
+                                                        @Html.HiddenFor(model => model.WeddingID)
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        @Html.TextBoxFor(model => model.EventDate, new { id = "datepicker", @class = "form-control pull-right", @required = true })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <label for="exampleInputEmail1">Event Name</label>
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @required = true, @placeholder = "Enter Event Name" })
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label for="exampleInputEmail1">Event Title</label>
+                                            <div class="form-group">
+
+                                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @required = true, @placeholder = "Enter your Event Heading" })
+                                            </div>
+                                        </div>
+                                        @*<div class="col-xs-1">
+                                                <label for="exampleInputEmail1">Love Marriage? </label>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(model => model.ImageUrl, new { @class = "form-control", @required = true })
+                                                </div>
+                                            </div>*@
+                                        <div class="col-xs-3">
+                                            <label for="exampleInputEmail1">Upload Event Image  </label>
+                                            <div class="form-group">
+                                                <input type="file" id="fileupload" name="file">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+                        <!--/.col (left) -->
+                        <div class="col-md-12">
+                            <!-- /.box -->
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title">Wedding Venue Details</h3>
+                                </div>
+                                @foreach (var item in Model.Venues)
+                                {
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">Venue Name</label>
+                                                <div class="input-group date">
+                                                    <div class="form-group">
+                                                            @Html.HiddenFor(model => model.Venue.VenueID)                                                  
+                                                            @Html.TextBoxFor(model => model.Venue.Name, new {  @class = "form-control pull-right", @required = true })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">Contact Person</label>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model => model.Venue.OwnerName, new { @class = "form-control", @required = true, @placeholder = "Enter Contact Person Name" })
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label for="exampleInputEmail1">Venue Website</label>
+                                                <div class="form-group">
+
+                                                    @Html.TextBoxFor(model => model.Venue.VenueWebsite, new { @class = "form-control", @required = true, @placeholder = "Venue Website" })
+                                                </div>
+                                            </div>
+                                            @*<div class="col-xs-1">
+                                                    <label for="exampleInputEmail1">Love Marriage? </label>
+                                                    <div class="form-group">
+                                                        @Html.EditorFor(model => model.ImageUrl, new { @class = "form-control", @required = true })
+                                                    </div>
+                                                </div>*@
+                                            <div class="col-xs-3">
+                                                <label for="exampleInputEmail1">Upload Venue Image  </label>
+                                                <div class="form-group">
+                                                    <input type="file" id="fileupload" name="file">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">Venue Name</label>
+                                                <div class="input-group date">
+                                                    <div class="form-group">
+
+                                                        @Html.TextBoxFor(model => item.Name, new { @placeholder = "Enter Venue Name", @class = "form-control pull-right", @required = true })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label for="exampleInputEmail1">Owner</label>
+                                                <div class="form-group">
+                                                    @Html.TextBoxFor(model => item.VenuePhone, new { @class = "form-control", @required = true, @placeholder = "Enter Event Name" })
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <label for="exampleInputEmail1">Venue Image Title</label>
+                                                <div class="form-group">
+
+                                                    @Html.TextBoxFor(model => item.VenueBannerImageUrl, new { @class = "form-control", @required = true })
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                }
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <div class="box-footer" style="text-align: center;">
+                    <button type="submit" id="submit" value="Save" class="btn btn-primary">Submit</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Alert!</h4>
+            </div>
+            <div class="modal-body">
+                This is Modal popup ?
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="text-align:center" class="btn btn-primary" data-dismiss="modal">OKAY</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

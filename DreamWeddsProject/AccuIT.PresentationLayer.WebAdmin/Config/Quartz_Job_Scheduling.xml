@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.net http://www.springframework.net/xsd/spring-objects.xsd">
+
+
+  <object id="storeService" type="AccuIT.BusinessLayer.ServiceImpl.BatchManager, AccuIT.BusinessLayer.ServiceImpl">
+    <!-- we inject straight to target object -->
+  </object>
+
+  <object id="jobDetail" type="Spring.Scheduling.Quartz.MethodInvokingJobDetailFactoryObject, Spring.Scheduling.Quartz">
+    <!-- We don't actually need to implement IJob as we can use delegation -->
+    <property name="TargetObject" ref="storeService" />
+    <property name="TargetMethod" value="SyncDataToDMS" />
+  </object>
+
+  <!--<object id="jobDetailNonConcurrent" type="Spring.Scheduling.Quartz.MethodInvokingJobDetailFactoryObject, Spring.Scheduling.Quartz">
+    <property name="targetObject" ref="emailService" />
+    <property name="targetMethod" value="SendBatchEmails" />
+    -->
+    <!-- Automatic IStatefulJob wrapping --><!--
+    <property name="concurrent" value="false" />
+  </object>-->
+
+  <object id="simpleTrigger" type="Spring.Scheduling.Quartz.SimpleTriggerObject, Spring.Scheduling.Quartz">
+    <!-- see the example of method invoking job above -->
+    <property name="jobDetail" ref="jobDetail" />
+    <!-- 5 seconds -->
+    <property name="startDelay" value="1s" />
+    <!-- repeat every 5 seconds -->
+    <property name="repeatInterval" value="5s" />
+  </object>
+
+
+  <!--<object id="cronTrigger" type="Spring.Scheduling.Quartz.CronTriggerObject, Spring.Scheduling.Quartz">
+    <property name="jobDetail" ref="exampleJob" />
+    --><!-- run every 20 second of minute --><!--
+    <property name="cronExpressionString" value="0/20 * * * * ?" />
+  </object>-->
+
+  <object type="Spring.Scheduling.Quartz.SchedulerFactoryObject, Spring.Scheduling.Quartz">
+    <property name="triggers">
+      <list>
+        <!--<ref object="cronTrigger" />-->
+        <ref object="simpleTrigger" />
+      </list>
+    </property>
+  </object>
+
+</objects>

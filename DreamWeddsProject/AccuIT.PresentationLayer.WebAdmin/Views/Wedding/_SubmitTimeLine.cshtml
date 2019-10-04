@@ -1,0 +1,96 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model WeddingViewModel
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title">Add Update Timeline details</h4>
+</div>
+
+    <div class="modal-body">
+        <div class="box-header">
+            @Html.HiddenFor(m => m.TimeLineBO.WeddingID, new { id = "hdTimeLineWeddingID" })
+            @Html.HiddenFor(model => model.TimeLineBO.TimeLineID, new { id = "hdmodalTimeLineID" })
+
+            <div class="media">
+                <div class="media-left">
+                    @Html.HiddenFor(model => model.TimeLineBO.ImageUrl, new { id = "hdModalTimeLineImageUrl" })
+                    <img id="imgModalTimeLinePreview" src="@Model.TimeLineBO.ImageUrl" alt="Appzia" class="media-object" style="height: 130px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                    <br /> <p for="exampleInputEmail1" id="lblTimeLineimage">Upload Bride Image </p>
+                    <div class="form-group">
+                        <input type="file" id="uploadModalTimeLineImage" data-id="@Model.TimeLineBO.TimeLineID" data-imgtype="TimeLine" data-imageof="Story" data-sequence="@Model.TimeLineBO.TimeLineID" />
+                    </div>
+                    <div class="progress progress-sm active" id="progressModalTimeLineimg" style="display:none">
+                        <div class=" progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style=" width:0%">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="media-body">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="exampleInputEmail1">Story Title</label>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.TimeLineBO.Title, new { id = "modalTimeLineTitle", @class = "form-control", @required = true, @placeholder = "Title" })
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="exampleInputEmail1">Location</label>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(model => model.TimeLineBO.Location, new { id = "modalTimelineLocation", @class = "form-control", @placeholder = "Place" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="exampleInputEmail1">Story Date</label>
+                                <div class="input-group date">
+                                    <div class="form-group">
+                                        <div class="input-group date">
+
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            @Html.TextBoxFor(model => model.TimeLineBO.strStoryDate, new { id = "modalTimelineStorydate", @class = "form-control pull-right" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label for="exampleInputEmail1">About Story</label>
+                                <div class="form-group">
+                                    @Html.TextAreaFor(model => model.TimeLineBO.Story, new { id = "modalTimeLineStory", @class = "form-control", @required = true, @placeholder = "About Bride's Maid" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+        <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+    </div>
+
+
+@section Scripts{
+    <script src="~/Content/Classic/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+}

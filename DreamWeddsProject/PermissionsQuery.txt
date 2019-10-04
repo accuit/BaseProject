@@ -1,0 +1,27 @@
+SELECT 
+[Project1].[PermissionID] AS [PermissionID], 
+[Project1].[ModuleID] AS [ModuleID], 
+[Project1].[PermissionValue] AS [PermissionValue], 
+[Project1].[RoleID] AS [RoleID], 
+[Project1].[EmpID] AS [EmpID], 
+[Project1].[EmpRolePermissionID] AS [EmpRolePermissionID], 
+[Project1].[C1] AS [C1]
+FROM ( SELECT 
+	[Filter1].[EmpRolePermissionID] AS [EmpRolePermissionID], 
+	[Filter1].[PermissionID] AS [PermissionID], 
+	[Filter1].[PermissionValue] AS [PermissionValue], 
+	[Filter1].[ModuleID1] AS [ModuleID], 
+	[Filter1].[RoleID1] AS [RoleID], 
+	[Extent6].[EmpID] AS [EmpID], 
+	CASE WHEN ([Filter1].[ModuleCode] IS NOT NULL) THEN [Filter1].[ModuleCode] ELSE 0 END AS [C1]
+	FROM   (SELECT [Extent1].[EmpRolePermissionID] AS [EmpRolePermissionID], [Extent1].[PermissionID] AS [PermissionID], [Extent1].[PermissionValue] AS [PermissionValue], [Extent3].[ModuleID] AS [ModuleID1], [Extent3].[ModuleCode] AS [ModuleCode], [Extent5].[RoleID] AS [RoleID1], [Extent5].[EmpID] AS [EmpID1]
+		FROM     [dbo].[EmpRoleModulePermission] AS [Extent1]
+		INNER JOIN [dbo].[RoleModule] AS [Extent2] ON [Extent1].[RoleModuleID] = [Extent2].[RoleModuleID]
+		INNER JOIN [dbo].[ModuleMaster] AS [Extent3] ON [Extent2].[ModuleID] = [Extent3].[ModuleID]
+		INNER JOIN [dbo].[RoleMaster] AS [Extent4] ON [Extent2].[RoleID] = [Extent4].[RoleID]
+		INNER JOIN [dbo].[EmpRoles] AS [Extent5] ON [Extent4].[RoleID] = [Extent5].[RoleID]
+		WHERE ('1' = [Extent1].[PermissionValue]) AND ([Extent4].[IsDeleted] <> cast(1 as bit)) AND ([Extent5].[IsActive] = 1) AND ([Extent5].[isDeleted] <> cast(1 as bit)) ) AS [Filter1]
+	INNER JOIN [dbo].[EmployeeMaster] AS [Extent6] ON [Filter1].[EmpID1] = [Extent6].[EmpID]
+	WHERE ([Extent6].[EmpID] = 1) AND ([Extent6].[isDeleted] <> cast(1 as bit))
+)  AS [Project1]
+ORDER BY [Project1].[EmpRolePermissionID] ASC

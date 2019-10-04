@@ -1,0 +1,138 @@
+﻿@using AccuIT.CommonLayer.Aspects.DTO;
+@model EmailServiceDTO
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- PAGE TITLE START -->
+@section PageTitle{
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>/</li>
+                        <li>@ViewBag.Title</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- PAGE TITLE END -->
+<!-- CONTENT START -->
+<section id="content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="padding25">
+                    <h4>SEND A <b>MESSAGE</b></h4>
+                </div>
+                @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess)
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <strong>Your message </strong> has been sent successfully. Thank you for writing us.
+                    </div>
+                }
+                else if (ViewBag.IsFail != null && ViewBag.IsFail)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <strong>Error sending email!</strong>  Please try again or write us at : info@dreamwedds.com.
+                    </div>
+
+                }
+                @using (Html.BeginForm())
+                {
+                
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.IsHtml)
+                    <form>
+                        <div class="row">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group col-md-4">
+                                @Html.EditorFor(model => model.ToName, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Your Name*", required = true, maxlength = "150" } })
+                                @Html.ValidationMessageFor(model => model.ToName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-8">
+                                @Html.EditorFor(model => model.ToEmail, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Your Email*", required = true, maxlength = "150" } })
+                                @Html.ValidationMessageFor(model => model.ToEmail, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Subject*", required = true,  maxlength = "150"} })
+                                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-xs-4">
+                                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Mobile No.",  maxlength = "15" } })
+                                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                            </div>
+                         
+                            <div class="form-group col-xs-4">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Phone No.",  @maxlength = "15" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="form-group col-xs-4">
+                                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "City", required = true } })
+                                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                            </div>*@
+
+                            <div class="form-group col-xs-12">
+                                @Html.TextAreaFor(x => x.Message, new { @class = "form-control input-lg", onkeyup = "countChar(this)", @placeholder = "Your Message on 500 charachters*", required = true, rows = "11", maxlength = "500" })
+                                <div id="charnum"></div>
+                             </div>
+                            
+                            <div class="form-group col-xs-12 text-left">
+                                <button type="submit" value="Submit" class="btn btn-primary btn-lg"><i class="fa fa-send fa-fw"></i> SEND EMAIL</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                }
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="padding25">
+                    <h4>ABOUT <b>US</b></h4>
+                </div>
+                <p>
+                    DreamWedds run online and currently we have our office residential area in Noida. Soon we are moving in out Delhi corporate office.
+                    Our online service and query resolution is very efficient and prompt.
+                </p>
+
+
+                <div class="padding15">
+                    <h4>OUR <b>OFFICE</b></h4>
+                </div>
+                <p><i class="fa fa-map-marker fa-fw"></i> 202, SKYTECH MATTROT, NOIDA, INDIA</p>
+                <p><i class="fa fa-phone fa-fw"></i> +(91 120) 455 7009</p>
+                <p><i class="fa fa-phone fa-fw"></i> +(112) 345 6879</p>
+                <p><i class="fa fa-envelope fa-fw"></i> info@dreamwedds.com</p>
+
+                <div class="padding15">
+                    <h4>BUSINESS <b>HOURS</b></h4>
+                </div>
+                <p><i class="fa fa-clock-o fa-fw"></i> Monday - Friday: 9am to 8pm</p>
+                <p><i class="fa fa-clock-o fa-fw"></i> Saturday: 10am to 2pm</p>
+                <p><i class="fa fa-times fa-fw"></i> Sunday: Closed</p>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/js/ContactUs.js"></script>

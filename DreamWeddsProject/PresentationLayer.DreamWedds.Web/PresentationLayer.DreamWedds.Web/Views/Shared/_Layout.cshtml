@@ -1,0 +1,262 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta property="fb:pages" content="1960725757538800" />
+    <!-- META TAGS START -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="">
+    <meta property="fb:admins" content="137931316823963" />
+    <meta property="og:url" content=@Request.Url.AbsoluteUri />
+    <meta property="og:type" content="website" />
+    @RenderSection("DynamicMetaTags", false)
+    <!-- META TAGS END -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108800353-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-108800353-1');
+</script>
+
+
+
+    <title>@ViewBag.Title | Dream Wedds</title>
+    @Styles.Render("~/Content/css/styles")
+
+    @*<link rel="stylesheet" href="~/Content/css/styles/lunar.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/custom.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/demo.css" type="text/css">*@
+
+
+</head>
+<body>
+
+
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <i class="fa fa-spinner fa-spin preloader-animation" aria-hidden="true"></i>
+    </div>
+    <div id="fb-root"></div>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '137931316823963',
+                xfbml: true,
+                version: 'v3.0'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=137931316823963";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Preloader End -->
+    <!-- WRAPPER START -->
+    <div id="wrapper">
+        <!-- HEADER START -->
+        <section id="header">
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <img src="~/Content/Images/Logo_Name.png" width="200px" height="45px" alt="DreamWedds - Wedding to flaunt">
+                        </a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>&nbsp;Home</a>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("About", "Home")">About Us</a>
+                            </li>
+
+                            <li>
+                                <a href="@Url.Action("Index", "Template")"><i class="fa fa-tv"></i>&nbsp; Wedding Themes</a>
+                            </li>
+                            @*<li class="dropdown">
+                                    <a href="@Url.Action("Index", "Templates")" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Themes</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("Index", "Template")">All Themes</a></li>
+                                        <li><a href="@Url.Action("Index", "Template", new { templateTypeID = 3 })">Invitation Emails</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Top Selling Themes</li>
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="@Url.Action("Index", "Template", new { templateTypeID = 2 })">Top Wedding Themes </a>
+                                            <ul class="dropdown-menu">
+                                                @if (Session["Templates"] != null)
+                                                {
+                                                    var TemplateInfo = Session["Templates"] as List<TemplateMaster>;
+                                                    foreach (var theme in TemplateInfo.Take(5).Where(x => x.TemplateUrl != null))
+                                                    {
+                                                        <li><a href="~/Templates/Wedding/@theme.TemplateFolderPath/index.html" target="_blank">@theme.TemplateName</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                            <li>
+                                <a href="@Url.Action("Index", "Services")"> Services</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Blog")"> Blogs</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("faq", "Home")">FAQ</a>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-envelope-o"></i>&nbsp; Contact Us</a>
+
+                            </li>
+
+                        </ul>
+
+
+
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        </section>
+        <!-- HEADER END -->
+        <!-- CONTENT START -->
+        <!-- PAGE TITLE START -->
+        @RenderSection("PageTitle", false)
+        <!-- PAGE TITLE END -->
+        @RenderBody()
+        <!-- CONTENT END -->
+        <!-- FOOTER START -->
+        <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="~/Content/Images/logos/DWlogo.png" height="85px" alt="DreamWedds - Beautiful Wedding Web Designs">
+                        <p>
+                            We are the team who <b> respects all religion's culture and tradition.</b>
+                            While developing any wedding website our first priority is always to take care of there weding traditions.
+                        </p>
+                        <br>
+                        <ul class="list-unstyled list-inline social-icons">
+                            <li><a href="https://www.facebook.com/dreamwedds/" class="facebook"><i class="fa fa-facebook facebook"></i></a></li>
+                            <li><a href="https://twitter.com/AccuiTech" class="twitter"><i class="fa fa-twitter twitter"></i></a></li>
+                            <li><a href="https://plus.google.com/+Accuitechservesbetter" class="googleplus"><i class="fa fa-google-plus googleplus"></i></a></li>
+                            <li><a href="#" class="youtube"><i class="fa fa-youtube youtube"></i></a></li>
+                            @*<li><a href="https://www.linkedin.com/company/5073272" class="linkedin"><i class="fa fa-linkedin linkedin"></i></a></li>*@
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>PAGES</h4>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-caret-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("Index", "Home")">HOME</a></li>
+                            <li><i class="fa fa-caret-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("About", "Home")">ABOUT US</a></li>
+                            <li><i class="fa fa-caret-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("FAQ", "Home")">FAQ</a></li>
+                            <li><i class="fa fa-caret-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("Index", "Template")">Themes</a></li>
+                            <li><i class="fa fa-caret-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("Contact", "home")">Enquiry</a></li>
+                            <li><i class="fa fa-caret-right fa-fw" aria-hidden="true"></i> <a href="#">PRIVACY POLICY</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4>CONTACT US</h4>
+                        <p><i class="fa fa-map-pin fa-fw"></i> 202 Skytech Mattrot, Sector 76, Noida, UP, INDIA</p>
+                        <p><i class="fa fa-phone fa-fw"></i> (0120) 455 7009</p>
+                        <p><i class="fa fa-phone fa-fw"></i> (+91) 9599 66 0409</p>
+                        <p><i class="fa fa-envelope fa-fw"></i> info@dreamwedds.com</p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4>NEWSLETTER</h4>
+                        <p>Subscribe to our monthly newsletter and stay updated with the latest offers and info.</p>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email Address" required>
+                                </div>
+                            </div>
+                            <a href="@Url.Action("Contact", "home")">
+                                <div class="form-group pull-right">
+                                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                                </div>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <hr>
+                    <div class="col-md-12 text-center bottom">
+                        <p>Copyright &copy; 2013 AccuIT Technologies. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FOOTER END -->
+    </div>
+    <!-- WRAPPER END -->
+    @Scripts.Render("~/bundles/JsScripts")
+
+
+    @RenderSection("scripts", required: false)
+
+    @*<script src="/content/js/jquery/jquery.min.js"></script>
+    <script src="/content/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/content/js/bootstrap/bootstrap-hover-dropdown.js"></script>
+    <script src="/content/js/wow/wow.min.js"></script>
+    <script src="/content/js/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/content/js/SmoothScroll/SmoothScroll.min.js"></script>
+    <script src="/content/js/waypoints.min.js"></script>
+    <script src="/content/js/jquery.counterup.min.js"></script>
+    <script src="/content/js/hero-slider/modernizr.js"></script>
+    <script src="/content/js/hero-slider/main.js"></script>
+    <script src="/content/js/owl.carousel.js"></script>
+    <script src="/content/js/jquery/jquery.filterizr.js"></script>
+    <script src="/content/js/edura.js"></script>*@
+
+
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=705896946287834";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models;
+@model DreamweddsModel
+
+@section DynamicMetaTags{
+
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:description" content="@Model.templateMaster.AboutTemplate" />
+    <meta property="og:image" content="../Templates/Wedding/@Model.templateMaster.TemplateFolderPath/images/ScreenShots/1.png" />
+
+}
+
+@{
+    ViewBag.Title = @Model.templateMaster.TemplateName + " | Wedding Template";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- PAGE TITLE START -->
+@section PageTitle{
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>
+                        @Model.templateMaster.TemplateName @Model.templateMaster.TemplateTypeText Template &nbsp;
+                        <a href="~/Templates/Wedding/@Model.templateMaster.TemplateFolderPath/index.html" target="_blank" class="btn btn-danger btn-lg"><i class="fa fa-camera fw"></i> Live Demo
+                        </a>
+                    </h1>
+
+                </div>
+
+
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>/</li>
+                        <li><a href="@Url.Action("Index", "Template")">All Wedding Themes</a></li>
+                        <li>/</li>
+                        <li>@Model.templateMaster.TemplateName.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!-- PAGE TITLE END -->
+<!-- CONTENT START -->
+<!-- CONTENT START -->
+<section id="content">
+
+    <div id="portfolio-single" class="container">
+
+        @Html.Partial("_Details")
+
+
+
+        <div class="row padding25">
+            <div class="col-xs-12">
+                <h3 class="text-center">RELATED <b>DESIGNS</b></h3>
+            </div>
+
+            <div id="portfolio-carousel-home" class="owl-carousel">
+                @foreach (var item in Model.templateMasters.Where(x => x.TemplateType == 2))
+                {
+                    <div class="portfolio-item">
+                        <div class="portfolio-top">
+                            <img alt="@item.TemplateName" class="img-responsive-200" src="~/Templates/Wedding/@item.TemplateFolderPath/images/banner.jpg">
+                            <div class="mask"></div>
+                            <span class="portfolio-tag">
+                                <i class="fa fa-tag fa-fw"></i> <a href="#">@item.TemplateFeatureText.Trim(',')</a>
+                            </span>
+                            <ul class="list-unstyled list-inline">
+                                <li>
+                                    <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateFolderPath })">
+                                        Details
+                                    </a>
+                                </li>
+                                &nbsp; &nbsp;
+                                <li>
+                                    <a href="~/Templates/Wedding/@item.TemplateUrl" target="_blank">
+                                        Demo
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="portfolio-item-desc">
+                            <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateName })">@item.TemplateName @item.TemplateTypeText Theme</a>
+                        </span>
+                    </div>
+                }
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+</section>
+<!-- CONTENT END -->
+<!-- CONTENT END -->

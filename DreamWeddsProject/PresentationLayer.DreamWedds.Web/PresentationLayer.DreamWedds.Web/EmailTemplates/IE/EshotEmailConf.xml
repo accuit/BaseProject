@@ -1,0 +1,26 @@
+﻿<DevOpsConfiguration>
+  <EmailConf>
+    <Notifications>
+
+      <Notification case="SUCCESS">
+        <FromAddress>testeshots@hays.com</FromAddress>
+        <FromName>ESHOT Team</FromName>
+        <ToAddress></ToAddress>
+        <CCAddress></CCAddress>
+        <Subject>Eshot Notification: Successful.</Subject>
+        <EmailBody>The Automation Deployment Process has run successfully. Please see the logs for more details.</EmailBody>
+      </Notification>
+
+      <Notification case="FAILURE">
+        <FromAddress>testeshots@hays.com</FromAddress>
+        <FromName>Backbone Team</FromName>
+        <ToAddress>Shrwan.Kumar@hays.com</ToAddress>
+        <CCAddress>neetesh.saxena@hays.com</CCAddress>
+        <Subject>Eshot: Failed.</Subject>
+        <EmailBody>The Eshot has Failed. Please see the logs for more details.</EmailBody>
+      </Notification>
+
+    </Notifications>
+    <LogLocation></LogLocation>
+  </EmailConf>
+</DevOpsConfiguration>

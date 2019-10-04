@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html ng-app="customersApp">
+<head>
+   
+    <title>Angular APP</title>
+   
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <ul class="nav navbar-nav">
+                Background - {{trips.BackgroundImage}}
+                <br />
+                IsActive - {{trips.IsActive}}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div ng-view class="col-md-10 col-md-offset-1"></div>
+    </main>
+
+    <script src="https://code.angularjs.org/1.3.9/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.9/angular-route.min.js"></script>
+    <!--<script src="Scripts/angular.min.js"></script>-->
+    <script src="AngularApp/App.js"></script>
+    <script src="AngularApp/Controller.js"></script>
+    <script src="AngularApp/Service.js"></script>
+</body>
+</html>

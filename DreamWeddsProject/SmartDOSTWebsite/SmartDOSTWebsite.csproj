@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22E48599-0548-4E29-B309-A4CDC2CD2C5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartDOSTWebsite</RootNamespace>
+    <AssemblyName>SmartDOSTWebsite</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Samsung.BusinessLayer.Base\Samsung.SmartDost.BusinessLayer.Base.csproj">
+      <Project>{2e0033c2-dc90-42dd-949a-a06715153582}</Project>
+      <Name>Samsung.SmartDost.BusinessLayer.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.BusinessLayer.ServiceImpl\Samsung.SmartDost.BusinessLayer.ServiceImpl.csproj">
+      <Project>{1e19237f-b4b4-4320-864d-bc0568c1eda6}</Project>
+      <Name>Samsung.SmartDost.BusinessLayer.ServiceImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.BusinessLayer.Services\Samsung.SmartDost.BusinessLayer.Services.csproj">
+      <Project>{1f2d0a83-d105-4790-b5e8-90fc5a648102}</Project>
+      <Name>Samsung.SmartDost.BusinessLayer.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.CommonLayer.AopContainer\Samsung.SmartDost.CommonLayer.AopContainer.csproj">
+      <Project>{99f5f4cf-72a6-48c0-8071-63088e82b8ed}</Project>
+      <Name>Samsung.SmartDost.CommonLayer.AopContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.CommonLayer.AopRegistrations\Samsung.SmartDost.CommonLayer.AopRegistrations.csproj">
+      <Project>{ee3288ad-6b40-4ad3-8e2e-22959c9f9a14}</Project>
+      <Name>Samsung.SmartDost.CommonLayer.AopRegistrations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.CommonLayer.Aspects\Samsung.SmartDost.CommonLayer.Aspects.csproj">
+      <Project>{68be71aa-a80e-4516-9547-f811ab594b71}</Project>
+      <Name>Samsung.SmartDost.CommonLayer.Aspects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.CommonLayer.EntityMapper\Samsung.SmartDost.CommonLayer.EntityMapper.csproj">
+      <Project>{c85c0efd-914f-4be5-a865-74a67f052d05}</Project>
+      <Name>Samsung.SmartDost.CommonLayer.EntityMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.CommonLayer.Resources\Samsung.SmartDost.CommonLayer.Resources.csproj">
+      <Project>{be2eb692-f383-4e77-9b13-2c9d90142ca8}</Project>
+      <Name>Samsung.SmartDost.CommonLayer.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.PersistenceLayer.Data\Samsung.SmartDost.PersistenceLayer.Data.csproj">
+      <Project>{1204a677-1753-4b3c-a99f-75dabdf6339d}</Project>
+      <Name>Samsung.SmartDost.PersistenceLayer.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.PersistenceLayer.Repository\Samsung.SmartDost.PersistenceLayer.Repository.csproj">
+      <Project>{9823fdb3-58bc-4962-a647-9574e50ed330}</Project>
+      <Name>Samsung.SmartDost.PersistenceLayer.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.PresentationLayer.ServiceApp\Samsung.SmartDost.PresentationLayer.ServiceApp.csproj">
+      <Project>{65f44bdc-99f1-4062-8345-8e45d970d497}</Project>
+      <Name>Samsung.SmartDost.PresentationLayer.ServiceApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.PresentationLayer.ServiceImpl\Samsung.SmartDost.PresentationLayer.ServiceImpl.csproj">
+      <Project>{07a795ff-ccce-41a7-be27-6b8ec3cdd57e}</Project>
+      <Name>Samsung.SmartDost.PresentationLayer.ServiceImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Samsung.SmartDost.BusinessLayer.IC\Samsung.SmartDost.BusinessLayer.IC.csproj">
+      <Project>{62f1f9b2-038f-4ce1-bc16-690472fb1ef5}</Project>
+      <Name>Samsung.SmartDost.BusinessLayer.IC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smasung.SmartDost.PresentationLayer.WebApp\Smasung.SmartDost.PresentationLayer.WebApp.csproj">
+      <Project>{7e7f83ba-9ad1-4b8b-a1c6-efd7138e7e16}</Project>
+      <Name>Smasung.SmartDost.PresentationLayer.WebApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

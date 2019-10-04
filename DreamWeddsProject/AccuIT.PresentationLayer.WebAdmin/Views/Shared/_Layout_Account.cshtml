@@ -1,0 +1,56 @@
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AccuIT Technologies | Log in</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    @Styles.Render("~/Classic/css")
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .example-modal .modal {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        .example-modal .modal {
+            background: transparent !important;
+        }
+    </style>
+
+</head>
+
+<body class="hold-transition login-page" style="/* width: 800px; */height: 80%;background-image: url('https://s-media-cache-ak0.pinimg.com/originals/04/1a/8b/041a8bb4bc8ca9637a12a9708bb8f793.jpg'); background-size:cover">
+
+    <input id="ShowPopup" name="ShowPopup" type="hidden" value="@ViewBag.ShowPopup" />
+    <input id="ShowErrPopup" name="ShowErrPopup" type="hidden" value="@ViewBag.ShowErrPopup" />
+    <div class="login-box" style="width:600px">
+        <div class="login-logo" >
+            <a style="color:white" href="#">DREAM<b>WEDDS</b></a>
+        </div><!-- /.login-logo -->
+        <div class="login-box-body">
+
+            @RenderBody()
+
+        </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
+
+    @*<button type="button" id="btnModal" style="display:none;" class="btn btn-default" data-toggle="modal" data-target="#modal-default" data-backdrop="static" data-keyboard="false">
+        Launch Default Modal
+    </button>*@
+   
+
+
+    <script src="~/Content/Exclusive/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/Exclusive/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/ExcelUpload.js"></script>
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,257 @@
+﻿@using ImportToXLS.Models;
+@model IEnumerable<ImportToXLS.Models.DailyTransaction>
+
+@{
+    ViewBag.Title = " Daily Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        List of Transactions
+        <small><a href="@Url.Action("Create","DailyTransaction")" class="btn btn-primary btn-block margin-bottom">Create New</a></small>
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="@Url.Action("Index","DailyTransaction")">Transactions List</a></li>
+        <li class="active">Transactions</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box box-primary">
+
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Transaction Mode</label>
+                                                @Html.DropDownList("PaymentMode", new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "Online", Value = "1", Selected=true},
+                                     new SelectListItem{ Text = "Cash", Value = "2"},
+
+                       }, "Select", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Transaction Code</label>
+                                                @Html.DropDownList("Code", new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "Personal", Value = "1", Selected=false},
+                                     new SelectListItem{ Text = "Sale", Value = "2"},
+                                       new SelectListItem{ Text = "Expense", Value = "3"},
+                                       new SelectListItem{ Text = "Salary", Value = "4"},
+                                       new SelectListItem{ Text = "Bank Charg", Value = "5"},
+                                       new SelectListItem{ Text = "Purchase", Value = "6"},
+
+                       }, "Select", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Transaction Type</label>
+                                                @Html.DropDownList("Type", new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "Nitish", Value = "1", Selected=false},
+                                     new SelectListItem{ Text = "Travel", Value = "2"},
+                                      new SelectListItem{ Text = "Courier", Value = "3"},
+                                       new SelectListItem{ Text = "Rent", Value = "4"},
+                                        new SelectListItem{ Text = "Sale", Value = "5"},
+
+                       }, "Select", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Transaction Date Range</label>
+                                                @Html.DropDownList("TransDate", new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "Online", Value = "1", Selected=false},
+                                     new SelectListItem{ Text = "Cash", Value = "2"},
+
+                       }, "Select", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-body -->
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12">
+
+                            <table id="example1" class="table table-bordered table-striped dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Code
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+
+                                        <th>
+                                            Type
+                                        </th>
+
+                                        <th>
+                                            Amount
+                                        </th>
+
+                                        <th>
+                                            Mode
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+                                            <tr role="row" class="even">
+                                                <td width="100px">
+
+                                                    @Html.DisplayFor(modelItem => item.TransDate)<br />
+
+                                                </td>
+                                                <td width="100px">
+                                                    @Html.DisplayFor(modelItem => item.Code)
+
+                                                </td>
+
+                                                <td width="250px">
+                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                </td>
+
+                                                <td width="100px">
+                                                    @Html.DisplayFor(modelItem => item.Type)
+                                                </td>
+
+
+                                                <td width="100px">
+                                                    @Html.DisplayFor(modelItem => item.Amount) <br />
+
+                                                </td>
+                                                <td width="100px">
+                                                    @Html.DisplayFor(modelItem => item.PaymentMode) <br />
+
+                                                </td>
+
+                                                <td>
+                                                    @Html.ActionLink("Update", "Edit", new { productid = item.TransId }) <br />
+                                                    @*@Html.ActionLink("Update Items", "itemDetailsEdit", new { enquiryid = item.CaseID })*@
+                                                    @*@Html.ActionLink("Details", "Details", new { enquiryid = item.DailyEnquiries.caseid })*@
+                                                </td>
+
+                                            </tr>
+
+
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                    <tr>
+                                        <th>
+                                            Case
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Company Name
+                                        </th>
+
+                                        <th>
+                                            Email Address
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                        <th>
+                                            Controls
+                                        </th>
+                                    </tr>
+
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval", "~/bundles/scripts")
+    <script>
+        $(document).ready(function () {
+            var size = $("#main #gridT > thead > tr >th").size(); // get total column
+            $("#main #gridT > thead > tr >th").last().remove(); // remove last column
+            $("#main #gridT > thead > tr").prepend("<th></th>"); // add one column at first for collapsible column
+            $("#main #gridT > tbody > tr").each(function (i, el) {
+                $(this).prepend(
+                        $("<td></td>")
+                        .addClass("expand")
+                        .addClass("hoverEff")
+                        .attr('title', "click for show/hide")
+                    );
+
+                //Now get sub table from last column and add this to the next new added row
+                var table = $("table", this).parent().html();
+                //add new row with this subtable
+                $(this).after("<tr><td></td><td style='padding:5px; margin:0px;' colspan='" + (size - 1) + "'>" + table + "</td></tr>");
+                $("table", this).parent().remove();
+                // ADD CLICK EVENT FOR MAKE COLLAPSIBLE
+                $(".hoverEff", this).live("click", function () {
+                    $(this).parent().closest("tr").next().slideToggle(100);
+                    $(this).toggleClass("expand collapse");
+                });
+            });
+
+            //by default make all subgrid in collapse mode
+            $("#main #gridT > tbody > tr td.expand").each(function (i, el) {
+                $(this).toggleClass("expand collapse");
+                $(this).parent().closest("tr").next().slideToggle(100);
+            });
+
+        });
+    </script>
+
+    <!-- page script -->
+    <script type="text/javascript">
+        $(function () {
+            $("#example1").dataTable();
+            $('#example2').dataTable({
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
+        });
+    </script>
+}

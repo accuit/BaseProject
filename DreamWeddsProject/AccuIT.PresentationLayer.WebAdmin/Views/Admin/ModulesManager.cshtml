@@ -1,0 +1,404 @@
+﻿@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@model ModulesViewModel
+@{
+    ViewBag.Title = "Modules Manager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <!-- Dashboard -->
+        <li>
+
+            <a href="@Url.Action("Index", "Admin")">
+                <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+            </a>
+
+        </li>
+        <!-- Roles Manager -->
+        <li>
+            <a href="#">
+                <i class="fa fa-users"></i><span>Manage Roles</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("RoleManager", "Admin")"><i class="fa fa-circle-o"></i>Roles</a></li>
+                <li><a href="@Url.Action("ManageRoleModules", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Manage Role Modules</a></li>
+                <li><a href="@Url.Action("ManageRolePermissions", "Admin", new { roleid = HttpContext.Current.Session[PageConstants.SESSION_ROLE_ID] })"><i class="fa fa-circle-o"></i>Role Permissions</a></li>
+            </ul>
+        </li>
+        <!-- Modules Manager -->
+        <li class="active"><a href="@Url.Action("ModulesManager", "Admin")"><i class="fa fa-briefcase"></i><span>Modules</span></a></li>
+
+    </ul>
+
+}
+
+
+@section breadcrumb{
+    <h1>
+        @ViewBag.Title
+        <small>Manage Permissions for Roles and Modules</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Admin")"><i class="fa fa-dashboard"></i>Admin</a></li>
+        <li class="active"><a href="@Url.Action("ModulesManager", "Admin")"><i class="fa fa-briefcase"></i>@ViewBag.Title</a></li>
+
+    </ol>
+}
+
+
+
+@using (Html.BeginForm("ModulesManager", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <input id="ShowPopup" name="ShowPopup" type="hidden" value="@ViewBag.ShowPopup" />
+    <input id="NewModuleCode" name="NewModuleCode" type="hidden" value="@Model.moduleMasterBO.ModuleCode" />
+    <input id="ShowUpdatePopup" name="ShowUpdatePopup" type="hidden" value="@ViewBag.ShowUpdatePopup" />
+    @Html.HiddenFor(model => model.moduleMasterBO.ModuleID)
+
+    <div class="box box-primary collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Creat New Module</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-arrow-down"></i>
+                </button>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        <label>@Html.LabelFor(model => model.moduleMasterBO.ModuleCode)</label>
+
+                        @Html.TextBoxFor(model => model.moduleMasterBO.ModuleCode, new { @class = "form-control", @placeholder = "Module Code", @readonly = "" })
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ModuleCode)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>@Html.LabelFor(model => model.moduleMasterBO.Name)</label>
+                        @Html.TextBoxFor(model => model.moduleMasterBO.Name, new { @class = "form-control", @placeholder = "Module Name" })
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.Name)
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>@Html.LabelFor(model => model.moduleMasterBO.ModuleDescription)</label>
+
+                        @Html.TextBoxFor(model => model.moduleMasterBO.ModuleDescription, new { @class = "form-control", @placeholder = "Module Descripion" })
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ModuleDescription)
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+
+                        <label> @Html.LabelFor(model => model.moduleMasterBO.Sequence)</label>
+                        @Html.TextBoxFor(model => model.moduleMasterBO.Sequence, new { @class = "form-control", @type = "number", @value = "0" })
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.Sequence)
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>@Html.LabelFor(model => model.moduleMasterBO.ModuleType)</label>
+
+
+                        @Html.DropDownListFor(model => model.moduleMasterBO.ModuleType, new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "DashBoard", Value = "1"},
+                                     new SelectListItem{ Text = "Admin", Value = "2"},
+                                      new SelectListItem{ Text = "Customer", Value = "3"},
+                       }, "Select Module Type", new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ModuleType)
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>@Html.LabelFor(model => model.moduleMasterBO.Status)</label>
+
+
+                        @Html.DropDownListFor(model => model.moduleMasterBO.Status, new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "Active", Value = "1"},
+                                    new SelectListItem{ Text = "InActive", Value = "2"},
+                       }, "Select Status", new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.Status)
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label>@Html.LabelFor(model => model.moduleMasterBO.ParentName)</label>
+                        @Html.DropDownListFor(model => model.selectedModuleID, Model.ListParentModules, "Select Parent", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ParentName)
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <label> @Html.LabelFor(model => model.moduleMasterBO.IsMandatory)</label><br />
+                        @Html.EditorFor(model => model.moduleMasterBO.IsMandatory, new { @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.moduleMasterBO.IsMandatory)
+                    </div>
+                </div>
+
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer" style="">
+            <input type="submit" value="Create" id="btnSubmitModule" class="btn btn-success" />
+            &nbsp; &nbsp;
+            <input type="submit" value="Cancel" class="btn btn-danger" onclick="ClearForm()" />
+            .
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("ModulesManager", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Modules List</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped" role="grid" aria-describedby="example1_info">
+                        <thead>
+                            <tr>
+                                <th>Code </th>
+                                <th> Name</th>
+                                <th>Sequence </th>
+                                <th>IsMandatory </th>
+                                <th>Parent   </th>
+                                <th>Status</th>
+                                <th>Page URL</th>
+                                <th>Type </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListModuleMaster)
+                            {
+                            <tr>
+                                <td>
+
+                                    @Html.ActionLink(item.ModuleCode.ToString(), "details", new { moduleid = item.ModuleID })
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sequence)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsMandatory)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ParentName)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PageURL)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModuleType)
+                                </td>
+
+                                <td>
+                                    <a href="@Url.Action("ModulesManager", "Admin", new { ModuleID = item.ModuleID, isDeleteReq = false })"><i class="fa fa-edit"></i><span></span></a>
+                                    &nbsp; | &nbsp;
+                                    <a href="@Url.Action("ModulesManager", "Admin", new { ModuleID = item.ModuleID, isDeleteReq = true })"><i class="fa fa-trash-o"></i><span></span></a>
+                                </td>
+
+                            </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Module Code </th>
+                                <th>Module Name</th>
+                                <th>Sequence </th>
+                                <th>IsMandatory </th>
+                                <th>Parent Module  </th>
+                                <th>Status</th>
+                                <th>Page URL</th>
+                                <th>Module Type </th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@using (Html.BeginForm("ModulesManager", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="modal-update">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Update Modules</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-primary">
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                @Html.HiddenFor(x => x.moduleMasterBO.ModuleID)
+                                <div class="col-md-2">
+                                    <div class="form-group">
+
+                                        <label>@Html.LabelFor(model => model.moduleMasterBO.ModuleCode)</label>
+
+                                        @Html.TextBoxFor(model => model.moduleMasterBO.ModuleCode, new { @class = "form-control", @placeholder = "Module Code", @readonly = "" })
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ModuleCode)
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>@Html.LabelFor(model => model.moduleMasterBO.Name)</label>
+                                        @Html.TextBoxFor(model => model.moduleMasterBO.Name, new { @class = "form-control", @placeholder = "Module Name" })
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.Name)
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>@Html.LabelFor(model => model.moduleMasterBO.ModuleDescription)</label>
+
+                                        @Html.TextBoxFor(model => model.moduleMasterBO.ModuleDescription, new { @class = "form-control", @placeholder = "Module Descripion" })
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ModuleDescription)
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+
+                                        <label> @Html.LabelFor(model => model.moduleMasterBO.Sequence)</label>
+                                        @Html.TextBoxFor(model => model.moduleMasterBO.Sequence, new { @class = "form-control", @type = "number", @value = "0" })
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.Sequence)
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>@Html.LabelFor(model => model.moduleMasterBO.ModuleType)</label>
+
+
+                                        @Html.DropDownListFor(model => model.moduleMasterBO.ModuleType, new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "DashBoard", Value = "1"},
+                                    new SelectListItem{ Text = "Control Panel", Value = "2"},
+                                     new SelectListItem{ Text = "Admin", Value = "3"},
+                                      new SelectListItem{ Text = "Default", Value = "4"},
+                       }, "Select Module Type", new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ModuleType)
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>@Html.LabelFor(model => model.moduleMasterBO.Status)</label>
+
+
+                                        @Html.DropDownListFor(model => model.moduleMasterBO.Status, new List<SelectListItem>
+                       {
+                                    new SelectListItem{ Text = "Active", Value = "1"},
+                                    new SelectListItem{ Text = "InActive", Value = "2"},
+                       }, "Select Status", new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.Status)
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label>@Html.LabelFor(model => model.moduleMasterBO.ParentName)</label>
+                                        @Html.DropDownListFor(model => model.selectedModuleID, Model.ListParentModules, "Select Parent", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.ParentName)
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <label> @Html.LabelFor(model => model.moduleMasterBO.IsMandatory)</label><br />
+                                        @Html.EditorFor(model => model.moduleMasterBO.IsMandatory, new { @class = "iCheck-helper" })
+                                        @Html.ValidationMessageFor(model => model.moduleMasterBO.IsMandatory)
+                                    </div>
+                                </div>
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    <input type="submit" value="Update" class="btn btn-success" onclick="$('#btnSubmitModule').trigger('click'); " />
+                    @*<a id="spellCheckPopUpSendBtn" onclick="$('#btnSendEshot').trigger('click'); " class="btn" href="#">Send</a><a href="#" class="btn" onclick="    $('#preview-box, #spellCheck').fadeOut(300); $('.pop-overlay').remove(); return false;">Cancel</a>*@
+                    <a id="spellCheckPopUpSendBtn" onclick="$('#btnSubmitModule').trigger('click');" class="btn btn-success" href="#">Update</a>
+
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+}
+
+
+@section Scripts {
+<script src="../Content/js/ExcelUpload.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

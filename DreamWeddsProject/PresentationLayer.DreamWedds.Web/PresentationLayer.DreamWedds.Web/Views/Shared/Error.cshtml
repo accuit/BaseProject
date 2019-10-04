@@ -1,0 +1,46 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Something Went Wrong | Dream Wedds";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageTitle{
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>/</li>
+                        <li><a href="#">Error</a></li>
+                        <li>/</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<!-- CONTENT START -->
+<section id="content">
+
+    <section id="error" class="container">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h1>OOPS <small>Error</small></h1>
+                <p class="lead">OOPS, something went wrong. Please try again later!</p>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary "><i class="fa fa-arrow-left fa-fw"></i> Go Home</a>
+                <div class="space40"></div>
+            </div>
+            <div class="col-md-6 text-center wow bounceIn" style="visibility: visible; animation-name: bounceIn;">
+                <i class="fa fa-warning erroicon"></i>
+                <div class="space40"></div>
+            </div>
+        </div>
+    </section>
+
+</section>
+<!-- CONTENT END -->

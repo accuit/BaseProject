@@ -1,0 +1,15 @@
+<EshotConfiguration>
+  <EmailConf>
+    <Notifications>
+      <Notification case="SUCCESS">
+        <ExclusionAddress>Chris.D'Souza@hays.com</ExclusionAddress>
+        <ExclusionAddress>Sean.Jones@hays.com</ExclusionAddress>
+      </Notification>
+      <Notification case="FAILURE">      
+        <EmailBody>The Eshot has Failed. Please see the logs for more details.</EmailBody>
+      </Notification>
+    </Notifications>
+    <LogLocation></LogLocation>
+  </EmailConf>
+</EshotConfiguration>
+

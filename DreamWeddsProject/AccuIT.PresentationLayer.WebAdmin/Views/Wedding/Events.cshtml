@@ -1,0 +1,171 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.BusinessLayer.Services.BO;
+@model IEnumerable<WeddingEventBO>
+
+<link href="~/Content/Classic/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<link href="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Wedding Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section SidebarMenu{
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..." />
+            <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    @if (HttpContext.Current.Session[PageConstants.SESSION_PROFILE_KEY] != null)
+    {
+        var UserInfo = (UserProfileBO)Session[PageConstants.SESSION_PROFILE_KEY];
+        if (UserInfo.IsEmployee == false)
+        {
+            <ul class="sidebar-menu">
+                <li class="header">MAIN NAVIGATION</li>
+                <!-- Dashboard -->
+                <li>
+
+                    <a href="@Url.Action(" index", "Home" )">
+                        <i class="fa fa-dashboard"></i><span>Dashboard</span> <small class="label pull-right bg-green">new</small>
+                    </a>
+
+                </li>
+                <!-- Wedding Manager -->
+                <li class="treeview active menu-open">
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Wedding</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="@Url.Action(" index", "Wedding" )"><i class="fa fa-circle-o"></i>Wedding Details</a></li>
+                        <li><a href="@Url.Action(" events", "Wedding" )"><i class="fa fa-circle-o"></i>Events</a></li>
+                        <li><a href="@Url.Action(" couples", "Wedding" )"><i class="fa fa-circle-o"></i>Couples</a></li>
+                    </ul>
+                </li>
+                <!-- Modules Manager -->
+                <li><a href="@Url.Action(" gallery", "Wedding" )"><i class="fa fa-briefcase"></i><span>Gallery</span></a></li>
+
+            </ul>
+        }
+    }
+}
+
+@section breadcrumb{
+    <h1>
+        Home
+        <small>@ViewBag.Title</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">@ViewBag.Title </li>
+    </ol>
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Wedding Events</h3>
+                <p class="pull-right">
+                    @if (Model.Count() == 0)
+                    {
+                        <a href="@Url.Action("events", new { weddingID = Model.FirstOrDefault().WeddingID})" class="btn btn-success btn-sm">
+                            CREATE EVENT
+                        </a>
+                    }
+                </p>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                @if (Model.Count() > 0)
+                {
+                    <table id="example1" class="table table-bordered table-striped" role="grid" aria-describedby="example1_info">
+                        <thead>
+                            <tr>
+                                <th>Event ID </th>
+                                <th>Event Name</th>
+                                <th>Event Date </th>
+                                <th>Image </th>
+                                <th>Title  </th>
+                                <th>Venue</th>
+                                <th>Controls</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td width="100px">
+
+                                        @Html.ActionLink(item.WeddingEventID.ToString(), "CreateEvent", new { weddingID = item.WeddingID, eventID = item.WeddingEventID })
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+
+                                    <td>
+
+                                        @Html.DisplayFor(modelItem => item.EventDate)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ImageUrl)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Venues.FirstOrDefault().Name)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Update", "CreateEvent", new { weddingID = item.WeddingID, eventID = item.WeddingEventID }) &nbsp; | &nbsp;
+
+                                        @Html.ActionLink("Details", "CreateEvent", new { weddingID = item.WeddingID, eventID = item.WeddingEventID })
+                                    </td>
+
+                                </tr>
+                                
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Event ID </th>
+                                <th>Event Name</th>
+                                <th>Event Date </th>
+                                <th>Image </th>
+                                <th>Title  </th>
+                                <th>Venue</th>
+                                <th>Controls</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                }
+                else 
+                {
+
+                    <p>
+                        No any event created for your wedding. &nbsp; <a href="@Url.Action("events", new { weddingID = Model.FirstOrDefault().WeddingID })" class="btn btn-default btn-sm">   Create Now</a>
+                    </p>
+                }
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+

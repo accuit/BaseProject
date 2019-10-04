@@ -1,0 +1,150 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model  WeddingViewModel
+<link href="~/Content/Classic/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<link href="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet" />
+
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title">Submit Bride's Maid details</h4>
+</div>
+<div class="modal-body">
+
+
+    <div class="box-header">
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.BrideAndMaidsBO.BrideAndMaidID, new { id = "hdBrideMaidID" })
+        @Html.HiddenFor(model => model.BrideAndMaidsBO.WeddingID, new { id = "hdBrideWeddingID" })
+
+        <div class="media">
+            <div class="media-left">
+                @*@Html.HiddenFor(model => model.BrideAndMaidsBO.Imageurl, new { id = "hdModalBrideImageUrl" })*@
+                <img id="imgModalBridePreview" src="@Model.BrideAndMaidsBO.Imageurl" alt="Appzia" class="media-object" style="height: 130px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                <br /> <p for="exampleInputEmail1" id="lblBrideimage">Upload Bride Image </p>
+                <div class="form-group">
+                    <input type="file" id="uploadModalBrideImage" data-id="@Model.BrideAndMaidsBO.BrideAndMaidID" data-imgtype="Bride" data-imageof="@Model.BrideAndMaidsBO.strRelationWithBride" data-sequence="@Model.BrideAndMaidsBO.BrideAndMaidID" />
+                </div>
+                <div class="progress progress-sm active" id="progressModalBrideimg"
+                     style="display:none">
+                    <div class=" progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style=" width:0%">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">First Name</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.BrideAndMaidsBO.FirstName, new { id = "modalBrideFName", @class = "form-control", @required = true, @placeholder = "First name" })
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">Last Name</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.BrideAndMaidsBO.LastName, new { id = "modalBrideLName", @class = "form-control", @required = true, @placeholder = "Last Name" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1"> Date of Birth</label>
+                            <div class="input-group date">
+                                <div class="form-group">
+                                    <div class="input-group date">
+
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.BrideAndMaidsBO.strDateofBirth, new { id = "datepickerbr2modal", @class = "form-control pull-right" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">Relation With Groom</label>
+                            <div class="input-group date">
+                                <div class="form-group">
+                                    <div class="select-type">
+                                        @Html.DropDownListFor(model => model.BrideAndMaidsBO.RelationWithBride, ViewBag.RelationsList as IEnumerable<SelectListItem>, new { @class = "form-control", @id = "ddlModalBrideRelation" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Facebook Profile Link</label>
+                                @Html.TextBoxFor(model => model.BrideAndMaidsBO.fbUrl, new { id = "modalBridefbUrl", @class = "form-control", @placeholder = "Facebook Profile" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Google Plus Link</label>
+                                @Html.TextBoxFor(model => model.BrideAndMaidsBO.googleUrl, new { id = "modalBridegoogleUrl", @class = "form-control", @placeholder = "Google Plus Link" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Instagram Link</label>
+                                @Html.TextBoxFor(model => model.BrideAndMaidsBO.instagramUrl, new { id = "modalBrideinstagramUrl", @class = "form-control", @placeholder = "Instagram Profile" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="exampleInputEmail1">About Bride Maid</label>
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.BrideAndMaidsBO.AboutBrideMaid, new { id = "modalBrideAbout", @class = "form-control", @required = true, @placeholder = "About Bride's Maid" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /Media body -->
+
+    </div>
+
+
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+    <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+</div>
+
+
+@section Scripts{
+    <script src="~/Content/Classic/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.js"></script>
+    <script>
+        $(function () {
+
+
+            //Date picker
+            $('#datepickerbr2modal').datepicker({
+                autoclose: true
+            })
+
+            //Timepicker
+            $('.timepicker').timepicker({
+                showInputs: false
+            })
+        })
+    </script>
+}

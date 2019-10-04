@@ -1,0 +1,83 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models
+@model DreamweddsModel
+
+@{
+    ViewBag.Title = "Blogs List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageTitle{
+    <section id="title" class="container-fluid wow fadeInDown">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>@ViewBag.Title</h1>
+                </div>
+                <div class="col-xs-6 text-right breadcrumbs">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>/</li>
+                        <li><a href="@Url.Action("Index", "Blog")">Blogs</a></li>
+                        <li>/</li>
+                        <li>@ViewBag.Title</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<section id="content">
+
+    <section id="blog-list" class="container">
+        <div class="row">
+
+            <!-- left column start -->
+            @Html.Partial("_BlogsList")
+            <!-- left column end -->
+            <!-- right column start -->
+            <div id="sidebar" class="col-md-3">
+
+                <div class="widget">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-lg" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg" type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="widget">
+                    <h4>More Blogs</h4>
+                        <ul class="list-unstyled link-list">
+                            @foreach (var blog in Model.blogs)
+                            {
+                                <li><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("BlogDetail", "Blog", new { blogId = @blog.BlogID, blogName = @blog.BlogName.Replace(" ","-") })">@blog.BlogName</a></li>
+                            }
+                        </ul>
+                </div>
+
+                <div class="widget">
+                    <h4>Top Selling Wedding Designs</h4>
+                        <ul class="list-unstyled link-list">
+                            @foreach (var item in Model.templateMasters.OrderByDescending(x => x.COST).Take(7))
+                            {
+                                <li><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> <a href="@Url.Action("Details", "Template", new { templateId = @item.TemplateID, template = @item.TemplateFolderPath })">@item.TemplateName</a></li>
+                            }
+                        </ul>
+                </div>
+
+
+            </div>
+            <!-- right column end -->
+
+        </div>
+    </section>
+
+
+
+</section>
+
+

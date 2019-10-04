@@ -1,0 +1,149 @@
+﻿@using System.Web.Optimization;
+@using AccuIT.PresentationLayer.WebAdmin.Core;
+@using AccuIT.PresentationLayer.WebAdmin.CustomFilter;
+@using AccuIT.PresentationLayer.WebAdmin.ViewDataModel;
+@model WeddingViewModel
+<link href="~/Content/Classic/plugins/datepicker/datepicker3.css" rel="stylesheet" />
+<link href="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet" />
+
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Submit Groom's Man details</h4>
+</div>
+<div class="modal-body">
+
+
+    <div class="box-header">
+        @Html.HiddenFor(m => m.GroomAndMenBO.GroomAndMenID, new { id = "hdGroomAndMenID" })
+        @Html.HiddenFor(m => m.GroomAndMenBO.WeddingID, new { id = "hdGroomWeddingID" })
+       
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="media">
+            <div class="media-left">
+                @Html.HiddenFor(model => model.GroomAndMenBO.Imageurl, new { id = "hdModalGroomImageUrl" })
+                <img id="imgModalGroomPreview" src="@Model.GroomAndMenBO.Imageurl" alt="Appzia" class="media-object" style="width: 150px;height: 130px;border-radius: 4px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                <br /> <p for="exampleInputEmail1" id="lblModalGroomimage">Upload Groom Image </p>
+                <div class="form-group">
+                    <input type="file" id="uploadModalGroomImage" data-id="@Model.GroomAndMenBO.GroomAndMenID" data-imageof="@Model.GroomAndMenBO.strRelationWithGroom" data-imgtype="Groom" data-sequence="@Model.GroomAndMenBO.GroomAndMenID" />
+                </div>
+                <div class="progress progress-sm active" id="progressModalGroomImg" style="display:none">
+                    <div class=" progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style=" width:0%">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">First Name</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.GroomAndMenBO.FirstName, new { id = "modalGroomFName", @class = "form-control", @required = true, @placeholder = "Enter First Name" })
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">Last Name</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.GroomAndMenBO.LastName, new { id = "modalGroomLName", @class = "form-control", @required = true, @placeholder = "Enter Last Name" })
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">Date of Birth</label>
+                            <div class="input-group date">
+                                <div class="form-group">
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.GroomAndMenBO.strDateofBirth, new { @class = "form-control pull-right", id = "datepickergr2modal" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="exampleInputEmail1">Relation With Groom</label>
+                            <div class="select2-container--default">
+                                <div class="form-group">
+                                    <div class="select-type">
+
+                                        @Html.DropDownListFor(model => model.GroomAndMenBO.RelationWithGroom, ViewBag.RelationsList as IEnumerable<SelectListItem>, new { @class = "form-control", @id = "ddlModalGroomRelation"})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Facebook Profile Link</label>
+                                @Html.TextBoxFor(model => model.GroomAndMenBO.fbUrl, new { id = "modalGroomfbUrl", @class = "form-control", @placeholder = "Facebook Profile" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Google Plus Link</label>
+                                @Html.TextBoxFor(model => model.GroomAndMenBO.googleUrl, new { id = "modalGroomgoogleUrl", @class = "form-control", @placeholder = "Google Plus Link" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Instagram Link</label>
+                                @Html.TextBoxFor(model => model.GroomAndMenBO.instagramUrl, new { id = "modalGroominstagramUrl", @class = "form-control", @placeholder = "Instagram Profile" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="exampleInputEmail1">About Man</label>
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.GroomAndMenBO.AboutMen, new { id = "modalGroomAbout", @class = "form-control", @required = true, @placeholder = "About Groom's Men" })
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.box -->
+
+    </div>
+
+
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel</button>
+    <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+</div>
+
+
+@section Scripts{
+    <script src="~/Content/Classic/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Content/Classic/plugins/timepicker/bootstrap-timepicker.js"></script>
+
+    <script>
+        $(function () {
+
+
+            //Date picker
+            $('#datepickergr2modal').datepicker({
+                autoclose: true
+            })
+
+            //Timepicker
+            $('.timepicker').timepicker({
+                showInputs: false
+            })
+        })
+    </script>
+}

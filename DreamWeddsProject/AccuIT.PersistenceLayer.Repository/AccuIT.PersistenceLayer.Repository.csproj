@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9823FDB3-58BC-4962-A647-9574E50ED330}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AccuIT.PersistenceLayer.Repository</RootNamespace>
+    <AssemblyName>AccuIT.PersistenceLayer.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Binaries\WebDll\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\AuditSearchBO.cs" />
+    <Compile Include="Contracts\IEmailRepository.cs" />
+    <Compile Include="Contracts\ISecurityRepository.cs" />
+    <Compile Include="Contracts\ISystemRepository.cs" />
+    <Compile Include="Contracts\IUserRepository.cs" />
+    <Compile Include="Contracts\IWeddingRepository.cs" />
+    <Compile Include="Entities\AccuITAdmin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AddressMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AnswerAttribute.cs" />
+    <Compile Include="Entities\AttendanceExcelData.cs" />
+    <Compile Include="Entities\AttendenceReport.cs" />
+    <Compile Include="Entities\BrideAndMaid.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CollectionExport.cs" />
+    <Compile Include="Entities\CollectionReport.cs" />
+    <Compile Include="Entities\CommonSetup.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CompanyMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CompetitionBookedExcel.cs" />
+    <Compile Include="Entities\CompetitionBookedReport.cs" />
+    <Compile Include="Entities\DailyLoginHistory.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DishCompReport.cs" />
+    <Compile Include="Entities\DealerList.cs" />
+    <Compile Include="Entities\DreamWeddsBlog.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ECampaign.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailService.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Emp.cs" />
+    <Compile Include="Entities\ErrorLog.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FAQ.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GroomAndMan.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LoginAttemptHistory.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ModuleMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OrderDetail.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OrderMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OTPMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Permission.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RoleMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RoleModule.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RSVPDetail.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SecurityAspect.cs" />
+    <Compile Include="Entities\SPCheckAuthentication_Result.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SPGetLoginDetails_Result.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SubscriptionMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SystemSetting.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TemplateImage.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TemplateMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TemplateMergeField.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TemplatePage.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TimeLine.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserDevice.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserMaster.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Entities\UserRole.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserRoleModulePermission.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserServiceAccess.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserSystemSetting.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserWeddingSubscription.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Venue.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VisitorExport.cs" />
+    <Compile Include="Entities\VisitorReport.cs" />
+    <Compile Include="Entities\vwGetUserRoleModule.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\vwGetUserWeddingTemplate.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wedding.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WeddingEvent.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WeddingGallery.cs">
+      <DependentUpon>AccuITAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Entities\AccuITAdmin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AccuITAdmin.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccuIT.BusinessLayer.Services\AccuIT.BusinessLayer.Services.csproj">
+      <Project>{1f2d0a83-d105-4790-b5e8-90fc5a648102}</Project>
+      <Name>AccuIT.BusinessLayer.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccuIT.CommonLayer.Aspects\AccuIT.CommonLayer.Aspects.csproj">
+      <Project>{68be71aa-a80e-4516-9547-f811ab594b71}</Project>
+      <Name>AccuIT.CommonLayer.Aspects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

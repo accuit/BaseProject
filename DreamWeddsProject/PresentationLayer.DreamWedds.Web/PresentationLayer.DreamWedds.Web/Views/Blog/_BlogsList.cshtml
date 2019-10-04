@@ -1,0 +1,63 @@
+﻿@using PresentationLayer.DreamWedds.Web.Models
+@model DreamweddsModel
+
+
+<!-- left column start -->
+<div class="col-md-9">
+    @foreach (var item in Model.blogs)
+    {
+        <div class="row">
+
+            <div class="col-md-12 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="text-center blog-item">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <a href="#">
+                                <img alt="@item.BlogName" class="img-responsive" src="@item.ImageUrl">
+                            </a>
+                        </div>
+
+                        <div class="col-md-7">
+                            <div class="blog-item-inner">
+                                <h3><a href="#">@item.BlogName</a></h3>
+
+                                @Html.Raw(string.Join(" ", item.Content.Split(' ').Take(45)))
+                                ...
+                                <p> <a href="@Url.Action("BlogDetail", "Blog", new { blogId = @item.BlogID, blogName = @item.BlogName.Replace(" ","-") })" class="btn btn-medium btn-danger">READ MORE</a></p>
+                            </div>
+
+                            <div class="row blog-meta">
+                                <div class="col-xs-4 text-left"><i class="fa fa-user fa-fw"></i> @item.CreatedDate.ToString("dd-MMM-yyy")</div>
+                                <div class="col-xs-4 text-center"><i class="fa fa-user fa-fw"></i> @item.AuthorName</div>
+                                <div class="col-xs-4 text-right"><i class="fa fa-folder-open fa-fw"></i> Wedding Website</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        @*<div id="pagination" class="row text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="disabled">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li class="disabled"><a href="#">...</a></li>
+                    <li><a href="#">@Model.blogs.Count</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>*@
+    }
+</div>
+<!-- left column end -->
