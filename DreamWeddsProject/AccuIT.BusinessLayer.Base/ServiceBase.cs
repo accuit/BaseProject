@@ -12,7 +12,7 @@ namespace AccuIT.BusinessLayer.Base
         /// <summary>
         /// Property to get set object mapping instance
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency]
+        [Unity.Dependency]
         public Mapper ObjectMapper
         {
             get;
