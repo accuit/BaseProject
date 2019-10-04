@@ -187,7 +187,7 @@ namespace AccuIT.BusinessLayer.IC
                     reader.Close();
                     //dataStream.Close();
                     tResponse.Close();
-                    LogTraceEngine.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);                    
+                    ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);                    
                     return serverResponse;
                 }
                 catch (WebException webEx)
@@ -197,11 +197,11 @@ namespace AccuIT.BusinessLayer.IC
                 if (tResponse == null) return null;
                 System.IO.StreamReader sr = new System.IO.StreamReader(tResponse.GetResponseStream());
                 serverResponse = sr.ReadToEnd().Trim();
-                LogTraceEngine.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
             }
             catch (Exception ex)
             {
-                LogTraceEngine.WriteLogWithCategory(ex.Message, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.WriteLogWithCategory(ex.Message, AppVariables.AppLogTraceCategoryName.DiskFiles);
                 serverResponse = ex.Message;
             }
             return serverResponse;
@@ -246,7 +246,7 @@ namespace AccuIT.BusinessLayer.IC
                     reader.Close();
                     //dataStream.Close();
                     tResponse.Close();
-                    LogTraceEngine.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                    ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
                     //serverResponse = "Success";
                     return serverResponse;
                 }
@@ -257,11 +257,11 @@ namespace AccuIT.BusinessLayer.IC
                 if (tResponse == null) return null;
                 System.IO.StreamReader sr = new System.IO.StreamReader(tResponse.GetResponseStream());
                 serverResponse = sr.ReadToEnd().Trim();
-                LogTraceEngine.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
             }
             catch (Exception ex)
             {
-                LogTraceEngine.WriteLogWithCategory(ex.Message, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.WriteLogWithCategory(ex.Message, AppVariables.AppLogTraceCategoryName.DiskFiles);
                 serverResponse = ex.Message;
             }
             return serverResponse;

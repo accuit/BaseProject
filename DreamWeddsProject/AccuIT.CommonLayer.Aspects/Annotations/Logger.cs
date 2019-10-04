@@ -3,7 +3,6 @@ using System.Reflection;
 using AccuIT.CommonLayer.Aspects.Logging;
 using AccuIT.CommonLayer.Aspects.Utilities;
 using Microsoft.Practices.Unity.InterceptionExtension;
-using AccuIT.CommonLayer.Aspects.Utilities;
 
 namespace AccuIT.CommonLayer.Aspects.Annotations
 {
@@ -24,14 +23,14 @@ namespace AccuIT.CommonLayer.Aspects.Annotations
             bool isMatched = true;
 
             //Iterate through attributes of the method invocation
-            //foreach (var item in member.GetCustomAttributes(true))
-            //{
-            //    if (item.GetType().Name == "Logger")
-            //    {
-            //        isMatched = true;
-            //        break;
-            //    }
-            //}
+            foreach (var item in member.GetCustomAttributes(true))
+            {
+                if (item.GetType().Name == "Logger")
+                {
+                    isMatched = true;
+                    break;
+                }
+            }
             return isMatched;
         }
     }
@@ -51,11 +50,11 @@ namespace AccuIT.CommonLayer.Aspects.Annotations
         {
             bool isLogEnabled = AppUtil.GetAppSettings(AspectEnums.ConfigKeys.IsGlobalMethodLogging) == "1" ? true : false;
             if (isLogEnabled)
-                LogTraceEngine.WriteLog(String.Format("Method {0} Execution started at {1}", input.MethodBase.Name, System.DateTime.Now));
+                ActivityLog.SetLog(String.Format("Method {0} Execution started at {1}", input.MethodBase.Name, System.DateTime.Now), LogLoc.INFO);
             IMethodReturn result = null;
             result = getNext()(input, getNext);
             if (isLogEnabled)
-                LogTraceEngine.WriteLog(String.Format("Method {0} Execution ended at {1}", input.MethodBase.Name, System.DateTime.Now));
+                ActivityLog.SetLog(String.Format("Method {0} Execution ended at {1}", input.MethodBase.Name, System.DateTime.Now), LogLoc.INFO);
             return result;
         }
         /// <summary>

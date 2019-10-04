@@ -1,6 +1,5 @@
 ﻿using System;
 using Unity;
-using Unity.Resolution;
 using Unity.Lifetime;
 using Unity.Injection;
 using AccuIT.BusinessLayer.IC;
@@ -43,7 +42,6 @@ namespace AccuIT.CommonLayer.AopRegistrations
             AopEngine.Container.RegisterType<IMapper, Mapper>(new InjectionMember[] { });
             MapEntities();
             InitializeTransactionInterceptor();
-            LogTraceEngine.InitializeLoggingService();
             ExceptionEngine.InitializeExceptionAopFramework();
         }
 
@@ -95,7 +93,7 @@ namespace AccuIT.CommonLayer.AopRegistrations
 
         #endregion
 
-        #region Initialize SmartDost Library
+        #region Initialize Accuit Library
 
         /// <summary>
         /// Method to initialize the IoC container for Data Path Persistence layer objects and business layer objects
@@ -140,10 +138,6 @@ namespace AccuIT.CommonLayer.AopRegistrations
             AopEngine.Container.RegisterType<ISecurityService, SecurityManager>(GetBusinessRegisterInstanceName(AspectEnums.AspectInstanceNames.SecurityManager, AspectEnums.ApplicationName.AccuIT));
             AopEngine.Container.RegisterType<IEmailService, EmailManager>(GetBusinessRegisterInstanceName(AspectEnums.AspectInstanceNames.EmailManager, AspectEnums.ApplicationName.AccuIT));
             AopEngine.Container.RegisterType<IWeddingService, WeddingManager>(GetBusinessRegisterInstanceName(AspectEnums.AspectInstanceNames.WeddingManager, AspectEnums.ApplicationName.AccuIT));
-            #region Added for MDMService by Dhiraj on 05-Aug-2015
-            // AopEngine.Container.RegisterType<IMDMService, MDMServiceManager>(GetBusinessRegisterInstanceName(AspectEnums.AspectInstanceNames.MDMServiceManager, AspectEnums.ApplicationName.AccuIT));
-            #endregion
-
         }
 
         #endregion
@@ -538,17 +532,12 @@ namespace AccuIT.CommonLayer.AopRegistrations
         {
             //add extension for interception in unity container
             AopEngine.Container.AddNewExtension<Interception>();
-            //configure the transaction rule and call handler into container
-            //AopEngine.Container.Configure<Interception>()
-            //    .AddPolicy(AppConstants.RUN_TRANSACTION)
-            //    .AddMatchingRule(new TransactionRule())
-            //    .AddCallHandler(new TransactionManager());
 
             //Define the interface name to deal with transaction rule execution
             AopEngine.Container.Configure<Interception>().SetInterceptorFor<IUserService>(new TransparentProxyInterceptor());
 
             AopEngine.Container.AddNewExtension<Interception>();
-            //AopEngine.Container.Configure<Interception>().AddPolicy("Logger").AddMatchingRule(new LoggerRule()).AddCallHandler(new LogWriteManager());
+           //  AopEngine.Container.Configure<Interception>().AddPolicy("Logger").AddMatchingRule(new LoggerRule()).AddCallHandler(new LogWriteManager());
         }
 
         #endregion

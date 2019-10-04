@@ -96,7 +96,7 @@ namespace AccuIT.PresentationLayer.WebAdmin.Models
             master.Add(new SelectListItem() { Text = "--Select--", Value = "-1" });
             master = GetCSVEnumsList<AspectEnums.enumExcelType>().ToList();
 
-            ActivityLog.SetLog("GetCSVMastersList completed", LogLoc.DEBUG);
+            CommonLayer.Log.ActivityLog.SetLog("GetCSVMastersList completed", LogLoc.DEBUG);
 
             return master;
         }

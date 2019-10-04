@@ -37,7 +37,7 @@ namespace AccuIT.CommonLayer.Aspects.Utilities
             catch (Exception ex)
             {
                 value = string.Empty;
-                LogTraceEngine.WriteLog(ex.Message);
+                ActivityLog.WriteLog(ex.Message);
 
             }
             return value;
@@ -59,7 +59,7 @@ namespace AccuIT.CommonLayer.Aspects.Utilities
             catch (Exception ex)
             {
                 value = string.Empty;
-                LogTraceEngine.WriteLog(ex.Message);
+                ActivityLog.WriteLog(ex.Message);
 
             }
             return value;

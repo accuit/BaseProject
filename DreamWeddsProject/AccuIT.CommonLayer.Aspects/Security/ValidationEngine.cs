@@ -26,7 +26,7 @@ namespace AccuIT.CommonLayer.Aspects.Security
             }
             catch (Exception ex)
             {
-                LogTraceEngine.WriteLog(ex.Message);
+                ActivityLog.WriteLog(ex.Message);
             }
         }
 

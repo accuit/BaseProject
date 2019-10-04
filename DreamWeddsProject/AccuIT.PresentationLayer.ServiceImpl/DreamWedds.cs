@@ -1542,6 +1542,9 @@ namespace AccuIT.PresentationLayer.ServiceImpl
             return response;
         }
 
-
+        public JsonResponse<string> GetTemplateContent(string TemplateID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
