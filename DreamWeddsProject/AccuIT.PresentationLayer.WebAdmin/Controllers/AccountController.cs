@@ -14,7 +14,7 @@ using System.Web.Mvc;
 using AccuIT.PresentationLayer.WebAdmin.Models;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 using AccuIT.CommonLayer.Aspects.EmailService;
 using AccuIT.CommonLayer.Resources;
 using AccuIT.CommonLayer.Aspects.Security;

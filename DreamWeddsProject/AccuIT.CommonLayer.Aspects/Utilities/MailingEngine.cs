@@ -142,7 +142,7 @@ namespace AccuIT.CommonLayer.Aspects.Utilities
                     {
                         
                         string reportFileLocation =  AppDomain.CurrentDomain.BaseDirectory+"\\"+ AppUtil.GetAppSettings(AspectEnums.ConfigKeys.ReportFileFolder);
-                        ActivityLog.WriteLogWithCategory(reportFileLocation, AppVariables.AppLogTraceCategoryName.EmailListener);
+                        ActivityLog.SetLog(reportFileLocation + " - " + AppVariables.AppLogTraceCategoryName.EmailListener, LogLoc.DEBUG);
                         reportFileLocation = String.Format(@"{0}\{1}", reportFileLocation, attachment);
                         if (File.Exists(reportFileLocation))
                         {
@@ -172,9 +172,9 @@ namespace AccuIT.CommonLayer.Aspects.Utilities
             {
                 string response = String.Format("Email Failure for {0}, {1}", mail.ToEmail, ex.Message);
                 isSuccess = false;
-                ActivityLog.WriteLogWithCategory(response, AppVariables.AppLogTraceCategoryName.EmailListener);
+                ActivityLog.SetLog(response + " - "+ AppVariables.AppLogTraceCategoryName.EmailListener, LogLoc.ERROR);
                 if (ex.InnerException != null)
-                    ActivityLog.WriteLogWithCategory(ex.InnerException.ToString(), AppVariables.AppLogTraceCategoryName.EmailListener);
+                    ActivityLog.SetLog(ex.InnerException.ToString() + " - " + AppVariables.AppLogTraceCategoryName.EmailListener, LogLoc.ERROR);
             }
 
             return isSuccess;

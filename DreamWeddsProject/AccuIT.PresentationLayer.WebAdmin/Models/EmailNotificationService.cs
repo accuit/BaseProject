@@ -2,8 +2,8 @@
 using AccuIT.BusinessLayer.Services.Contracts;
 using AccuIT.CommonLayer.AopContainer;
 using AccuIT.CommonLayer.Aspects.DTO;
+using AccuIT.CommonLayer.Aspects.Logging;
 using AccuIT.CommonLayer.Aspects.Utilities;
-using AccuIT.CommonLayer.Log;
 using PresentationLayer.DreamWedds.WebAdmin.CustomFilter;
 using System;
 using System.Collections.Generic;

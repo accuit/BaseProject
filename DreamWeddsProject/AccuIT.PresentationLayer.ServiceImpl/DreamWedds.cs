@@ -15,7 +15,7 @@ using AccuIT.CommonLayer.Resources;
 using AccuIT.PresentationLayer.ServiceImpl.Security;
 using AccuIT.CommonLayer.Aspects.ReportBO;
 using AccuIT.CommonLayer.Aspects.Extensions;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 using System.IO;
 using System.Web;
 using System.Web.Http;
@@ -25,6 +25,7 @@ using System.Net.Http;
 using System.Web.Hosting;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using AccuIT.CommonLayer.Aspects.Logging;
 
 namespace AccuIT.PresentationLayer.ServiceImpl
 {

@@ -81,7 +81,7 @@ namespace AccuIT.BusinessLayer.IC
 
             request.Headers.Add(HttpRequestHeader.Authorization, "GoogleLogin auth=" + authToken);
             //-- Delegate Modeling to Validate Server Certificate --//
-            ServicePointManager.ServerCertificateValidationCallback += delegate(
+            ServicePointManager.ServerCertificateValidationCallback += delegate (
                         object
                         sender,
                         System.Security.Cryptography.X509Certificates.X509Certificate
@@ -156,20 +156,20 @@ namespace AccuIT.BusinessLayer.IC
 
                 WebRequest tRequest;
                 tRequest = WebRequest.Create(AppUtil.GetAppSettings(AspectEnums.ConfigKeys.GoogleAndroidMessageURL));
-                tRequest.Method = "POST";                
+                tRequest.Method = "POST";
                 tRequest.ContentType = "application/json";
                 tRequest.Headers.Add(string.Format("Authorization: key={0}", GoogleAppID));
-                
+
                 tRequest.Headers.Add("Sender", senderID);
                 string collapseKey = Guid.NewGuid().ToString();
                 NotificationBody = NotificationBody.Replace("\\r\\n", "\r\n");
                 string postData = "{ \"collapse_key\": \"" + collapseKey + "\"," +
                        "\"time_to_live\": 108, " +
                        "\"delay_while_idle\": true, " +
-                       "\"data\": {\"message\":[{\"NotificationType\":1,\"NotificationData\":{\"Title\":\"" + NotificationTitle + "\", \"Body\":\"" + System.Web.HttpUtility.HtmlEncode(NotificationBody).Replace("\r\n","<br>").Replace(" ","&nbsp;") + "\"}}]," +
+                       "\"data\": {\"message\":[{\"NotificationType\":1,\"NotificationData\":{\"Title\":\"" + NotificationTitle + "\", \"Body\":\"" + System.Web.HttpUtility.HtmlEncode(NotificationBody).Replace("\r\n", "<br>").Replace(" ", "&nbsp;") + "\"}}]," +
                        "\"time\":\"" + System.DateTime.Now.ToString() + "\"}," +
                        "\"registration_ids\":[" + Registration_IDsJSON + "]}";
-                
+
                 Byte[] byteArray = Encoding.UTF8.GetBytes(postData);
                 tRequest.ContentLength = byteArray.Length;
 
@@ -187,7 +187,7 @@ namespace AccuIT.BusinessLayer.IC
                     reader.Close();
                     //dataStream.Close();
                     tResponse.Close();
-                    ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);                    
+                    ActivityLog.SetLog(serverResponse + " - " + AppVariables.AppLogTraceCategoryName.DiskFiles, LogLoc.DEBUG);
                     return serverResponse;
                 }
                 catch (WebException webEx)
@@ -197,11 +197,11 @@ namespace AccuIT.BusinessLayer.IC
                 if (tResponse == null) return null;
                 System.IO.StreamReader sr = new System.IO.StreamReader(tResponse.GetResponseStream());
                 serverResponse = sr.ReadToEnd().Trim();
-                ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.SetLog(serverResponse + " - " + AppVariables.AppLogTraceCategoryName.DiskFiles, LogLoc.DEBUG);
             }
             catch (Exception ex)
             {
-                ActivityLog.WriteLogWithCategory(ex.Message, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.SetLog(ex.Message + " - "+ AppVariables.AppLogTraceCategoryName.DiskFiles, LogLoc.ERROR);
                 serverResponse = ex.Message;
             }
             return serverResponse;
@@ -218,7 +218,7 @@ namespace AccuIT.BusinessLayer.IC
                 tRequest = WebRequest.Create(AppUtil.GetAppSettings(AspectEnums.ConfigKeys.GoogleAndroidMessageURL));
                 tRequest.Method = "POST";
                 tRequest.ContentType = "application/x-www-form-urlencoded";
-                
+
                 tRequest.Headers.Add(string.Format("Authorization: key={0}", GoogleAppID));
                 //tRequest.Headers.Add(string.Format("project_id: direct-shelter-478"));
                 //tRequest.Headers.Add(string.Format("Sender:{0}", "716824367280"));
@@ -246,7 +246,7 @@ namespace AccuIT.BusinessLayer.IC
                     reader.Close();
                     //dataStream.Close();
                     tResponse.Close();
-                    ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                    ActivityLog.SetLog(serverResponse + " - "+ AppVariables.AppLogTraceCategoryName.DiskFiles, LogLoc.DEBUG);
                     //serverResponse = "Success";
                     return serverResponse;
                 }
@@ -257,11 +257,11 @@ namespace AccuIT.BusinessLayer.IC
                 if (tResponse == null) return null;
                 System.IO.StreamReader sr = new System.IO.StreamReader(tResponse.GetResponseStream());
                 serverResponse = sr.ReadToEnd().Trim();
-                ActivityLog.WriteLogWithCategory(serverResponse, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.SetLog(serverResponse +" - "+ AppVariables.AppLogTraceCategoryName.DiskFiles, LogLoc.DEBUG);
             }
             catch (Exception ex)
             {
-                ActivityLog.WriteLogWithCategory(ex.Message, AppVariables.AppLogTraceCategoryName.DiskFiles);
+                ActivityLog.SetLog(ex.Message +" - "+ AppVariables.AppLogTraceCategoryName.DiskFiles, LogLoc.DEBUG);
                 serverResponse = ex.Message;
             }
             return serverResponse;
@@ -282,7 +282,7 @@ namespace AccuIT.BusinessLayer.IC
 
         public void QueueNotification(long userID, string notificationHeader, string notificationMessage, AspectEnums.NotificationType notificationType)
         {
-            
+
         }
     }
 }

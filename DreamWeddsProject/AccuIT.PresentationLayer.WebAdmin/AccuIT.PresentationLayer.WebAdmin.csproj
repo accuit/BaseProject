@@ -26,6 +26,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -8872,10 +8874,6 @@
     <ProjectReference Include="..\AccuIT.CommonLayer.Aspects\AccuIT.CommonLayer.Aspects.csproj">
       <Project>{68be71aa-a80e-4516-9547-f811ab594b71}</Project>
       <Name>AccuIT.CommonLayer.Aspects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccuIT.CommonLayer.AuditLog\AccuIT.CommonLayer.AuditLog.csproj">
-      <Project>{518fd54b-a499-4650-b0d0-332f26652a78}</Project>
-      <Name>AccuIT.CommonLayer.AuditLog</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccuIT.CommonLayer.Resources\AccuIT.CommonLayer.Resources.csproj">
       <Project>{be2eb692-f383-4e77-9b13-2c9d90142ca8}</Project>

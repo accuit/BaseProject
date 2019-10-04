@@ -37,7 +37,7 @@ namespace AccuIT.CommonLayer.Aspects.Utilities
             catch (Exception ex)
             {
                 value = string.Empty;
-                ActivityLog.WriteLog(ex.Message);
+                ActivityLog.SetLog(ex.Message, LogLoc.ERROR);
 
             }
             return value;
@@ -59,7 +59,7 @@ namespace AccuIT.CommonLayer.Aspects.Utilities
             catch (Exception ex)
             {
                 value = string.Empty;
-                ActivityLog.WriteLog(ex.Message);
+                ActivityLog.SetLog(ex.Message, LogLoc.ERROR);
 
             }
             return value;

@@ -13,7 +13,7 @@ using System.Data.Objects;
 using System.Web;
 using System.Net.NetworkInformation;
 using System.Net;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 using System.Reflection;
 
 

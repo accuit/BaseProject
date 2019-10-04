@@ -133,10 +133,6 @@
       <Project>{68be71aa-a80e-4516-9547-f811ab594b71}</Project>
       <Name>AccuIT.CommonLayer.Aspects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccuIT.CommonLayer.AuditLog\AccuIT.CommonLayer.AuditLog.csproj">
-      <Project>{518fd54b-a499-4650-b0d0-332f26652a78}</Project>
-      <Name>AccuIT.CommonLayer.AuditLog</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccuIT.CommonLayer.EntityMapper\AccuIT.CommonLayer.EntityMapper.csproj">
       <Project>{c85c0efd-914f-4be5-a865-74a67f052d05}</Project>
       <Name>AccuIT.CommonLayer.EntityMapper</Name>

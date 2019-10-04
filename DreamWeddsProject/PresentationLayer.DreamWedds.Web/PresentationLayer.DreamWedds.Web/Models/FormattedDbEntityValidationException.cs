@@ -4,7 +4,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Web;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 
 namespace PresentationLayer.DreamWedds.Web.Models
 {

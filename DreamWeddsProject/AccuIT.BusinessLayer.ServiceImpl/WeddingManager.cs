@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AccuIT.CommonLayer.EntityMapper;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 
 namespace AccuIT.BusinessLayer.ServiceImpl
 {

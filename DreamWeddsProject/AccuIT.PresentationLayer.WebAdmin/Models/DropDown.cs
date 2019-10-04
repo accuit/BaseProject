@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 using AccuIT.CommonLayer.Aspects.DTO;
 
 
@@ -96,7 +96,7 @@ namespace AccuIT.PresentationLayer.WebAdmin.Models
             master.Add(new SelectListItem() { Text = "--Select--", Value = "-1" });
             master = GetCSVEnumsList<AspectEnums.enumExcelType>().ToList();
 
-            CommonLayer.Log.ActivityLog.SetLog("GetCSVMastersList completed", LogLoc.DEBUG);
+           ActivityLog.SetLog("GetCSVMastersList completed", LogLoc.DEBUG);
 
             return master;
         }

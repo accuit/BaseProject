@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 using AccuIT.CommonLayer.Aspects.Utilities;
 using AccuIT.BusinessLayer.Services.BO;
 using AccuIT.CommonLayer.Aspects.DTO;

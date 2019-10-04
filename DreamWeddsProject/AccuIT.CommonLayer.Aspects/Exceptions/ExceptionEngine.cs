@@ -39,7 +39,7 @@ namespace AccuIT.CommonLayer.Aspects.Exceptions
             }
             catch (Exception ex)
             {
-                ActivityLog.WriteLog(ex.Message);
+                ActivityLog.SetLog(ex.Message, LogLoc.DEBUG);
             }
         }
 

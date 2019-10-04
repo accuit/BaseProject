@@ -14,7 +14,7 @@ using System.Web;
 using System.Net.NetworkInformation;
 using System.Net;
 using AccuIT.BusinessLayer.Services.BO;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 
 namespace AccuIT.PersistenceLayer.Data.Impl
 {

@@ -3,7 +3,7 @@ using AccuIT.BusinessLayer.Services.Contracts;
 using AccuIT.CommonLayer.AopContainer;
 using AccuIT.CommonLayer.Aspects.DTO;
 using AccuIT.CommonLayer.Aspects.Utilities;
-using AccuIT.CommonLayer.Log;
+using AccuIT.CommonLayer.Aspects.Logging;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

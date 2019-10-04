@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BatchFramework", "BatchFramework", "{7B1E48B6-45DC-4545-9135-49BDEDECB4B3}"
 EndProject
@@ -48,8 +48,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer.DreamWedd
 		{65F44BDC-99F1-4062-8345-8E45D970D497} = {65F44BDC-99F1-4062-8345-8E45D970D497}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuIT.CommonLayer.AuditLog", "AccuIT.CommonLayer.AuditLog\AccuIT.CommonLayer.AuditLog.csproj", "{518FD54B-A499-4650-B0D0-332F26652A78}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuIT.PresentationLayer.WebAdmin", "AccuIT.PresentationLayer.WebAdmin\AccuIT.PresentationLayer.WebAdmin.csproj", "{2A45A0E6-691B-4911-844C-B21428B0005E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{65F44BDC-99F1-4062-8345-8E45D970D497} = {65F44BDC-99F1-4062-8345-8E45D970D497}
@@ -58,113 +56,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuIT.PresentationLayer.ServiceApp", "AccuIT.PresentationLayer.ServiceApp\AccuIT.PresentationLayer.ServiceApp.csproj", "{65F44BDC-99F1-4062-8345-8E45D970D497}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 17
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://dream-wedds.visualstudio.com/
-		SccProjectUniqueName0 = ServiceUnitTest\\ServiceUnitTest.csproj
-		SccProjectTopLevelParentUniqueName0 = DreamWeddsProject.sln
-		SccProjectName0 = ServiceUnitTest
-		SccAuxPath0 = https://dream-wedds.visualstudio.com
-		SccLocalPath0 = ServiceUnitTest
-		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName1 = AccuIT.BusinessLayer.Base\\AccuIT.BusinessLayer.Base.csproj
-		SccProjectTopLevelParentUniqueName1 = DreamWeddsProject.sln
-		SccProjectName1 = AccuIT.BusinessLayer.Base
-		SccAuxPath1 = https://dream-wedds.visualstudio.com
-		SccLocalPath1 = AccuIT.BusinessLayer.Base
-		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName2 = AccuIT.BusinessLayer.ServiceImpl\\AccuIT.BusinessLayer.ServiceImpl.csproj
-		SccProjectTopLevelParentUniqueName2 = DreamWeddsProject.sln
-		SccProjectName2 = AccuIT.BusinessLayer.ServiceImpl
-		SccAuxPath2 = https://dream-wedds.visualstudio.com
-		SccLocalPath2 = AccuIT.BusinessLayer.ServiceImpl
-		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName3 = AccuIT.BusinessLayer.Services\\AccuIT.BusinessLayer.Services.csproj
-		SccProjectTopLevelParentUniqueName3 = DreamWeddsProject.sln
-		SccProjectName3 = AccuIT.BusinessLayer.Services
-		SccAuxPath3 = https://dream-wedds.visualstudio.com
-		SccLocalPath3 = AccuIT.BusinessLayer.Services
-		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName4 = AccuIT.CommonLayer.AopContainer\\AccuIT.CommonLayer.AopContainer.csproj
-		SccProjectTopLevelParentUniqueName4 = DreamWeddsProject.sln
-		SccProjectName4 = AccuIT.CommonLayer.AopContainer
-		SccAuxPath4 = https://dream-wedds.visualstudio.com
-		SccLocalPath4 = AccuIT.CommonLayer.AopContainer
-		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName5 = AccuIT.CommonLayer.AopRegistrations\\AccuIT.CommonLayer.AopRegistrations.csproj
-		SccProjectTopLevelParentUniqueName5 = DreamWeddsProject.sln
-		SccProjectName5 = AccuIT.CommonLayer.AopRegistrations
-		SccAuxPath5 = https://dream-wedds.visualstudio.com
-		SccLocalPath5 = AccuIT.CommonLayer.AopRegistrations
-		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName6 = AccuIT.CommonLayer.Aspects\\AccuIT.CommonLayer.Aspects.csproj
-		SccProjectTopLevelParentUniqueName6 = DreamWeddsProject.sln
-		SccProjectName6 = AccuIT.CommonLayer.Aspects
-		SccAuxPath6 = https://dream-wedds.visualstudio.com
-		SccLocalPath6 = AccuIT.CommonLayer.Aspects
-		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName7 = AccuIT.CommonLayer.EntityMapper\\AccuIT.CommonLayer.EntityMapper.csproj
-		SccProjectTopLevelParentUniqueName7 = DreamWeddsProject.sln
-		SccProjectName7 = AccuIT.CommonLayer.EntityMapper
-		SccAuxPath7 = https://dream-wedds.visualstudio.com
-		SccLocalPath7 = AccuIT.CommonLayer.EntityMapper
-		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName8 = AccuIT.CommonLayer.Resources\\AccuIT.CommonLayer.Resources.csproj
-		SccProjectTopLevelParentUniqueName8 = DreamWeddsProject.sln
-		SccProjectName8 = AccuIT.CommonLayer.Resources
-		SccAuxPath8 = https://dream-wedds.visualstudio.com
-		SccLocalPath8 = AccuIT.CommonLayer.Resources
-		SccProvider8 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName9 = AccuIT.PersistenceLayer.Data\\AccuIT.PersistenceLayer.Data.csproj
-		SccProjectTopLevelParentUniqueName9 = DreamWeddsProject.sln
-		SccProjectName9 = AccuIT.PersistenceLayer.Data
-		SccAuxPath9 = https://dream-wedds.visualstudio.com
-		SccLocalPath9 = AccuIT.PersistenceLayer.Data
-		SccProvider9 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName10 = AccuIT.PersistenceLayer.Repository\\AccuIT.PersistenceLayer.Repository.csproj
-		SccProjectTopLevelParentUniqueName10 = DreamWeddsProject.sln
-		SccProjectName10 = AccuIT.PersistenceLayer.Repository
-		SccAuxPath10 = https://dream-wedds.visualstudio.com
-		SccLocalPath10 = AccuIT.PersistenceLayer.Repository
-		SccProvider10 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName11 = AccuIT.BusinessLayer.IC\\AccuIT.BusinessLayer.IC.csproj
-		SccProjectTopLevelParentUniqueName11 = DreamWeddsProject.sln
-		SccProjectName11 = AccuIT.BusinessLayer.IC
-		SccAuxPath11 = https://dream-wedds.visualstudio.com
-		SccLocalPath11 = AccuIT.BusinessLayer.IC
-		SccProvider11 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName12 = AccuIT.PresentationLayer.ServiceImpl\\AccuIT.PresentationLayer.ServiceImpl.csproj
-		SccProjectTopLevelParentUniqueName12 = DreamWeddsProject.sln
-		SccProjectName12 = AccuIT.PresentationLayer.ServiceImpl
-		SccAuxPath12 = https://dream-wedds.visualstudio.com
-		SccLocalPath12 = AccuIT.PresentationLayer.ServiceImpl
-		SccProvider12 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName13 = PresentationLayer.DreamWedds.Web\\PresentationLayer.DreamWedds.Web\\PresentationLayer.DreamWedds.Web.csproj
-		SccProjectTopLevelParentUniqueName13 = DreamWeddsProject.sln
-		SccProjectName13 = PresentationLayer.DreamWedds.Web/PresentationLayer.DreamWedds.Web
-		SccAuxPath13 = https://dream-wedds.visualstudio.com
-		SccLocalPath13 = PresentationLayer.DreamWedds.Web\\PresentationLayer.DreamWedds.Web
-		SccProvider13 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName14 = AccuIT.CommonLayer.AuditLog\\AccuIT.CommonLayer.AuditLog.csproj
-		SccProjectTopLevelParentUniqueName14 = DreamWeddsProject.sln
-		SccProjectName14 = AccuIT.CommonLayer.AuditLog
-		SccAuxPath14 = https://dream-wedds.visualstudio.com
-		SccLocalPath14 = AccuIT.CommonLayer.AuditLog
-		SccProvider14 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName15 = AccuIT.PresentationLayer.WebAdmin\\AccuIT.PresentationLayer.WebAdmin.csproj
-		SccProjectTopLevelParentUniqueName15 = DreamWeddsProject.sln
-		SccProjectName15 = AccuIT.PresentationLayer.WebAdmin
-		SccAuxPath15 = https://dream-wedds.visualstudio.com
-		SccLocalPath15 = AccuIT.PresentationLayer.WebAdmin
-		SccProvider15 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName16 = AccuIT.PresentationLayer.ServiceApp\\AccuIT.PresentationLayer.ServiceApp.csproj
-		SccProjectTopLevelParentUniqueName16 = DreamWeddsProject.sln
-		SccProjectName16 = AccuIT.PresentationLayer.ServiceApp
-		SccAuxPath16 = https://dream-wedds.visualstudio.com
-		SccLocalPath16 = AccuIT.PresentationLayer.ServiceApp
-		SccProvider16 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -334,14 +225,6 @@ Global
 		{B48120D0-35D4-4651-B96A-6F36EFDE2997}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B48120D0-35D4-4651-B96A-6F36EFDE2997}.Release|x64.ActiveCfg = Release|Any CPU
 		{B48120D0-35D4-4651-B96A-6F36EFDE2997}.Release|x86.ActiveCfg = Release|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Release|x64.ActiveCfg = Release|Any CPU
-		{518FD54B-A499-4650-B0D0-332F26652A78}.Release|x86.ActiveCfg = Release|Any CPU
 		{2A45A0E6-691B-4911-844C-B21428B0005E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A45A0E6-691B-4911-844C-B21428B0005E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A45A0E6-691B-4911-844C-B21428B0005E}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -367,22 +250,24 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{4D2CFE6D-7CE6-4A1D-B18C-00E18DD3C13E} = {05ACA57B-D686-44D7-9A70-8E5105792F7D}
 		{2E0033C2-DC90-42DD-949A-A06715153582} = {E38B0BA2-AAF2-470B-B744-4255D970D07A}
 		{1E19237F-B4B4-4320-864D-BC0568C1EDA6} = {E38B0BA2-AAF2-470B-B744-4255D970D07A}
 		{1F2D0A83-D105-4790-B5E8-90FC5A648102} = {E38B0BA2-AAF2-470B-B744-4255D970D07A}
-		{62F1F9B2-038F-4CE1-BC16-690472FB1EF5} = {E38B0BA2-AAF2-470B-B744-4255D970D07A}
 		{99F5F4CF-72A6-48C0-8071-63088E82B8ED} = {13EF3860-AC98-4195-A3F2-4A9BC8061956}
 		{EE3288AD-6B40-4AD3-8E2E-22959C9F9A14} = {13EF3860-AC98-4195-A3F2-4A9BC8061956}
 		{68BE71AA-A80E-4516-9547-F811AB594B71} = {13EF3860-AC98-4195-A3F2-4A9BC8061956}
 		{C85C0EFD-914F-4BE5-A865-74A67F052D05} = {13EF3860-AC98-4195-A3F2-4A9BC8061956}
 		{BE2EB692-F383-4E77-9B13-2C9D90142CA8} = {13EF3860-AC98-4195-A3F2-4A9BC8061956}
-		{518FD54B-A499-4650-B0D0-332F26652A78} = {13EF3860-AC98-4195-A3F2-4A9BC8061956}
 		{1204A677-1753-4B3C-A99F-75DABDF6339D} = {EDCDE835-4CB2-48C1-A650-E837198BC817}
 		{9823FDB3-58BC-4962-A647-9574E50ED330} = {EDCDE835-4CB2-48C1-A650-E837198BC817}
+		{62F1F9B2-038F-4CE1-BC16-690472FB1EF5} = {E38B0BA2-AAF2-470B-B744-4255D970D07A}
 		{07A795FF-CCCE-41A7-BE27-6B8EC3CDD57E} = {B7E00FF9-5A6E-40BE-8A19-368F0904B4CC}
 		{B48120D0-35D4-4651-B96A-6F36EFDE2997} = {B7E00FF9-5A6E-40BE-8A19-368F0904B4CC}
 		{2A45A0E6-691B-4911-844C-B21428B0005E} = {B7E00FF9-5A6E-40BE-8A19-368F0904B4CC}
 		{65F44BDC-99F1-4062-8345-8E45D970D497} = {B7E00FF9-5A6E-40BE-8A19-368F0904B4CC}
-		{4D2CFE6D-7CE6-4A1D-B18C-00E18DD3C13E} = {05ACA57B-D686-44D7-9A70-8E5105792F7D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83DBD243-B049-4D96-BC15-D7AADBF4F5C8}
 	EndGlobalSection
 EndGlobal
