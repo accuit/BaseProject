@@ -22,7 +22,7 @@ namespace AccuIT.BusinessLayer.ServiceImpl
         /// <summary>
         /// 
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.SECURITY_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.SECURITY_REPOSITORY)]
         public ISecurityRepository SecurityRepository { get; set; }
 
         #endregion

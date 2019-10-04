@@ -4,7 +4,6 @@ using AccuIT.BusinessLayer.Services.Contracts;
 using AccuIT.CommonLayer.Aspects.DTO;
 using AccuIT.PersistenceLayer.Repository.Contracts;
 using AccuIT.PersistenceLayer.Repository.Entities;
-#region Namespace Added for Role Master :Dhiraj 3-Dec-2013
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
@@ -18,7 +17,6 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using AccuIT.CommonLayer.EntityMapper;
 using System.Data;
-#endregion
 
 namespace AccuIT.BusinessLayer.ServiceImpl
 {
@@ -32,13 +30,13 @@ namespace AccuIT.BusinessLayer.ServiceImpl
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(AccuIT.BusinessLayer.Base.ServiceBase.ContainerDataLayerInstanceNames.SYSTEM_REPOSITORY)]
+        [Unity.Dependency(AccuIT.BusinessLayer.Base.ServiceBase.ContainerDataLayerInstanceNames.SYSTEM_REPOSITORY)]
         public ISystemRepository SystemRepository { get; set; }
 
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(AccuIT.BusinessLayer.Base.ServiceBase.ContainerDataLayerInstanceNames.EMP_REPOSITORY)]
+        [Unity.Dependency(AccuIT.BusinessLayer.Base.ServiceBase.ContainerDataLayerInstanceNames.EMP_REPOSITORY)]
         public IUserRepository UserRepository { get; set; }
 
         #endregion

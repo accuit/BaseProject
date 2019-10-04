@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
 using System.Transactions;
-using Microsoft.Practices.Unity.InterceptionExtension;
 using AccuIT.CommonLayer.Aspects.Utilities;
-using AccuIT.CommonLayer.Aspects.Utilities;
-
+using Unity.Interception.PolicyInjection.MatchingRules;
+using Unity.Interception.PolicyInjection.Pipeline;
 
 namespace AccuIT.CommonLayer.Aspects.Annotations
 {

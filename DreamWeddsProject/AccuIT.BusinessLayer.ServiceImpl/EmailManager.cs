@@ -22,19 +22,19 @@ namespace AccuIT.BusinessLayer.ServiceImpl
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.EMP_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.EMP_REPOSITORY)]
         public IUserRepository EmpRepository { get; set; }
 
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.EMAIL_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.EMAIL_REPOSITORY)]
         public IEmailRepository EmailRepository { get; set; }
 
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.SYSTEM_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.SYSTEM_REPOSITORY)]
         public ISystemRepository SystemRepository { get; set; }
 
         #endregion

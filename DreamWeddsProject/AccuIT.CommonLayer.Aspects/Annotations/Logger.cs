@@ -2,7 +2,9 @@
 using System.Reflection;
 using AccuIT.CommonLayer.Aspects.Logging;
 using AccuIT.CommonLayer.Aspects.Utilities;
-using Microsoft.Practices.Unity.InterceptionExtension;
+using Unity;
+using Unity.Interception.PolicyInjection.MatchingRules;
+using Unity.Interception.PolicyInjection.Pipeline;
 
 namespace AccuIT.CommonLayer.Aspects.Annotations
 {

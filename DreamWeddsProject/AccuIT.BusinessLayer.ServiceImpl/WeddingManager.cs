@@ -23,19 +23,19 @@ namespace AccuIT.BusinessLayer.ServiceImpl
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.EMP_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.EMP_REPOSITORY)]
         public IUserRepository UserRepository { get; set; }
 
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.SYSTEM_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.SYSTEM_REPOSITORY)]
         public ISystemRepository SystemRepository { get; set; }
 
         /// <summary>
         /// Property to inject the user persistence layer object invocation
         /// </summary>
-        [Microsoft.Practices.Unity.Dependency(ContainerDataLayerInstanceNames.WEDDING_REPOSITORY)]
+        [Unity.Dependency(ContainerDataLayerInstanceNames.WEDDING_REPOSITORY)]
         public IWeddingRepository WeddingRepository { get; set; }
 
         public static List<CommonSetupBO> CommonFields { get; set; }

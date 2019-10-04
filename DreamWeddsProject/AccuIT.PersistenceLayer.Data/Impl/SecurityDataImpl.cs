@@ -38,7 +38,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                 else
                 {
                     ObjOTP.Attempts = ++MaxAttUserts;
-                    AccuitAdminDbContext.Entry<OTPMaster>(ObjOTP).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<OTPMaster>(ObjOTP).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges(); // TBD
                     return false;
                 }
@@ -62,7 +62,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
             // Use this validation to restrict user to generate multiple OTPs
             if (ValidateUser(otp.UserID, AspectEnums.UserValidationType.LastAttemptDuration))
             {
-                AccuitAdminDbContext.Entry<OTPMaster>(otp).State = System.Data.EntityState.Added;
+                AccuitAdminDbContext.Entry<OTPMaster>(otp).State = System.Data.Entity.EntityState.Added;
                 IsSuccess = AccuitAdminDbContext.SaveChanges() > 0;
             }
             return IsSuccess;
@@ -234,7 +234,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                 user.AccountStatus = (int)AspectEnums.UserLoginStatus.Active;
                 user.ModifiedDate = DateTime.Now;
                 user.ModifiedBy = objOTP.UserID;
-                AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.Entity.EntityState.Modified;
                 //Delete all previous OTPs
                 foreach (var o in AccuitAdminDbContext.OTPMasters.Where(k => k.UserID == user.UserID))
                     AccuitAdminDbContext.OTPMasters.Remove(o);
@@ -251,7 +251,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
             user.AccountStatus = (int)AspectEnums.UserLoginStatus.Active;
             user.ModifiedDate = DateTime.Now;
             user.ModifiedBy = UserID;
-            AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.EntityState.Modified;
+            AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.Entity.EntityState.Modified;
             //Delete all previous OTPs
             return AccuitAdminDbContext.SaveChanges() > 0;
         }

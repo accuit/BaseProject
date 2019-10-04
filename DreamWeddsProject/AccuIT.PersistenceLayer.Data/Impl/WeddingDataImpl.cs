@@ -15,6 +15,7 @@ using System.Net.NetworkInformation;
 using System.Net;
 using AccuIT.BusinessLayer.Services.BO;
 using AccuIT.CommonLayer.Aspects.Logging;
+using System.Data.Entity;
 
 namespace AccuIT.PersistenceLayer.Data.Impl
 {
@@ -116,14 +117,14 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                 venue.ModifiedBy = UserID;
                 venue.IsActive = false;
                 venue.ModifiedDate = DateTime.Now;
-                AccuitAdminDbContext.Entry<Venue>(venue).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<Venue>(venue).State = EntityState.Modified;
             }
             var weddingEvent = AccuitAdminDbContext.WeddingEvents.Where(x => x.WeddingEventID == eventID).FirstOrDefault();
             weddingEvent.IsDeleted = true;
             weddingEvent.IsActive = false;
             weddingEvent.ModifiedBy = UserID;
             weddingEvent.ModifiedDate = DateTime.Now;
-            AccuitAdminDbContext.Entry<WeddingEvent>(weddingEvent).State = System.Data.EntityState.Modified;
+            AccuitAdminDbContext.Entry<WeddingEvent>(weddingEvent).State = EntityState.Modified;
             return AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         }
 
@@ -195,7 +196,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                 else
                 {
                     OrderMaster myOrder = AccuitAdminDbContext.OrderMasters.Where(x => x.OrderID == order.OrderID).FirstOrDefault();
-                    AccuitAdminDbContext.Entry<OrderMaster>(myOrder).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<OrderMaster>(myOrder).State = EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -274,7 +275,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     mywedding.Title = wedding.Title;
                     mywedding.fbPageUrl = wedding.fbPageUrl;
                     mywedding.WeddingStyle = wedding.WeddingStyle;
-                    AccuitAdminDbContext.Entry<Wedding>(mywedding).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<Wedding>(mywedding).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -296,7 +297,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
             {
                 uws = AccuitAdminDbContext.UserWeddingSubscriptions.Where(x => x.UserWeddingSubscrptionID == subscription.UserWeddingSubscrptionID).First();
                 uws.WeddingID = subscription.WeddingID;
-                AccuitAdminDbContext.Entry<UserWeddingSubscription>(uws).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<UserWeddingSubscription>(uws).State = System.Data.Entity.EntityState.Modified;
                 success = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                 scope.Complete();
             }
@@ -336,7 +337,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     myEvent.IsActive = weddevent.IsActive;
                     myEvent.IsDeleted = weddevent.IsDeleted;
                     //myevent.About = weddevent.About;
-                    AccuitAdminDbContext.Entry<WeddingEvent>(myEvent).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<WeddingEvent>(myEvent).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -377,7 +378,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     myVenue.googleMapUrl = venue.googleMapUrl;
                     myVenue.IsActive = venue.IsActive;
                     myVenue.IsDeleted = venue.IsDeleted;
-                    AccuitAdminDbContext.Entry<Venue>(myVenue).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry(myVenue).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -417,7 +418,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     myaddress.VenueID = address.VenueID;
                     myaddress.AddressType = address.AddressType;
                     myaddress.IsDeleted = address.IsDeleted;
-                    AccuitAdminDbContext.Entry<AddressMaster>(myaddress).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry(myaddress).State = EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -461,7 +462,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     bridemaids.instagramUrl = bridemaid.instagramUrl;
                     bridemaids.ModifiedBy = bridemaid.ModifiedBy;
                     bridemaids.IsDeleted = bridemaid.IsDeleted;
-                    AccuitAdminDbContext.Entry<BrideAndMaid>(bridemaids).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<BrideAndMaid>(bridemaids).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -501,7 +502,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     groomMen.googleUrl = groom.googleUrl;
                     groomMen.instagramUrl = groom.instagramUrl;
                     groomMen.IsDeleted = groom.IsDeleted;
-                    AccuitAdminDbContext.Entry<GroomAndMan>(groomMen).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<GroomAndMan>(groomMen).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -537,7 +538,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     tLine.IsDeleted = timeline.IsDeleted;
                     tLine.ModifiedBy = UserID;
                     tLine.Location = timeline.Location;
-                    AccuitAdminDbContext.Entry<TimeLine>(tLine).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<TimeLine>(tLine).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }
@@ -570,7 +571,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     gallry.ImageUrl = gallery.ImageUrl;
                     gallry.IsDeleted = gallery.IsDeleted;
                     gallry.Place = gallery.Place;
-                    AccuitAdminDbContext.Entry<WeddingGallery>(gallry).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<WeddingGallery>(gallry).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     scope.Complete();
                 }

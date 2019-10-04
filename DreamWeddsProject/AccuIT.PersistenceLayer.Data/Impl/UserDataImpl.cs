@@ -387,7 +387,7 @@ new TransactionOptions
             if (history.LoginAttemptID == 0)
                 AccuitAdminDbContext.LoginAttemptHistories.Add(history);
             else
-                AccuitAdminDbContext.Entry<LoginAttemptHistory>(history).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<LoginAttemptHistory>(history).State = System.Data.Entity.EntityState.Modified;
             AccuitAdminDbContext.SaveChanges();
             if (history.FailedAttempt >= 3)
             {
@@ -396,7 +396,7 @@ new TransactionOptions
                 {
                     userDetail.AccountStatus = (int)AspectEnums.UserLoginStatus.Locked;
                     userDetail.ModifiedDate = System.DateTime.Now;
-                    AccuitAdminDbContext.Entry<UserMaster>(userDetail).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<UserMaster>(userDetail).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                 }
             }
@@ -418,7 +418,7 @@ new TransactionOptions
                     {
                         dailyLoginHistory.IsLogin = false;
                         dailyLoginHistory.LogOutTime = System.DateTime.Now;
-                        AccuitAdminDbContext.Entry<DailyLoginHistory>(dailyLoginHistory).State = System.Data.EntityState.Modified;
+                        AccuitAdminDbContext.Entry<DailyLoginHistory>(dailyLoginHistory).State = System.Data.Entity.EntityState.Modified;
                         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                     }
                     scope.Complete();
@@ -450,7 +450,7 @@ new TransactionOptions
                 foreach (var item in dailyLoginHistories)
                 {
                     item.IsLogin = false;
-                    AccuitAdminDbContext.Entry<DailyLoginHistory>(item).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<DailyLoginHistory>(item).State = System.Data.Entity.EntityState.Modified;
                 }
                 isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                 scope.Complete();
@@ -580,7 +580,7 @@ new TransactionOptions
                         user.ModifiedBy = userDetail.UserID;
                         //user.Password = userDetail.Password;
                         //user.AccountStatus = userDetail.AccountStatus;
-                        AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.EntityState.Modified;
+                        AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.Entity.EntityState.Modified;
                         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                     }
                     scope.Complete();
@@ -806,7 +806,7 @@ new TransactionOptions
                     serviceDetail.APIToken = string.Empty;
                     serviceDetail.ModifiedDate = System.DateTime.Now;
                     serviceDetail.ModifiedBy = userID;
-                    AccuitAdminDbContext.Entry<UserServiceAccess>(serviceDetail).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<UserServiceAccess>(serviceDetail).State = System.Data.Entity.EntityState.Modified;
                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                 }
                 scope.Complete();
@@ -987,7 +987,7 @@ new TransactionOptions
         //                device.ModifiedBy = modifiedBy;
         //                device.ModifiedDate = System.DateTime.Now;
         //                device.IsDeleted = true;
-        //                AccuitAdminDbContext.Entry<UserDevice>(device).State = System.Data.EntityState.Modified;
+        //                AccuitAdminDbContext.Entry<UserDevice>(device).State = System.Data.Entity.EntityState.Modified;
         //                return AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //            }
 
@@ -1102,7 +1102,7 @@ new TransactionOptions
         //                    userDetail.AndroidRegistrationId = registrationId;
         //                    userDetail.ModifiedDate = System.DateTime.Now;
         //                    userDetail.ModifiedBy = userID.ToString();
-        //                    AccuitAdminDbContext.Entry<UserMaster>(userDetail).State = System.Data.EntityState.Modified;
+        //                    AccuitAdminDbContext.Entry<UserMaster>(userDetail).State = System.Data.Entity.EntityState.Modified;
 
         //                    isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                }
@@ -1149,14 +1149,14 @@ new TransactionOptions
                     user.ModifiedDate = System.DateTime.Now;
                     user.ModifiedBy = userID;
                     user.AccountStatus = (int)AspectEnums.UserLoginStatus.Active;
-                    AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.Entity.EntityState.Modified;
                     AccuitAdminDbContext.SaveChanges();
                     LoginAttemptHistory history = AccuitAdminDbContext.LoginAttemptHistories.FirstOrDefault(k => k.UserID == userID);
                     if (history != null)
                     {
                         history.LoginDate = System.DateTime.Now;
                         history.FailedAttempt = 0;
-                        AccuitAdminDbContext.Entry<LoginAttemptHistory>(history).State = System.Data.EntityState.Modified;
+                        AccuitAdminDbContext.Entry<LoginAttemptHistory>(history).State = System.Data.Entity.EntityState.Modified;
                         AccuitAdminDbContext.SaveChanges();
                     }
                     scope.Complete();
@@ -1194,7 +1194,7 @@ new TransactionOptions
         //                //        item.IsOfflineProfile = false;
         //                //    else
         //                //        item.IsOfflineProfile = true;
-        //                AccuitAdminDbContext.Entry<UserMaster>(profile).State = System.Data.EntityState.Modified;
+        //                AccuitAdminDbContext.Entry<UserMaster>(profile).State = System.Data.Entity.EntityState.Modified;
         //                ////}
         //            }
 
@@ -1417,7 +1417,7 @@ new TransactionOptions
             }
             else
             {
-                AccuitAdminDbContext.Entry<UserServiceAccess>(serviceData).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<UserServiceAccess>(serviceData).State = System.Data.Entity.EntityState.Modified;
             }
             AccuitAdminDbContext.SaveChanges();
 
@@ -1455,7 +1455,7 @@ new TransactionOptions
             usermaster.AccountStatus = 1;
             // usermaster.IsPinRegistered = true;
             usermaster.ModifiedDate = System.DateTime.Now;
-            AccuitAdminDbContext.Entry<UserMaster>(usermaster).State = System.Data.EntityState.Modified;
+            AccuitAdminDbContext.Entry<UserMaster>(usermaster).State = System.Data.Entity.EntityState.Modified;
             AccuitAdminDbContext.SaveChanges();
         }
 
