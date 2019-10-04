@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -17,6 +18,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,13 +78,18 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\Binaries\WebDll\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,159 +103,65 @@
     <Compile Include="Contracts\ISystemRepository.cs" />
     <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="Contracts\IWeddingRepository.cs" />
-    <Compile Include="Entities\AccuITAdmin.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\AddressMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\AccuITAdminEntities.cs" />
+    <Compile Include="Entities\AddressMaster.cs" />
     <Compile Include="Entities\AnswerAttribute.cs" />
     <Compile Include="Entities\AttendanceExcelData.cs" />
     <Compile Include="Entities\AttendenceReport.cs" />
-    <Compile Include="Entities\BrideAndMaid.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\BrideAndMaid.cs" />
     <Compile Include="Entities\CollectionExport.cs" />
     <Compile Include="Entities\CollectionReport.cs" />
-    <Compile Include="Entities\CommonSetup.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\CompanyMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\CommonSetup.cs" />
+    <Compile Include="Entities\CompanyMaster.cs" />
     <Compile Include="Entities\CompetitionBookedExcel.cs" />
     <Compile Include="Entities\CompetitionBookedReport.cs" />
-    <Compile Include="Entities\DailyLoginHistory.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\DailyLoginHistory.cs" />
     <Compile Include="Entities\DishCompReport.cs" />
     <Compile Include="Entities\DealerList.cs" />
-    <Compile Include="Entities\DreamWeddsBlog.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ECampaign.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\EmailService.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\DreamWeddsBlog.cs" />
+    <Compile Include="Entities\ECampaign.cs" />
+    <Compile Include="Entities\EmailService.cs" />
     <Compile Include="Entities\Emp.cs" />
-    <Compile Include="Entities\ErrorLog.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\FAQ.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\GroomAndMan.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\LoginAttemptHistory.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ModuleMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\OrderDetail.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\OrderMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\OTPMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Permission.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\RoleMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\RoleModule.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\RSVPDetail.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\ErrorLog.cs" />
+    <Compile Include="Entities\FAQ.cs" />
+    <Compile Include="Entities\GroomAndMan.cs" />
+    <Compile Include="Entities\LoginAttemptHistory.cs" />
+    <Compile Include="Entities\ModuleMaster.cs" />
+    <Compile Include="Entities\OrderDetail.cs" />
+    <Compile Include="Entities\OrderMaster.cs" />
+    <Compile Include="Entities\OTPMaster.cs" />
+    <Compile Include="Entities\Permission.cs" />
+    <Compile Include="Entities\RoleMaster.cs" />
+    <Compile Include="Entities\RoleModule.cs" />
+    <Compile Include="Entities\RSVPDetail.cs" />
     <Compile Include="Entities\SecurityAspect.cs" />
-    <Compile Include="Entities\SPCheckAuthentication_Result.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SPGetLoginDetails_Result.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SubscriptionMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SystemSetting.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TemplateImage.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TemplateMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TemplateMergeField.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TemplatePage.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TimeLine.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\UserDevice.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\UserMaster.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\SubscriptionMaster.cs" />
+    <Compile Include="Entities\SystemSetting.cs" />
+    <Compile Include="Entities\TemplateImage.cs" />
+    <Compile Include="Entities\TemplateMaster.cs" />
+    <Compile Include="Entities\TemplateMergeField.cs" />
+    <Compile Include="Entities\TemplatePage.cs" />
+    <Compile Include="Entities\TimeLine.cs" />
+    <Compile Include="Entities\UserDevice.cs" />
+    <Compile Include="Entities\UserMaster.cs" />
     <Compile Include="Entities\UserProfile.cs" />
-    <Compile Include="Entities\UserRole.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\UserRoleModulePermission.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\UserServiceAccess.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\UserSystemSetting.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\UserWeddingSubscription.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Venue.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Entities\UserRoleModulePermission.cs" />
+    <Compile Include="Entities\UserServiceAccess.cs" />
+    <Compile Include="Entities\UserSystemSetting.cs" />
+    <Compile Include="Entities\UserWeddingSubscription.cs" />
+    <Compile Include="Entities\Venue.cs" />
     <Compile Include="Entities\VisitorExport.cs" />
     <Compile Include="Entities\VisitorReport.cs" />
-    <Compile Include="Entities\vwGetUserRoleModule.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\vwGetUserWeddingTemplate.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Wedding.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\WeddingEvent.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\WeddingGallery.cs">
-      <DependentUpon>AccuITAdmin.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\vwGetUserRoleModule.cs" />
+    <Compile Include="Entities\vwGetUserWeddingTemplate.cs" />
+    <Compile Include="Entities\Wedding.cs" />
+    <Compile Include="Entities\WeddingEvent.cs" />
+    <Compile Include="Entities\WeddingGallery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Entities\AccuITAdmin.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AccuITAdmin.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +178,14 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

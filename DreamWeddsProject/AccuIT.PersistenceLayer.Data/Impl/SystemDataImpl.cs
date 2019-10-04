@@ -10,7 +10,6 @@ using System.Transactions;
 using System.Data;
 using System.Data.Objects;
 using System.Web.Caching;
-using AccuIT.PersistenceLayer.Data.EDMX;
 using System.Web;
 using AccuIT.CommonLayer.Aspects.Logging;
 using System.Xml.Linq;
@@ -236,7 +235,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                 myOrder.PaymentTerms = Order.PaymentTerms;
                 myOrder.Discount = Order.Discount;
                 myOrder.OrderStatus = Order.OrderStatus;
-                AccuitAdminDbContext.Entry<OrderMaster>(myOrder).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<OrderMaster>(myOrder).State = System.Data.Entity.EntityState.Modified;
                 Id = AccuitAdminDbContext.SaveChanges();
                 scope.Complete();
             }
@@ -273,7 +272,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                 mySubscription.SubscriptionType = Subscription.SubscriptionType;
                 mySubscription.UpdatedDate = DateTime.Now;
                 mySubscription.ReasonOfUpdate = Subscription.ReasonOfUpdate;
-                AccuitAdminDbContext.Entry<UserWeddingSubscription>(mySubscription).State = System.Data.EntityState.Modified;
+                AccuitAdminDbContext.Entry<UserWeddingSubscription>(mySubscription).State = System.Data.Entity.EntityState.Modified;
                 AccuitAdminDbContext.SaveChanges();
                 scope.Complete();
             }
@@ -345,12 +344,12 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     setting.WeeklyOffDays = systemSetting.WeeklyOffDays;
         //                     setting.ModifiedDate = System.DateTime.Now;
         //                     setting.ModifiedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]);
-        //                     AccuitAdminDbContext.Entry<SystemSetting>(setting).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<SystemSetting>(setting).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //                 else
         //                 {
         //                     systemSetting.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]);
-        //                     AccuitAdminDbContext.Entry<SystemSetting>(systemSetting).State = System.Data.EntityState.Added;
+        //                     AccuitAdminDbContext.Entry<SystemSetting>(systemSetting).State = System.Data.Entity.EntityState.Added;
         //                 }
 
 
@@ -368,7 +367,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                         beatWindowSetting.CoveragePlanSecondWndow = systemSetting.CoveragePlanSecondWndow;
         //                         beatWindowSetting.ModifiedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]);
         //                         beatWindowSetting.ModifyDate = System.DateTime.Now;
-        //                         AccuitAdminDbContext.Entry<BeatWindowSetting>(beatWindowSetting).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<BeatWindowSetting>(beatWindowSetting).State = System.Data.Entity.EntityState.Modified;
         //                     }
         //                     else
         //                     {
@@ -381,7 +380,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                             RoleID = RoleID.Value,
         //                         };
 
-        //                         AccuitAdminDbContext.Entry<BeatWindowSetting>(insertbeatWindowSetting).State = System.Data.EntityState.Added;
+        //                         AccuitAdminDbContext.Entry<BeatWindowSetting>(insertbeatWindowSetting).State = System.Data.Entity.EntityState.Added;
         //                     }
         //                 }
         //                 #endregion
@@ -517,13 +516,13 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     userRoleModulePermissionObj.ModifiedDate = System.DateTime.Now;
                     userRoleModulePermissionObj.ModifiedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
                     userRoleModulePermissionObj.PermissionValue = userRoleModulePermission.PermissionValue;
-                    AccuitAdminDbContext.Entry<UserRoleModulePermission>(userRoleModulePermissionObj).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<UserRoleModulePermission>(userRoleModulePermissionObj).State = System.Data.Entity.EntityState.Modified;
                 }
                 else
                 {
                     userRoleModulePermission.CreatedDate = System.DateTime.Now;
                     userRoleModulePermission.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
-                    AccuitAdminDbContext.Entry<UserRoleModulePermission>(userRoleModulePermission).State = System.Data.EntityState.Added;
+                    AccuitAdminDbContext.Entry<UserRoleModulePermission>(userRoleModulePermission).State = System.Data.Entity.EntityState.Added;
                 }
                 isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
             }
@@ -539,7 +538,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
             bool isSuccess = false;
             if (roleModule != null)
             {
-                AccuitAdminDbContext.Entry<RoleModule>(roleModule).State = System.Data.EntityState.Added;
+                AccuitAdminDbContext.Entry<RoleModule>(roleModule).State = System.Data.Entity.EntityState.Added;
                 isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
             }
             return isSuccess;
@@ -561,7 +560,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     roleModuleExisting.ModifiedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]);
                     roleModuleExisting.IsDeleted = roleModule.IsDeleted;
 
-                    AccuitAdminDbContext.Entry<RoleModule>(roleModuleExisting).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<RoleModule>(roleModuleExisting).State = System.Data.Entity.EntityState.Modified;
                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                 }
                 else
@@ -710,7 +709,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         {
         //             result.IsDeleted = true;
         //             result.IsActive = false;
-        //             AccuitAdminDbContext.Entry<SurveyQuestion>(result).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<SurveyQuestion>(result).State = System.Data.Entity.EntityState.Modified;
         //             if (resultAnswerLst != null)
         //             {
         //                 foreach (var item in resultAnswerLst)
@@ -718,7 +717,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     item.IsActive = false;
         //                     SurveyQuestionAttribute resultAns = AccuitAdminDbContext.SurveyQuestionAttributes.SingleOrDefault(k => k.SurveyOptionID == item.SurveyOptionID);
         //                     resultAns.IsActive = false;
-        //                     AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(resultAns).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(resultAns).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //             }
         //         }
@@ -739,7 +738,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         if (result != null)
         //         {
         //             result.IsActive = true;
-        //             AccuitAdminDbContext.Entry<SurveyQuestion>(result).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<SurveyQuestion>(result).State = System.Data.Entity.EntityState.Modified;
         //         }
         //         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         return isSuccess;
@@ -765,20 +764,20 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     {
         //                         question.IsActive = false;
         //                         question.ModifiedDate = System.DateTime.Now;
-        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.Entity.EntityState.Modified;
         //                         AccuitAdminDbContext.SaveChanges();
         //                         List<SurveyQuestionAttribute> options = AccuitAdminDbContext.SurveyQuestionAttributes.Where(k => k.SurveyQuestionID == surveyQuestion.SurveyQuestionID && k.IsActive).ToList();
         //                         surveyQuestion.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
         //                         surveyQuestion.CreatedDate = System.DateTime.Now;
         //                         surveyQuestion.IsActive = true;
-        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(surveyQuestion).State = System.Data.EntityState.Added;
+        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(surveyQuestion).State = System.Data.Entity.EntityState.Added;
         //                         AccuitAdminDbContext.SaveChanges();
         //                         int questionID = surveyQuestion.SurveyQuestionID;
         //                         foreach (var item in options)
         //                         {
         //                             item.SurveyQuestionID = questionID;
         //                             item.IsActive = true;
-        //                             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(item).State = System.Data.EntityState.Added;
+        //                             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(item).State = System.Data.Entity.EntityState.Added;
         //                             AccuitAdminDbContext.SaveChanges();
         //                             if (answers.Count > 0)
         //                             {
@@ -810,7 +809,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                         question.RepeatMaxTimes = surveyQuestion.RepeatMaxTimes;
         //                         //question.RepeaterTextLength = surveyQuestion.RepeaterTextLength;
         //                         #endregion----------------------------------
-        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.Entity.EntityState.Modified;
         //                         AccuitAdminDbContext.SaveChanges();
         //                         if (answers.Count > 0)
         //                         {
@@ -846,7 +845,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     {
         //                         oldQuestion.IsDeleted = true;
         //                         oldQuestion.ModifiedDate = System.DateTime.Now;
-        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(oldQuestion).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<SurveyQuestion>(oldQuestion).State = System.Data.Entity.EntityState.Modified;
         //                         AccuitAdminDbContext.SaveChanges();
         //                     }
         //                 }
@@ -901,7 +900,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
         //             record.IsMandatory = false;
         //             record.IsDeleted = false;
-        //             AccuitAdminDbContext.Entry<SurveyQuestion>(record).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<SurveyQuestion>(record).State = System.Data.Entity.EntityState.Added;
         //             AccuitAdminDbContext.SaveChanges();
         //             var question = AccuitAdminDbContext.SurveyQuestions.OrderByDescending(k => k.CreatedDate).FirstOrDefault();
 
@@ -913,7 +912,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 answers.Sequence = Convert.ToInt16(item.Sequence);
         //                 answers.IsActive = true;
         //                 record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
-        //                 AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answers).State = System.Data.EntityState.Added;
+        //                 AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answers).State = System.Data.Entity.EntityState.Added;
         //                 AccuitAdminDbContext.SaveChanges();
         //             }
         //             isSuccess = true;
@@ -929,7 +928,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 question.IsActive = false;
         //                 strcreateddate = Convert.ToString(question.CreatedDate);
         //                 strmodifydate = Convert.ToString(question.ModifiedDate);
-        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.Entity.EntityState.Modified;
         //                 AccuitAdminDbContext.SaveChanges();
 
         //                 record.IsActive = true;
@@ -939,7 +938,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 record.ModifiedByUserID = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
         //                 record.IsMandatory = false;
         //                 record.IsDeleted = false;
-        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(record).State = System.Data.EntityState.Added;
+        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(record).State = System.Data.Entity.EntityState.Added;
         //                 AccuitAdminDbContext.SaveChanges();
         //                 var lastquestionID = AccuitAdminDbContext.SurveyQuestions.Where(k => k.SurveyQuestionID == record.SurveyQuestionID).FirstOrDefault();
         //                 List<SurveyQuestionAttribute> answerLst = new List<SurveyQuestionAttribute>();
@@ -951,7 +950,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     {
         //                         item.SurveyQuestionID = lastquestionID.SurveyQuestionID;
 
-        //                         AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(item).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(item).State = System.Data.Entity.EntityState.Modified;
         //                         AccuitAdminDbContext.SaveChanges();
         //                     }
         //                 }
@@ -966,7 +965,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
         //                 record.IsMandatory = false;
         //                 record.IsDeleted = false;
-        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(record).State = System.Data.EntityState.Added;
+        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(record).State = System.Data.Entity.EntityState.Added;
         //                 AccuitAdminDbContext.SaveChanges();
         //             }
         //             var recentCreatedQuestion = AccuitAdminDbContext.SurveyQuestions.Where(k => k.SurveyQuestionID == record.SurveyQuestionID).FirstOrDefault();
@@ -980,7 +979,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     answers.SurveyQuestionID = recentCreatedQuestion.SurveyQuestionID;
         //                     answers.IsActive = true;
         //                     answers.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
-        //                     AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answers).State = System.Data.EntityState.Added;
+        //                     AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answers).State = System.Data.Entity.EntityState.Added;
         //                     AccuitAdminDbContext.SaveChanges();
         //                 }
         //             }
@@ -1003,7 +1002,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
 
         //             feedbackCategoryMaster.FeedbackCategoryName = response.FeedbackCategoryName;
         //             feedbackCategoryMaster.TeamID = response.TeamID;
-        //             AccuitAdminDbContext.Entry<FeedbackCategoryMaster>(response).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<FeedbackCategoryMaster>(response).State = System.Data.Entity.EntityState.Added;
         //             AccuitAdminDbContext.SaveChanges();
 
         //             return true;
@@ -1038,7 +1037,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             record.IsActive = true;
         //             record.CreatedDate = System.DateTime.Now;
         //             record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
-        //             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(record).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(record).State = System.Data.Entity.EntityState.Added;
         //             AccuitAdminDbContext.SaveChanges();
         //             isSuccess = true;
         //         }
@@ -1061,7 +1060,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 answer.Sequence = record.Sequence;
         //                 answer.OptionValue = record.OptionValue;
         //                 answer.IsAffirmative = record.IsAffirmative;
-        //                 AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answer).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answer).State = System.Data.Entity.EntityState.Modified;
         //                 isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                 if (!isOptionTextChanged)
         //                 {
@@ -1075,7 +1074,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             if (!string.IsNullOrEmpty(strcreateddate))
         //                 record.ModifiedDate = DateTime.Now;
         //             record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
-        //             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(record).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(record).State = System.Data.Entity.EntityState.Added;
         //             isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         }
         //         return isSuccess;
@@ -1095,7 +1094,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         {
         //             answer.IsActive = false;
         //             // AccuitAdminDbContext.SurveyQuestionAttributes.Remove(answer);
-        //             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answer).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<SurveyQuestionAttribute>(answer).State = System.Data.Entity.EntityState.Modified;
         //         }
 
         //         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
@@ -1139,7 +1138,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             record.CreatedDate = System.DateTime.Now;
         //             record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
         //             record.IsDeleted = false;
-        //             AccuitAdminDbContext.Entry<Competitor>(record).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<Competitor>(record).State = System.Data.Entity.EntityState.Added;
         //             isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         }
         //         else
@@ -1151,14 +1150,14 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 {
         //                     competitor.IsDeleted = true;
         //                     competitor.ModifiedDate = System.DateTime.Now;
-        //                     AccuitAdminDbContext.Entry<Competitor>(competitor).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<Competitor>(competitor).State = System.Data.Entity.EntityState.Modified;
         //                     AccuitAdminDbContext.SaveChanges();
         //                     record.CreatedDate = competitor.CreatedDate;
         //                     record.IsActive = true;
         //                     record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]); //added by vaishali on 23 Feb 2014
         //                     record.ModifiedDate = System.DateTime.Now;
         //                     record.IsDeleted = false;
-        //                     AccuitAdminDbContext.Entry<Competitor>(record).State = System.Data.EntityState.Added;
+        //                     AccuitAdminDbContext.Entry<Competitor>(record).State = System.Data.Entity.EntityState.Added;
         //                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                 }
         //             }
@@ -1182,7 +1181,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         if (result != null)
         //         {
         //             result.IsDeleted = true;
-        //             AccuitAdminDbContext.Entry<Competitor>(result).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<Competitor>(result).State = System.Data.Entity.EntityState.Modified;
         //         }
 
         //         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
@@ -1272,13 +1271,13 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 if (channels.Any(x => x == item.ChannelID))
         //                 {
         //                     item.IsForExclusion = true;
-        //                     AccuitAdminDbContext.Entry<ChannelMaster>(item).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<ChannelMaster>(item).State = System.Data.Entity.EntityState.Modified;
 
         //                 }
         //                 else
         //                 {
         //                     item.IsForExclusion = false;
-        //                     AccuitAdminDbContext.Entry<ChannelMaster>(item).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<ChannelMaster>(item).State = System.Data.Entity.EntityState.Modified;
         //                 }
 
 
@@ -1316,11 +1315,11 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 foreach (var ch in LstApk)
         //                 {
         //                     ch.IsLatest = false;
-        //                     AccuitAdminDbContext.Entry<APKMaintainance>(ch).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<APKMaintainance>(ch).State = System.Data.Entity.EntityState.Modified;
         //                     isSucess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                 }
         //             }
-        //             AccuitAdminDbContext.Entry<APKMaintainance>(record).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<APKMaintainance>(record).State = System.Data.Entity.EntityState.Added;
         //             return AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
 
 
@@ -1341,7 +1340,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
                     record.CreatedDate = System.DateTime.Now;
                     record.CreatedBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]);
                     record.IsDeleted = false;
-                    AccuitAdminDbContext.Entry<ModuleMaster>(record).State = System.Data.EntityState.Added;
+                    AccuitAdminDbContext.Entry<ModuleMaster>(record).State = System.Data.Entity.EntityState.Added;
                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                 }
             }
@@ -1368,7 +1367,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
 
                     module.PageURL = record.PageURL;
 
-                    AccuitAdminDbContext.Entry<ModuleMaster>(module).State = System.Data.EntityState.Modified;
+                    AccuitAdminDbContext.Entry<ModuleMaster>(module).State = System.Data.Entity.EntityState.Modified;
                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
                 }
                 else
@@ -1415,25 +1414,25 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 {
         //                     item.IsReportProfile = true;
 
-        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //                 else
         //                 {
         //                     item.IsReportProfile = false;
 
-        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //                 if (ISEffective.Any(x => x == item.RoleID))
         //                 {
         //                     item.IsEffectiveProfile = true;
 
-        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //                 else
         //                 {
         //                     item.IsEffectiveProfile = false;
 
-        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<RoleMaster>(item).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //             }
         //             AccuitAdminDbContext.SaveChanges();
@@ -1457,7 +1456,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             role.IsGeoTagMandate = item.IsGeoTagMandate;
         //             role.IsGeoPhotoMandate = item.IsGeoPhotoMandate;
         //             role.IsStoreProfileVisible = item.IsStoreProfileVisible;
-        //             AccuitAdminDbContext.Entry<RoleMaster>(role).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<RoleMaster>(role).State = System.Data.Entity.EntityState.Modified;
         //         }
 
         //         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
@@ -1480,7 +1479,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         objRoles.ShowPerformanceTab = lstRoleMaster.ShowPerformanceTab;
         //         objRoles.IsRaceProfile = lstRoleMaster.IsRaceProfile;
         //         #endregion------------------------------
-        //         AccuitAdminDbContext.Entry<RoleMaster>(objRoles).State = System.Data.EntityState.Modified;
+        //         AccuitAdminDbContext.Entry<RoleMaster>(objRoles).State = System.Data.Entity.EntityState.Modified;
         //         isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         return isSuccess;
         //     }
@@ -1502,7 +1501,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 {
         //                     module.ModifiedDate = System.DateTime.Now;
         //                     module.IsDeleted = true;
-        //                     AccuitAdminDbContext.Entry<Module>(module).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<Module>(module).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //             }
         //             AccuitAdminDbContext.SaveChanges();
@@ -1564,21 +1563,21 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 var store = AccuitAdminDbContext.StoreMasters.FirstOrDefault(k => k.StoreID == storeID);
         //                 store.PictureFileName = fileName;
         //                 store.ModifiedDate = System.DateTime.Now;
-        //                 AccuitAdminDbContext.Entry<StoreMaster>(store).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<StoreMaster>(store).State = System.Data.Entity.EntityState.Modified;
         //                 break;
         //             case AspectEnums.ImageFileTypes.User:
         //                 long userID = Convert.ToInt64(entityID);
         //                 var user = AccuitAdminDbContext.UserMasters.FirstOrDefault(k => k.UserID == userID);
         //                 user.ProfilePictureFileName = fileName;
         //                 user.ModifiedDate = System.DateTime.Now;
-        //                 AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<UserMaster>(user).State = System.Data.Entity.EntityState.Modified;
         //                 break;
         //             case AspectEnums.ImageFileTypes.Survey:
         //                 long questionID = Convert.ToInt64(entityID);
         //                 var question = AccuitAdminDbContext.SurveyQuestions.FirstOrDefault(k => k.SurveyQuestionID == questionID);
         //                 question.HintImageName = fileName;
         //                 question.ModifiedDate = System.DateTime.Now;
-        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<SurveyQuestion>(question).State = System.Data.Entity.EntityState.Modified;
         //                 break;
         //         }
         //         isUpdated = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
@@ -1644,7 +1643,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             syncEntity.ModifiedBy = userID;
         //             syncEntity.ModifiedDate = System.DateTime.Now;
         //             syncEntity.LastSyncDate = System.DateTime.Now;
-        //             AccuitAdminDbContext.Entry<UserTableSyncHistory>(syncEntity).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<UserTableSyncHistory>(syncEntity).State = System.Data.Entity.EntityState.Modified;
         //         }
         //         return AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //     }
@@ -1903,7 +1902,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                         survey.IsDeleted = true;
         //                         survey.ModifiedDate = System.DateTime.Now;
         //                         survey.ModifiedBy = userID;
-        //                         AccuitAdminDbContext.Entry<RoleSurveyQuestion>(survey).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<RoleSurveyQuestion>(survey).State = System.Data.Entity.EntityState.Modified;
         //                         AccuitAdminDbContext.SaveChanges();
         //                     }
         //                 }
@@ -1962,7 +1961,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             email.Status = status;
         //             email.ModifiedDate = System.DateTime.Now;
         //             email.Remarks = remarks;
-        //             AccuitAdminDbContext.Entry<EmailService>(email).State = System.Data.EntityState.Modified;
+        //             AccuitAdminDbContext.Entry<EmailService>(email).State = System.Data.Entity.EntityState.Modified;
         //             isUpdated = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         }
         //         return isUpdated;
@@ -2358,7 +2357,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 NotifyService.DeliveryStatus = item.DeliveryStatus;
         //                 NotifyService.Remarks = item.Remarks;
         //                 NotifyService.ModifiedDate = modifieddate;
-        //                 context.Entry<CoverageNotificationService>(NotifyService).State = System.Data.EntityState.Modified;
+        //                 context.Entry<CoverageNotificationService>(NotifyService).State = System.Data.Entity.EntityState.Modified;
         //             }
 
         //             isSuccess = context.SaveChanges() > 0 ? true : false;
@@ -2406,7 +2405,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         bool isSuccess = false;
         //         if (APKAuthorization != null)
         //         {
-        //             AccuitAdminDbContext.Entry<DownloadMasterAuthorization>(APKAuthorization).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<DownloadMasterAuthorization>(APKAuthorization).State = System.Data.Entity.EntityState.Added;
         //             isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         }
         //         return isSuccess;
@@ -2489,7 +2488,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         {
         //             record.CreatedDate = System.DateTime.Now;
         //             record.IsDeleted = false;
-        //             AccuitAdminDbContext.Entry<ProductGroupCategory>(record).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<ProductGroupCategory>(record).State = System.Data.Entity.EntityState.Added;
         //             isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
 
         //         }
@@ -2530,7 +2529,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 if (Product != null)
         //                 {
         //                     Product.IsDeleted = true;
-        //                     AccuitAdminDbContext.Entry<ProductGroupCategory>(Product).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<ProductGroupCategory>(Product).State = System.Data.Entity.EntityState.Modified;
         //                 }
         //             }
         //             AccuitAdminDbContext.SaveChanges();
@@ -2592,12 +2591,12 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         //    if (item.ChannelTypeDisplayID > 0)
         //         //    {
         //         //        AccuitAdminDbContext.ChannelTypeDisplays.Add(item);
-        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.EntityState.Modified;
+        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.Entity.EntityState.Modified;
         //         //    }
         //         //    else
         //         //    {
         //         //        AccuitAdminDbContext.ChannelTypeDisplays.Add(item);
-        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.EntityState.Added;
+        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.Entity.EntityState.Added;
         //         //    }
 
         //         //}
@@ -2611,13 +2610,13 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         //    {
         //         //        // Update Case //
         //         //        AccuitAdminDbContext.ChannelTypeDisplays.Add(item);
-        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.EntityState.Modified;
+        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.Entity.EntityState.Modified;
         //         //    }
         //         //    // Insert Case //
         //         //    else
         //         //    {
         //         //        AccuitAdminDbContext.ChannelTypeDisplays.Add(item);
-        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.EntityState.Added;
+        //         //        AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.Entity.EntityState.Added;
         //         //    }
         //         //}
         //         //AccuitAdminDbContext.SaveChanges();
@@ -2630,12 +2629,12 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 item.ModifyBy = Convert.ToInt32(HttpContext.Current.Session[SessionVariables.SessionUserID]);
         //                 item.ModifyDate = System.DateTime.Now;
         //                 AccuitAdminDbContext.ChannelTypeDisplays.Add(item);
-        //                 AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.Entity.EntityState.Modified;
         //             }
         //             else
         //             {
         //                 AccuitAdminDbContext.ChannelTypeDisplays.Add(item);
-        //                 AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.EntityState.Added;
+        //                 AccuitAdminDbContext.Entry<ChannelTypeDisplay>(item).State = System.Data.Entity.EntityState.Added;
         //             }
         //         }
         //         AccuitAdminDbContext.SaveChanges();
@@ -2667,7 +2666,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //         bool isSuccess = false;
         //         if (roleModule != null)
         //         {
-        //             AccuitAdminDbContext.Entry<ActivityModule>(roleModule).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<ActivityModule>(roleModule).State = System.Data.Entity.EntityState.Added;
         //             isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //         }
         //         return isSuccess;
@@ -2991,7 +2990,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     scheme.SchemeNumber = scheme.ProductType + "/" + scheme.ProductGroup + "/" + scheme.ProductCategory + "/" + scheme.PUMINumber + "/" + Today.ToString("ddMMyyyy") + "-" + (GetLastSchemeNumber() + 1);
         //                     scheme.CreatedDate = DateTime.Now;
         //                     scheme.CreatedBy = userID;
-        //                     AccuitAdminDbContext.Entry<EOLSchemeHeader>(scheme).State = System.Data.EntityState.Added;
+        //                     AccuitAdminDbContext.Entry<EOLSchemeHeader>(scheme).State = System.Data.Entity.EntityState.Added;
         //                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                 }
         //                 else
@@ -3007,7 +3006,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                     updatescheme.ModifiedDate = System.DateTime.Now;
         //                     updatescheme.ModifiedBy = userID;
 
-        //                     AccuitAdminDbContext.Entry<EOLSchemeHeader>(updatescheme).State = System.Data.EntityState.Modified;
+        //                     AccuitAdminDbContext.Entry<EOLSchemeHeader>(updatescheme).State = System.Data.Entity.EntityState.Modified;
 
         //                     isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                 }
@@ -3062,7 +3061,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 eolSchemeHeader.SaveStatus = isSubmit;
         //                 eolSchemeHeader.ModifiedDate = System.DateTime.Now;
         //                 eolSchemeHeader.ModifiedBy = userID;
-        //                 AccuitAdminDbContext.Entry<EOLSchemeHeader>(eolSchemeHeader).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<EOLSchemeHeader>(eolSchemeHeader).State = System.Data.Entity.EntityState.Modified;
         //                 #endregion
 
         //                 isSuccess = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
@@ -3315,7 +3314,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                         {
         //                             basicModelexists.OrderQuantity = order.OrderQuantity;
         //                             basicModelexists.ActualSupport = order.ActualSupport;
-        //                             AccuitAdminDbContext.Entry<EOLOrderBooking>(basicModelexists).State = System.Data.EntityState.Modified;
+        //                             AccuitAdminDbContext.Entry<EOLOrderBooking>(basicModelexists).State = System.Data.Entity.EntityState.Modified;
         //                         }
         //                         #endregion
 
@@ -3620,7 +3619,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                         itemcurrent.ModifiedDate = DateTime.Now;
         //                         itemcurrent.ModifiedBy = item.ModifiedBy;
         //                         itemcurrent.IsDeleted = true;
-        //                         AccuitAdminDbContext.Entry<SDScheme>(itemcurrent).State = System.Data.EntityState.Modified;
+        //                         AccuitAdminDbContext.Entry<SDScheme>(itemcurrent).State = System.Data.Entity.EntityState.Modified;
         //                         status = AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //                     }
         //                 }
@@ -3644,7 +3643,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             scheme.ModifiedDate = null;
         //             scheme.IsActive = true;
         //             scheme.IsDeleted = false;
-        //             AccuitAdminDbContext.Entry<SDScheme>(scheme).State = System.Data.EntityState.Added;
+        //             AccuitAdminDbContext.Entry<SDScheme>(scheme).State = System.Data.Entity.EntityState.Added;
 
         //             List<schemeRoleMapping> schemeRoleMapping = new List<schemeRoleMapping>();
         //             DateTime currentdatetime = System.DateTime.Now;
@@ -3674,7 +3673,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //             {
         //                 foreach (var item in existingschemeRoleMapping)
         //                 {
-        //                     AccuitAdminDbContext.Entry<schemeRoleMapping>(item).State = System.Data.EntityState.Deleted;
+        //                     AccuitAdminDbContext.Entry<schemeRoleMapping>(item).State = System.Data.Entity.EntityState.Deleted;
         //                 }
         //                 AccuitAdminDbContext.SaveChanges();
         //             }
@@ -3703,7 +3702,7 @@ namespace AccuIT.PersistenceLayer.Data.Impl
         //                 schemeEntity.ModifiedBy = scheme.ModifiedBy;
         //                 schemeEntity.ModifiedDate = scheme.ModifiedDate;
         //                 schemeEntity.schemeRoleMappings = scheme.schemeRoleMappings;
-        //                 AccuitAdminDbContext.Entry<SDScheme>(schemeEntity).State = System.Data.EntityState.Modified;
+        //                 AccuitAdminDbContext.Entry<SDScheme>(schemeEntity).State = System.Data.Entity.EntityState.Modified;
         //                 return AccuitAdminDbContext.SaveChanges() > 0 ? true : false;
         //             }
         //             #endregion

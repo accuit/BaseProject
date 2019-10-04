@@ -1,4 +1,4 @@
-﻿using AccuIT.PersistenceLayer.Data.EDMX;
+﻿using AccuIT.PersistenceLayer.Repository.Entities;
 
 namespace AccuIT.PersistenceLayer.Data.Impl
 {
