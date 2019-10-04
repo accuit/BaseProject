@@ -1,6 +1,8 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.InterceptionExtension;
+using Unity;
+using Unity.Resolution;
+using Unity.Lifetime;
+using Unity.Injection;
 using AccuIT.BusinessLayer.IC;
 using AccuIT.BusinessLayer.ServiceImpl;
 using AccuIT.BusinessLayer.Services.BO;
@@ -17,8 +19,8 @@ using AccuIT.PersistenceLayer.Repository.Contracts;
 using AccuIT.PersistenceLayer.Repository.Entities;
 using AccuIT.BusinessLayer.IC.Contracts;
 using AccuIT.CommonLayer.Aspects.ReportBO;
-
-
+using Unity.Interception;
+using Unity.Interception.Interceptors.InstanceInterceptors.TransparentProxyInterception;
 
 namespace AccuIT.CommonLayer.AopRegistrations
 {
