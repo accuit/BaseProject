@@ -82,36 +82,36 @@
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
       <HintPath>bin\x64\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.Data.dll.3.1.0\lib\2.0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Samsung Project\Samsung.CommonLayer.Aspects\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.PolicyInjection">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.EnterpriseLibrary.PolicyInjection.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.Validation.4.0.30319\lib\net\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\BackUP\DreamWeddsProject\AccuIT.PresentationLayer.WebAdmin - Old\bin\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\AccuIT.PresentationLayer.ServiceApp\bin\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

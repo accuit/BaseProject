@@ -18,14 +18,12 @@ using AccuIT.CommonLayer.Aspects.Extensions;
 using AccuIT.CommonLayer.Aspects.Logging;
 using System.IO;
 using System.Web;
-using System.Web.Http;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Web.Hosting;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
-using AccuIT.CommonLayer.Aspects.Logging;
 
 namespace AccuIT.PresentationLayer.ServiceImpl
 {

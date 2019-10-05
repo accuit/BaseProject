@@ -21,7 +21,6 @@ namespace AccuIT.PresentationLayer.ServiceApp
         {
             UnityRegistration.InitializeAopContainer();
             string configFile = AppUtil.GetAppSettings(AspectEnums.ConfigKeys.SchedulerConfigFile);
-            log4net.Config.XmlConfigurator.Configure();
             //XmlApplicationContext context = new XmlApplicationContext(Server.MapPath(configFile));
            // Stream stream = HttpContext.Current.Request.InputStream;
             // RouteTable.Routes.Add(new ServiceRoute("api", new CorsEnabledServiceHostFactory(), typeof(ValuesService)));
