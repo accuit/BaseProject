@@ -12,15 +12,6 @@ namespace AccuIT.CommonLayer.Aspects.Logging
     /// </summary>
     public static class ActivityLog
     {
-        #region Private Variables
-
-        private static LogWriter _defaultLogWriter;
-        private static TraceManager _traceManager;
-        private static object sync = new object();
-        private delegate void WriteLogAsync(string logMessage);
-        private delegate void WriteLogWithCategoryAsync(string logMessage, AppVariables.AppLogTraceCategoryName category);
-        private delegate void WriteLogArgumentsWithCategoryAsync(string logMessage, AppVariables.AppLogTraceCategoryName category, params string[] arguments);
-        #endregion
 
         private static readonly ILog logger = LogManager.GetLogger("EShot");
         public static void SetLog(string message, LogLoc location)
